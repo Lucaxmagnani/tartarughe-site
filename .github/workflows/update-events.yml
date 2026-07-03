@@ -18,8 +18,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Save previous events.json
+        run: cp site/events.json /tmp/old_events.json
+
       - name: Update events.json
         run: python scripts/update_events.py
+
+      - name: Notify subscribers of new alerts
+        env:
+          ONESIGNAL_API_KEY: ${{ secrets.ONESIGNAL_API_KEY }}
+        run: python scripts/notify_new_alerts.py
 
       - name: Commit & push if changed
         run: |
