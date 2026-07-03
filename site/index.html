@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · Guest guide</title>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 50px}
+  .hero{position:relative;border-radius:16px;overflow:hidden;min-height:200px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:#2a2620 center/cover no-repeat;
+    background-image:linear-gradient(rgba(15,15,16,.40),rgba(15,15,16,.72)),url('assets/header.jpg');}
+  .hero-title{margin:0;font-size:32px;letter-spacing:5px;font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-sub{margin:8px 0 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e8e4dd}
+  .langs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+  .langs button{flex:1;min-width:52px;padding:9px 6px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;font-weight:600;cursor:pointer}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  .menu{display:flex;flex-direction:column;gap:12px;margin-top:14px}
+  a.cardlink{display:block;text-decoration:none;color:var(--txt);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px;transition:border-color .15s}
+  a.cardlink:hover{border-color:var(--accent)}
+  .cardlink .ic{font-size:26px}
+  .cardlink b{display:block;font-size:18px;margin:6px 0 2px}
+  .cardlink span.d{color:var(--muted);font-size:13px}
+  .cardlink .arrow{float:right;color:var(--accent);font-size:20px}
+  .wa{display:block;text-align:center;margin:22px auto 0;max-width:320px;padding:12px;border-radius:12px;background:#25D366;color:#06310f;text-decoration:none;font-weight:600}
+  .wa b{font-size:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <h1 class="hero-title">LE TARTARUGHE</h1>
+      <p class="hero-sub">Via della Reginella · Rome</p>
+    </div>
+  </header>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button><button data-l="it">IT</button><button data-l="fr">FR</button><button data-l="es">ES</button><button data-l="de">DE</button>
+  </div>
+
+  <p id="welcome" style="color:var(--muted);font-size:14px;margin:8px 0 0"></p>
+
+  <div class="menu">
+    <a class="cardlink" href="checkin.html"><span class="arrow">›</span><div class="ic">🔑</div><b id="c1t"></b><span class="d" id="c1d"></span></a>
+    <a class="cardlink" href="inside.html"><span class="arrow">›</span><div class="ic">🏠</div><b id="c2t"></b><span class="d" id="c2d"></span></a>
+    <a class="cardlink" href="neighbourhood.html"><span class="arrow">›</span><div class="ic">🗺️</div><b id="c3t"></b><span class="d" id="c3d"></span></a>
+    <a class="cardlink" href="stay.html"><span class="arrow">›</span><div class="ic">🎭</div><b id="c4t"></b><span class="d" id="c4d"></span></a>
+  </div>
+
+  <a class="wa" href="https://wa.me/393296415323" target="_blank" rel="noopener">
+    💬 <span id="wa_txt">Message the host on WhatsApp</span><br><b>+39 329 641 5323</b>
+  </a>
+</div>
+
+<script>
+const T={
+ en:{welcome:"Welcome! Everything you need for your stay — choose a section:",
+   c1t:"Self check-in & check-out",c1d:"Step-by-step videos: keys, arrival, lift, apartment, departure",
+   c2t:"Inside the apartment",c2d:"Wi-Fi, air conditioning, washing machine, kitchen, coffee machine, TV",
+   c3t:"Explore the neighbourhood",c3d:"How to arrive, getting around, sights, eat & drink, essentials",
+   c4t:"During your stay",c4d:"What's on now: free museums, events nearby, transport strike alerts",
+   wa:"Message the host on WhatsApp"},
+ it:{welcome:"Benvenuto! Tutto ciò che serve per il soggiorno — scegli una sezione:",
+   c1t:"Self check-in & check-out",c1d:"Video passo-passo: chiavi, arrivo, ascensore, appartamento, partenza",
+   c2t:"Dentro l'appartamento",c2d:"Wi-Fi, aria condizionata, lavatrice, cucina, macchina del caffè, TV",
+   c3t:"Esplora il quartiere",c3d:"Come arrivare, spostarsi, cosa vedere, mangiare & bere, utilità",
+   c4t:"Durante il soggiorno",c4d:"Cosa succede ora: musei gratis, eventi vicini, allerte scioperi trasporti",
+   wa:"Scrivi all'host su WhatsApp"},
+ fr:{welcome:"Bienvenue ! Tout pour votre séjour — choisissez une section :",
+   c1t:"Arrivée & départ autonomes",c1d:"Vidéos pas à pas : clés, arrivée, ascenseur, appartement, départ",
+   c2t:"Dans l'appartement",c2d:"Wi-Fi, climatisation, lave-linge, cuisine, machine à café, TV",
+   c3t:"Découvrir le quartier",c3d:"Comment venir, se déplacer, à voir, manger & boire, pratique",
+   c4t:"Pendant le séjour",c4d:"En ce moment : musées gratuits, événements proches, alertes grèves transports",
+   wa:"Écrire à l'hôte sur WhatsApp"},
+ es:{welcome:"¡Bienvenido! Todo para tu estancia — elige una sección:",
+   c1t:"Check-in y check-out autónomos",c1d:"Vídeos paso a paso: llaves, llegada, ascensor, apartamento, salida",
+   c2t:"Dentro del apartamento",c2d:"Wi-Fi, aire acondicionado, lavadora, cocina, cafetera, TV",
+   c3t:"Explora el barrio",c3d:"Cómo llegar, moverse, qué ver, comer y beber, práctico",
+   c4t:"Durante la estancia",c4d:"Qué pasa ahora: museos gratis, eventos cercanos, alertas de huelgas de transporte",
+   wa:"Escribe al anfitrión por WhatsApp"},
+ de:{welcome:"Willkommen! Alles für Ihren Aufenthalt — wählen Sie einen Bereich:",
+   c1t:"Self check-in & check-out",c1d:"Schritt-für-Schritt-Videos: Schlüssel, Ankunft, Aufzug, Wohnung, Abreise",
+   c2t:"In der Wohnung",c2d:"WLAN, Klimaanlage, Waschmaschine, Küche, Kaffeemaschine, TV",
+   c3t:"Das Viertel entdecken",c3d:"Anreise, unterwegs, Sehenswertes, essen & trinken, Praktisches",
+   c4t:"Während des Aufenthalts",c4d:"Jetzt aktuell: freie Museen, Events in der Nähe, Streik-Warnungen",
+   wa:"Dem Gastgeber auf WhatsApp schreiben"}
+};
+const $=id=>document.getElementById(id);
+function render(l){const d=T[l];
+  $('welcome').textContent=d.welcome;
+  $('c1t').textContent=d.c1t;$('c1d').textContent=d.c1d;
+  $('c2t').textContent=d.c2t;$('c2d').textContent=d.c2d;
+  $('c3t').textContent=d.c3t;$('c3d').textContent=d.c3d;
+  $('c4t').textContent=d.c4t;$('c4d').textContent=d.c4d;
+  $('wa_txt').textContent=d.wa;
+  document.documentElement.lang=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+$('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
+const _sl=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);
+render(T[_sl]?_sl:'en');
+</script>
+<style>
+.hb{position:fixed;top:12px;right:12px;z-index:60;background:rgba(27,27,29,.92);border:1px solid #2c2c2f;color:#f4f3f0;width:42px;height:42px;border-radius:10px;font-size:20px;cursor:pointer}
+.hbmenu{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:59;display:none}
+.hbmenu.open{display:block}
+.hbmenu .panel{position:absolute;top:0;right:0;width:255px;max-width:82%;height:100%;background:#1b1b1d;border-left:1px solid #2c2c2f;padding:64px 16px 16px;box-shadow:-6px 0 24px rgba(0,0,0,.45)}
+.hbmenu a{display:block;color:#f4f3f0;text-decoration:none;padding:12px 10px;border-radius:9px;font-size:15px}
+.hbmenu a.cur{color:#e0a400}
+</style>
+<button class="hb" id="hbBtn" aria-label="Menu">☰</button>
+<div class="hbmenu" id="hbMenu"><div class="panel" id="hbPanel"></div></div>
+<script>
+(function(){var CUR="index.html";
+var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood","🎭 During your stay"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere","🎭 Durante il soggiorno"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier","🎭 Pendant le séjour"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio","🎭 Durante la estancia"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel","🎭 Während des Aufenthalts"]};
+var P=["index.html","checkin.html","inside.html","neighbourhood.html","stay.html"];
+function build(l){if(!M[l])l='en';document.getElementById('hbPanel').innerHTML=M[l].map(function(t,i){return '<a href="'+P[i]+'"'+(P[i]===CUR?' class="cur"':'')+'>'+t+'</a>';}).join('');}
+build(localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2));
+var lg=document.getElementById('langs'); if(lg)lg.addEventListener('click',function(e){if(e.target.dataset.l)build(e.target.dataset.l);});
+var menu=document.getElementById('hbMenu');
+document.getElementById('hbBtn').onclick=function(){menu.classList.toggle('open');};
+menu.onclick=function(e){if(e.target===menu)menu.classList.remove('open');};
+})();
+</script>
+</body>
+</html>

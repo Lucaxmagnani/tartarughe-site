@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · During your stay</title>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f;--alert:#e05545}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 50px}
+  .hero{position:relative;border-radius:16px;overflow:hidden;min-height:140px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:#2a2620 center/cover no-repeat;
+    background-image:linear-gradient(rgba(15,15,16,.40),rgba(15,15,16,.72)),url('assets/header.jpg');}
+  .hero-title{margin:0;font-size:24px;letter-spacing:3px;font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-sub{margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#e8e4dd}
+  .langs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+  .langs button{flex:1;min-width:52px;padding:9px 6px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;font-weight:600;cursor:pointer}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  h2{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin:26px 0 10px}
+  h2.alert{color:var(--alert)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px}
+  .card.warn{border-left:4px solid var(--alert)}
+  .card.ev{border-left:4px solid var(--accent)}
+  .when{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+  .card.warn .when{color:var(--alert);font-weight:700}
+  .card b.t{display:block;font-size:16px;margin:0 0 4px}
+  .card p{margin:4px 0;font-size:14px;color:#d8d6d1}
+  .dist{display:inline-block;font-size:12px;color:var(--muted);margin-top:4px}
+  .card a.map{color:var(--accent);font-size:13px;text-decoration:none;font-weight:600}
+  .note{color:var(--muted);font-size:12px;margin-top:22px;text-align:center}
+  .wa{display:block;text-align:center;margin:22px auto 0;max-width:320px;padding:12px;border-radius:12px;background:#25D366;color:#06310f;text-decoration:none;font-weight:600}
+  .backlink{display:inline-block;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:12px}
+  .backlink:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="index.html" id="back">‹ Home</a>
+  <header class="hero">
+    <div>
+      <h1 class="hero-title" id="pt">DURING YOUR STAY</h1>
+      <p class="hero-sub" id="ps">What's on in Rome right now</p>
+    </div>
+  </header>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button><button data-l="it">IT</button><button data-l="fr">FR</button><button data-l="es">ES</button><button data-l="de">DE</button>
+  </div>
+
+  <h2 class="alert" id="h_alerts"></h2>
+  <div id="alerts"></div>
+
+  <h2 id="h_free"></h2>
+  <div id="free"></div>
+
+  <h2 id="h_events"></h2>
+  <div id="events"></div>
+
+  <p class="note" id="note"></p>
+
+  <a class="wa" href="https://wa.me/393296415323" target="_blank" rel="noopener">
+    💬 <span id="wa_txt">Message the host on WhatsApp</span><br><b>+39 329 641 5323</b>
+  </a>
+</div>
+
+<script>
+// ============ DATA ============
+// FALLBACK ONLY — live data comes from events.json (regenerated daily by
+// scripts/update_events.py via GitHub Action). This embedded copy is used
+// only if the fetch fails (e.g. opening the file locally).
+let DATA={
+ alerts:[
+  {when:{en:"Sunday 5 July · 10:00–18:00",it:"Domenica 5 luglio · 10:00–18:00"},
+   t:{en:"Airport security staff strike (Fiumicino & Ciampino)",it:"Sciopero addetti sicurezza aeroporti (Fiumicino e Ciampino)"},
+   p:{en:"If you fly that day, expect longer queues at security. Arrive at the airport earlier than usual.",
+      it:"Se voli quel giorno, previste code più lunghe ai controlli. Arriva in aeroporto con più anticipo del solito."}},
+  {when:{en:"Thu 23 July 21:00 → Fri 24 July 20:59",it:"Gio 23 luglio 21:00 → Ven 24 luglio 20:59"},
+   t:{en:"National rail strike (Trenitalia, Italo, regional trains)",it:"Sciopero nazionale ferroviario (Trenitalia, Italo, regionali)"},
+   p:{en:"Trains to/from airports and other cities may be cancelled. Check your train before travelling.",
+      it:"Possibili cancellazioni di treni per aeroporti e altre città. Verifica il tuo treno prima di partire."}},
+  {when:{en:"Friday 24 July · all day",it:"Venerdì 24 luglio · tutto il giorno"},
+   t:{en:"Rome public transport strike (metro, bus, tram)",it:"Sciopero trasporto pubblico Roma (metro, bus, tram)"},
+   p:{en:"Service usually guaranteed only ~5:30–8:30 and 17:00–20:00. Plan taxis or walk — the centre is walkable from the apartment.",
+      it:"Servizio di norma garantito solo ~5:30–8:30 e 17:00–20:00. Prevedi taxi o spostamenti a piedi — dal­l'appartamento il centro si gira a piedi."}}
+ ],
+ free:[
+  {when:{en:"Sunday 5 July (first Sunday of the month)",it:"Domenica 5 luglio (prima domenica del mese)"},
+   t:{en:"Free state & civic museums — #domenicalmuseo",it:"Musei statali e civici gratis — #domenicalmuseo"},
+   p:{en:"Colosseum, Roman Forum & Palatine (tickets only in person, go early!), Galleria Borghese, Castel Sant'Angelo, Baths of Caracalla + all civic museums (Capitoline Museums, 900 m from you).",
+      it:"Colosseo, Foro Romano e Palatino (biglietti solo in loco, vai presto!), Galleria Borghese, Castel Sant'Angelo, Terme di Caracalla + tutti i Musei Civici (Musei Capitolini, a 900 m da te)."}}
+ ],
+ events:[
+  {when:{en:"Every evening, all summer",it:"Ogni sera, tutta l'estate"},
+   t:{en:"Lungo il Tevere… Roma — riverside festival",it:"Lungo il Tevere… Roma — festival sulle banchine"},
+   p:{en:"Stalls, live music, food and cinema on the Tiber banks by Isola Tiberina.",
+      it:"Mercatini, musica live, food e cinema sulle banchine del Tevere all'Isola Tiberina."},
+   dist:"≈ 300 m · 4 min walk",map:"https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Isola+Tiberina+Roma&travelmode=walking"},
+  {when:{en:"3–4 July (film) · 12–28 July (Aida)",it:"3–4 luglio (film) · 12–28 luglio (Aida)"},
+   t:{en:"Opera under the stars at Circo Massimo",it:"Opera sotto le stelle al Circo Massimo"},
+   p:{en:"Teatro dell'Opera summer season: “The Gladiator” screened with live orchestra (3–4 July), then Verdi's Aida (6 dates).",
+      it:"Stagione estiva del Teatro dell'Opera: “Il Gladiatore” con orchestra dal vivo (3–4 luglio), poi l'Aida di Verdi (6 recite)."},
+   dist:"≈ 1.3 km · 17 min walk",map:"https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Circo+Massimo+Roma&travelmode=walking"},
+  {when:{en:"Until 26 July",it:"Fino al 26 luglio"},
+   t:{en:"Umberto Eco exhibition — Palazzo Firenze",it:"Mostra Umberto Eco — Palazzo Firenze"},
+   p:{en:"Tribute for the 10th anniversary of his death, with original artwork by Milo Manara and sets by Dante Ferretti.",
+      it:"Omaggio nel decennale della scomparsa, con tavole originali di Milo Manara e scenografie di Dante Ferretti."},
+   dist:"≈ 1.1 km · 14 min walk",map:"https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Palazzo+Firenze+Roma&travelmode=walking"},
+  {when:{en:"From 3 July",it:"Dal 3 luglio"},
+   t:{en:"AEGYPTUS — Baths of Diocletian",it:"AEGYPTUS — Terme di Diocleziano"},
+   p:{en:"Major new exhibition on ancient Egypt in the Octagonal Hall (Museo Nazionale Romano).",
+      it:"Grande mostra sull'antico Egitto nell'Aula Ottagona (Museo Nazionale Romano)."},
+   dist:"≈ 2.6 km · metro/bus or 33 min walk",map:"https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Terme+di+Diocleziano+Roma&travelmode=walking"}
+ ]
+};
+const L={
+ en:{pt:"DURING YOUR STAY",ps:"What's on in Rome right now",back:"‹ Home",
+     h_alerts:"⚠️ Good to know — transport alerts",h_free:"🎟️ Free entry",h_events:"🎭 Events near you",
+     map:"Walking route →",wa:"Message the host on WhatsApp",
+     note:"Curated for Le Tartarughe · verified 2 July 2026 · sources: MIT strike observatory, Roma Capitale, Ministry of Culture"},
+ it:{pt:"DURANTE IL SOGGIORNO",ps:"Cosa succede a Roma adesso",back:"‹ Home",
+     h_alerts:"⚠️ Da sapere — allerte trasporti",h_free:"🎟️ Ingressi gratuiti",h_events:"🎭 Eventi vicino a te",
+     map:"Percorso a piedi →",wa:"Scrivi all'host su WhatsApp",
+     note:"Curato per Le Tartarughe · verificato il 2 luglio 2026 · fonti: osservatorio scioperi MIT, Roma Capitale, Ministero della Cultura"}
+};
+L.fr=L.en;L.es=L.en;L.de=L.en; // PoC: FR/ES/DE fall back to EN (SaaS: auto-translate)
+const pick=(o,l)=>o[l]||o.en;
+function card(x,l,cls){
+ return '<div class="card '+cls+'"><p class="when">'+pick(x.when,l)+'</p><b class="t">'+pick(x.t,l)+'</b><p>'+pick(x.p,l)+'</p>'+
+  (x.dist?'<span class="dist">📍 '+x.dist+'</span><br><a class="map" target="_blank" rel="noopener" href="'+x.map+'">'+L[l].map+'</a>':'')+'</div>';
+}
+function render(l){const d=L[l]||L.en;
+ document.getElementById('pt').textContent=d.pt;
+ document.getElementById('ps').textContent=d.ps;
+ document.getElementById('back').textContent=d.back;
+ document.getElementById('h_alerts').textContent=d.h_alerts;
+ document.getElementById('h_free').textContent=d.h_free;
+ document.getElementById('h_events').textContent=d.h_events;
+ document.getElementById('note').textContent=DATA.updated?d.note.replace(/(verified|verificato il) [^·]+/, '$1 '+DATA.updated+' '):d.note;
+ document.getElementById('wa_txt').textContent=d.wa;
+ const lang=(l==='it')?'it':'en';
+ document.getElementById('alerts').innerHTML=DATA.alerts.map(x=>card(x,lang,'warn')).join('');
+ document.getElementById('free').innerHTML=DATA.free.map(x=>card(x,lang,'ev')).join('');
+ document.getElementById('events').innerHTML=DATA.events.map(x=>card(x,lang,'ev')).join('');
+ document.documentElement.lang=l;
+ document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+document.getElementById('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
+const _sl=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);
+const _lang=L[_sl]?_sl:'en';
+// drop items whose end date has passed (client-side safety net; the daily
+// script already prunes them server-side)
+function prune(d){const today=new Date().toISOString().slice(0,10);
+ const ok=x=>!x.to||x.to>=today;
+ return {alerts:(d.alerts||[]).filter(ok),free:(d.free||[]).filter(ok),events:(d.events||[]).filter(ok)};}
+render(_lang); // first paint with fallback data
+fetch('events.json',{cache:'no-store'}).then(r=>r.json())
+ .then(j=>{DATA=prune(j);render(localStorage.getItem('lt_lang')||_lang);})
+ .catch(()=>{DATA=prune(DATA);render(localStorage.getItem('lt_lang')||_lang);});
+</script>
+<style>
+.hb{position:fixed;top:12px;right:12px;z-index:60;background:rgba(27,27,29,.92);border:1px solid #2c2c2f;color:#f4f3f0;width:42px;height:42px;border-radius:10px;font-size:20px;cursor:pointer}
+.hbmenu{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:59;display:none}
+.hbmenu.open{display:block}
+.hbmenu .panel{position:absolute;top:0;right:0;width:255px;max-width:82%;height:100%;background:#1b1b1d;border-left:1px solid #2c2c2f;padding:64px 16px 16px;box-shadow:-6px 0 24px rgba(0,0,0,.45)}
+.hbmenu a{display:block;color:#f4f3f0;text-decoration:none;padding:12px 10px;border-radius:9px;font-size:15px}
+.hbmenu a.cur{color:#e0a400}
+</style>
+<button class="hb" id="hbBtn" aria-label="Menu">☰</button>
+<div class="hbmenu" id="hbMenu"><div class="panel" id="hbPanel"></div></div>
+<script>
+(function(){var CUR="stay.html";
+var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood","🎭 During your stay"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere","🎭 Durante il soggiorno"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier","🎭 Pendant le séjour"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio","🎭 Durante la estancia"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel","🎭 Während des Aufenthalts"]};
+var P=["index.html","checkin.html","inside.html","neighbourhood.html","stay.html"];
+function build(l){if(!M[l])l='en';document.getElementById('hbPanel').innerHTML=M[l].map(function(t,i){return '<a href="'+P[i]+'"'+(P[i]===CUR?' class="cur"':'')+'>'+t+'</a>';}).join('');}
+build(localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2));
+var lg=document.getElementById('langs'); if(lg)lg.addEventListener('click',function(e){if(e.target.dataset.l)build(e.target.dataset.l);});
+var menu=document.getElementById('hbMenu');
+document.getElementById('hbBtn').onclick=function(){menu.classList.toggle('open');};
+menu.onclick=function(e){if(e.target===menu)menu.classList.remove('open');};
+})();
+</script>
+</body>
+</html>

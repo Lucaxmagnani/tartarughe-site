@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · Guest guide (DRAFT)</title>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:620px;margin:0 auto;padding:16px 16px 70px}
+  .home{display:inline-block;color:var(--accent);text-decoration:none;font-size:13px;margin-bottom:6px}
+  h1{font-size:22px;margin:4px 0 2px}
+  .lead{color:var(--muted);font-size:14px;margin:0 0 8px}
+  .bar{position:sticky;top:0;background:var(--bg);z-index:9;padding-top:8px}
+  .langs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+  .langs button{flex:1;min-width:48px;padding:7px 5px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:9px;font-weight:600;cursor:pointer;font-size:13px}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  .nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .nav a{white-space:nowrap;font-size:13px;color:var(--txt);background:var(--card);border:1px solid var(--line);padding:7px 11px;border-radius:20px;text-decoration:none}
+  h2{font-size:18px;margin:26px 0 6px;scroll-margin-top:96px}
+  h3{font-size:14px;margin:16px 0 4px;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 13px;margin:7px 0}
+  .item .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+  .item b{font-size:15px}
+  .item .km{color:var(--accent);font-size:12px;white-space:nowrap}
+  .item .desc{font-size:13px;color:#d8d5cf;margin:3px 0 5px}
+  .item .addr{color:var(--muted);font-size:12px}
+  .item a{color:var(--accent);font-size:12px;text-decoration:none}
+  .prose{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:8px 0;font-size:14px}
+  .prose a{color:var(--accent)}
+  .prose h4{margin:0 0 4px;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="index.html">← Home</a>
+  <h1 id="title">Le Tartarughe — Guest guide</h1>
+  <p class="lead" id="lead"></p>
+
+  <div class="bar">
+    <div class="langs" id="langs">
+      <button data-l="en" class="active">EN</button><button data-l="it">IT</button><button data-l="fr">FR</button><button data-l="es">ES</button><button data-l="de">DE</button>
+    </div>
+    <div class="nav" id="nav"></div>
+  </div>
+
+  <h2 id="h_arrive"></h2>
+  <div class="prose" id="p_fco"></div>
+  <div class="prose" id="p_cia"></div>
+  <div class="prose" id="p_termini"></div>
+
+  <h2 id="h_around"></h2>
+  <div class="prose" id="p_around"></div>
+
+  <h2 id="h_essentials"></h2>
+  <div class="prose" id="p_pharm"></div>
+  <div class="prose" id="p_market"></div>
+
+  <h2 id="h_sights"></h2>
+  <div id="c_sights"></div>
+
+  <h2 id="h_eat"></h2>
+  <h3 id="t_tratt"></h3><div id="c_tratt"></div>
+  <h3 id="t_pizza"></h3><div id="c_pizza"></div>
+  <h3 id="t_dolci"></h3><div id="c_dolci"></div>
+  <h3 id="t_bars"></h3><div id="c_bars"></div>
+</div>
+
+<script>
+const LEX={en:"https://www.trenitalia.com/en/services/leonardo-express.html",it:"https://www.trenitalia.com/it/treni-regionali/leonardo-express.html",fr:"https://www.trenitalia.com/en/services/leonardo-express.html",es:"https://www.trenitalia.com/en/services/leonardo-express.html",de:"https://www.trenitalia.com/en/services/leonardo-express.html"};
+
+const T={
+en:{title:"Le Tartarughe — Guest guide",lead:"Useful info around the apartment — distances from Via della Reginella 2.",
+ nav:{arrive:"How to arrive to the flat",around:"Getting around",ess:"Essentials",sights:"Sightseeing",eat:"Eat & Drink"},
+ hArrive:"How to arrive to the flat",hAround:"Getting around",hEss:"Essentials",hSights:"Sightseeing",hEat:"Eat & Drink",
+ fco:`<h4>✈️ From Fiumicino Airport (FCO)</h4><b>Taxi:</b> fixed fare <b>€55</b> to anywhere within the Aurelian Walls (city centre) — per car, not per person, ~45 min. Use official white taxis (SPQR sign).<br><b>Leonardo Express train:</b> €14, 32 min, every ~15 min, FCO → Roma Termini. <a href="${LEX.en}" target="_blank" rel="noopener">Timetable &amp; tickets ›</a> From Termini a taxi to the flat is ~10 min (€10–15).`,
+ cia:`<h4>✈️ From Ciampino Airport (CIA)</h4><b>Shuttle bus</b> (Terravision / SIT / ATRAL) to Termini, ~€6, ~40 min, then taxi/bus to the flat.<br><b>Taxi:</b> fixed fare <b>€31</b> to within the Aurelian Walls.`,
+ termini:`<h4>🚉 From Roma Termini station</h4><b>Taxi:</b> ~€10–15, ~10 min.<br><b>Bus 40 (express) or 64</b> to “Largo di Torre Argentina”, then a ~5 min walk.`,
+ around:`The historic centre is best explored <b>on foot</b>. Nearest transport hub: <b>Largo di Torre Argentina</b> (~0.4 km / 5 min). Tram <b>8</b> → Trastevere &amp; Piazza Venezia; buses <b>40</b> &amp; <b>64</b> → Termini and the Vatican; bus <b>H</b> → Trastevere/Termini. Taxi rank on the square. No metro in this area (nearest: Colosseo, line B, ~15 min). Handy apps: FREE NOW / itTaxi (taxis), Moovit (transit).`,
+ pharm:`<b>Pharmacies</b> (nearest first): parapharmacy in <b>Piazza Mattei</b> (closest), then pharmacies at <b>Piazza Cairoli</b>, <b>Via Arenula</b> and <b>Largo di Torre Argentina</b>. At night and on holidays pharmacies take turns — check the notice on the door or ask your host.`,
+ market:`<b>Supermarkets:</b> Carrefour Express near <b>Piazza Cairoli</b> and <b>PAM, Via dei Falegnami</b> (both a short walk); another Carrefour Express at Via del Gesù 60. Small grocers (alimentari) are also dotted around the Ghetto.<br><b>Coldiretti farmers' market</b> (Campagna Amica), Circo Massimo — Via di San Teodoro 74; Sat &amp; Sun, you can also eat there.`,
+ tratt:"Trattorie & Roman cuisine",pizza:"Pizzerie",dolci:"Bakeries, pastries, gelato & coffee",bars:"Bars & rooftops",
+ map:"Walking route",km:"km"},
+
+it:{title:"Le Tartarughe — Guida ospiti",lead:"Info utili intorno all'appartamento — distanze da Via della Reginella 2.",
+ nav:{arrive:"Come arrivare all'appartamento",around:"Spostarsi",ess:"Utilità",sights:"Cosa vedere",eat:"Mangiare & bere"},
+ hArrive:"Come arrivare all'appartamento",hAround:"Spostarsi",hEss:"Utilità",hSights:"Cosa vedere",hEat:"Mangiare & bere",
+ fco:`<h4>✈️ Dall'aeroporto di Fiumicino (FCO)</h4><b>Taxi:</b> tariffa fissa <b>€55</b> per qualsiasi destinazione entro le Mura Aureliane (centro) — a vettura, non a persona, ~45 min. Usa i taxi bianchi ufficiali (scritta SPQR).<br><b>Treno Leonardo Express:</b> €14, 32 min, ogni ~15 min, FCO → Roma Termini. <a href="${LEX.it}" target="_blank" rel="noopener">Orari e biglietti ›</a> Da Termini il taxi all'appartamento è ~10 min (€10–15).`,
+ cia:`<h4>✈️ Dall'aeroporto di Ciampino (CIA)</h4><b>Bus navetta</b> (Terravision / SIT / ATRAL) per Termini, ~€6, ~40 min, poi taxi/bus all'appartamento.<br><b>Taxi:</b> tariffa fissa <b>€31</b> entro le Mura Aureliane.`,
+ termini:`<h4>🚉 Dalla stazione Roma Termini</h4><b>Taxi:</b> ~€10–15, ~10 min.<br><b>Bus 40 (express) o 64</b> fino a “Largo di Torre Argentina”, poi ~5 min a piedi.`,
+ around:`Il centro storico si gira benissimo <b>a piedi</b>. Snodo più vicino: <b>Largo di Torre Argentina</b> (~0,4 km / 5 min). Tram <b>8</b> → Trastevere e Piazza Venezia; bus <b>40</b> e <b>64</b> → Termini e Vaticano; bus <b>H</b> → Trastevere/Termini. Taxi in piazza. Niente metro in zona (la più vicina: Colosseo, linea B, ~15 min). App utili: FREE NOW / itTaxi (taxi), Moovit (mezzi).`,
+ pharm:`<b>Farmacie</b> (dalla più vicina): parafarmacia in <b>Piazza Mattei</b> (la più vicina), poi farmacie a <b>Piazza Cairoli</b>, <b>Via Arenula</b> e <b>Largo di Torre Argentina</b>. Di notte e nei festivi fanno i turni — controlla l'avviso sulla porta o chiedi all'host.`,
+ market:`<b>Supermercati:</b> Carrefour Express vicino a <b>Piazza Cairoli</b> e <b>PAM, Via dei Falegnami</b> (entrambi a pochi passi); un altro Carrefour Express in Via del Gesù 60. Nel Ghetto ci sono anche diversi alimentari.<br><b>Mercato Campagna Amica</b> (Coldiretti), Circo Massimo — Via di San Teodoro 74; sab e dom, puoi anche mangiare lì.`,
+ tratt:"Trattorie e cucina romana",pizza:"Pizzerie",dolci:"Forni, pasticcerie, gelato e caffè",bars:"Bar e rooftop",
+ map:"Percorso a piedi",km:"km"},
+
+fr:{title:"Le Tartarughe — Guide du voyageur",lead:"Infos utiles autour de l'appartement — distances depuis la Via della Reginella 2.",
+ nav:{arrive:"Comment rejoindre l'appartement",around:"Se déplacer",ess:"Pratique",sights:"À voir",eat:"Manger & boire"},
+ hArrive:"Comment rejoindre l'appartement",hAround:"Se déplacer",hEss:"Pratique",hSights:"À voir",hEat:"Manger & boire",
+ fco:`<h4>✈️ Depuis l'aéroport de Fiumicino (FCO)</h4><b>Taxi :</b> forfait <b>55 €</b> vers toute destination dans les Murs d'Aurélien (centre) — par voiture, pas par personne, ~45 min. Prenez les taxis blancs officiels (sigle SPQR).<br><b>Train Leonardo Express :</b> 14 €, 32 min, toutes les ~15 min, FCO → Roma Termini. <a href="${LEX.fr}" target="_blank" rel="noopener">Horaires &amp; billets ›</a> Depuis Termini, un taxi jusqu'à l'appartement ~10 min (10–15 €).`,
+ cia:`<h4>✈️ Depuis l'aéroport de Ciampino (CIA)</h4><b>Navette bus</b> (Terravision / SIT / ATRAL) vers Termini, ~6 €, ~40 min, puis taxi/bus jusqu'à l'appartement.<br><b>Taxi :</b> forfait <b>31 €</b> dans les Murs d'Aurélien.`,
+ termini:`<h4>🚉 Depuis la gare de Roma Termini</h4><b>Taxi :</b> ~10–15 €, ~10 min.<br><b>Bus 40 (express) ou 64</b> jusqu'à « Largo di Torre Argentina », puis ~5 min à pied.`,
+ around:`Le centre se découvre surtout <b>à pied</b>. Pôle le plus proche : <b>Largo di Torre Argentina</b> (~0,4 km / 5 min). Tram <b>8</b> → Trastevere &amp; Piazza Venezia ; bus <b>40</b> &amp; <b>64</b> → Termini et le Vatican ; bus <b>H</b> → Trastevere/Termini. Station de taxis sur la place. Pas de métro ici (le plus proche : Colosseo, ligne B, ~15 min). Applis utiles : FREE NOW / itTaxi (taxis), Moovit (transports).`,
+ pharm:`<b>Pharmacies</b> (de la plus proche) : parapharmacie <b>Piazza Mattei</b> (la plus proche), puis pharmacies <b>Piazza Cairoli</b>, <b>Via Arenula</b> et <b>Largo di Torre Argentina</b>. La nuit et les jours fériés, gardes tournantes — voir l'avis sur la porte ou demander à l'hôte.`,
+ market:`<b>Supermarchés :</b> Carrefour Express près de <b>Piazza Cairoli</b> et <b>PAM, Via dei Falegnami</b> (à deux pas) ; un autre Carrefour Express Via del Gesù 60. Plusieurs épiceries (alimentari) dans le Ghetto.<br><b>Marché de producteurs Campagna Amica</b> (Coldiretti), Circus Maximus — Via di San Teodoro 74 ; sam &amp; dim, on peut aussi y manger.`,
+ tratt:"Trattorias & cuisine romaine",pizza:"Pizzerias",dolci:"Boulangeries, pâtisseries, glaces & café",bars:"Bars & rooftops",
+ map:"Itinéraire à pied",km:"km"},
+
+es:{title:"Le Tartarughe — Guía del huésped",lead:"Info útil alrededor del apartamento — distancias desde Via della Reginella 2.",
+ nav:{arrive:"Cómo llegar al apartamento",around:"Moverse",ess:"Práctico",sights:"Qué ver",eat:"Comer y beber"},
+ hArrive:"Cómo llegar al apartamento",hAround:"Moverse",hEss:"Práctico",hSights:"Qué ver",hEat:"Comer y beber",
+ fco:`<h4>✈️ Desde el aeropuerto de Fiumicino (FCO)</h4><b>Taxi:</b> tarifa fija <b>55 €</b> a cualquier destino dentro de las Murallas Aurelianas (centro) — por coche, no por persona, ~45 min. Usa los taxis blancos oficiales (letrero SPQR).<br><b>Tren Leonardo Express:</b> 14 €, 32 min, cada ~15 min, FCO → Roma Termini. <a href="${LEX.es}" target="_blank" rel="noopener">Horarios y billetes ›</a> Desde Termini, un taxi al apartamento ~10 min (10–15 €).`,
+ cia:`<h4>✈️ Desde el aeropuerto de Ciampino (CIA)</h4><b>Autobús lanzadera</b> (Terravision / SIT / ATRAL) a Termini, ~6 €, ~40 min, luego taxi/bus al apartamento.<br><b>Taxi:</b> tarifa fija <b>31 €</b> dentro de las Murallas Aurelianas.`,
+ termini:`<h4>🚉 Desde la estación de Roma Termini</h4><b>Taxi:</b> ~10–15 €, ~10 min.<br><b>Autobús 40 (exprés) o 64</b> hasta “Largo di Torre Argentina”, luego ~5 min a pie.`,
+ around:`El centro histórico se disfruta mejor <b>a pie</b>. Nudo más cercano: <b>Largo di Torre Argentina</b> (~0,4 km / 5 min). Tranvía <b>8</b> → Trastevere y Piazza Venezia; autobuses <b>40</b> y <b>64</b> → Termini y el Vaticano; autobús <b>H</b> → Trastevere/Termini. Parada de taxis en la plaza. Sin metro en la zona (el más cercano: Colosseo, línea B, ~15 min). Apps útiles: FREE NOW / itTaxi (taxis), Moovit (transporte).`,
+ pharm:`<b>Farmacias</b> (de la más cercana): parafarmacia en <b>Piazza Mattei</b> (la más cercana), luego farmacias en <b>Piazza Cairoli</b>, <b>Via Arenula</b> y <b>Largo di Torre Argentina</b>. De noche y festivos hacen turnos — mira el aviso en la puerta o pregunta al anfitrión.`,
+ market:`<b>Supermercados:</b> Carrefour Express junto a <b>Piazza Cairoli</b> y <b>PAM, Via dei Falegnami</b> (a pocos pasos); otro Carrefour Express en Via del Gesù 60. También hay tiendas de alimentación (alimentari) por el Ghetto.<br><b>Mercado de agricultores Campagna Amica</b> (Coldiretti), Circo Máximo — Via di San Teodoro 74; sáb y dom, también se puede comer allí.`,
+ tratt:"Trattorias y cocina romana",pizza:"Pizzerías",dolci:"Hornos, pastelerías, helado y café",bars:"Bares y rooftops",
+ map:"Cómo llegar a pie",km:"km"},
+
+de:{title:"Le Tartarughe — Gästeguide",lead:"Nützliches rund um die Wohnung — Entfernungen ab Via della Reginella 2.",
+ nav:{arrive:"Anreise zur Wohnung",around:"Unterwegs",ess:"Praktisches",sights:"Sehenswertes",eat:"Essen & Trinken"},
+ hArrive:"Anreise zur Wohnung",hAround:"Unterwegs",hEss:"Praktisches",hSights:"Sehenswertes",hEat:"Essen & Trinken",
+ fco:`<h4>✈️ Vom Flughafen Fiumicino (FCO)</h4><b>Taxi:</b> Festpreis <b>55 €</b> zu jedem Ziel innerhalb der Aurelianischen Mauern (Zentrum) — pro Wagen, nicht pro Person, ~45 Min. Offizielle weiße Taxis nutzen (SPQR-Schild).<br><b>Leonardo-Express-Zug:</b> 14 €, 32 Min, alle ~15 Min, FCO → Roma Termini. <a href="${LEX.de}" target="_blank" rel="noopener">Fahrplan &amp; Tickets ›</a> Von Termini Taxi zur Wohnung ~10 Min (10–15 €).`,
+ cia:`<h4>✈️ Vom Flughafen Ciampino (CIA)</h4><b>Shuttlebus</b> (Terravision / SIT / ATRAL) nach Termini, ~6 €, ~40 Min, dann Taxi/Bus zur Wohnung.<br><b>Taxi:</b> Festpreis <b>31 €</b> innerhalb der Aurelianischen Mauern.`,
+ termini:`<h4>🚉 Vom Bahnhof Roma Termini</h4><b>Taxi:</b> ~10–15 €, ~10 Min.<br><b>Bus 40 (Express) oder 64</b> bis „Largo di Torre Argentina“, dann ~5 Min zu Fuß.`,
+ around:`Das historische Zentrum erkundet man am besten <b>zu Fuß</b>. Nächster Knotenpunkt: <b>Largo di Torre Argentina</b> (~0,4 km / 5 Min). Tram <b>8</b> → Trastevere &amp; Piazza Venezia; Busse <b>40</b> &amp; <b>64</b> → Termini und Vatikan; Bus <b>H</b> → Trastevere/Termini. Taxistand am Platz. Keine Metro hier (am nächsten: Colosseo, Linie B, ~15 Min). Nützliche Apps: FREE NOW / itTaxi (Taxi), Moovit (ÖPNV).`,
+ pharm:`<b>Apotheken</b> (nächste zuerst): Parapharmazie an der <b>Piazza Mattei</b> (am nächsten), dann Apotheken an <b>Piazza Cairoli</b>, <b>Via Arenula</b> und <b>Largo di Torre Argentina</b>. Nachts und an Feiertagen Bereitschaftsdienst — Aushang an der Tür beachten oder Gastgeber fragen.`,
+ market:`<b>Supermärkte:</b> Carrefour Express nahe <b>Piazza Cairoli</b> und <b>PAM, Via dei Falegnami</b> (wenige Schritte); ein weiterer Carrefour Express in der Via del Gesù 60. Im Ghetto gibt es zudem kleine Lebensmittelläden (alimentari).<br><b>Bauernmarkt Campagna Amica</b> (Coldiretti), Circus Maximus — Via di San Teodoro 74; Sa &amp; So, dort kann man auch essen.`,
+ tratt:"Trattorien & römische Küche",pizza:"Pizzerien",dolci:"Bäckereien, Konditoreien, Eis & Kaffee",bars:"Bars & Rooftops",
+ map:"Fußweg",km:"km"}
+};
+
+const TRATT=[
+ {n:"Sora Margherita",a:"Piazza delle Cinque Scole 30",km:0.1,d:{en:"Roman-Jewish trattoria since 1927; book by phone",it:"Trattoria romano-ebraica dal 1927; prenota per telefono",fr:"Trattoria romano-juive depuis 1927 ; réserver par téléphone",es:"Trattoria romano-judía desde 1927; reserva por teléfono",de:"Römisch-jüdische Trattoria seit 1927; telefonisch reservieren"}},
+ {n:"Giggetto al Portico d'Ottavia",a:"Via del Portico d'Ottavia 21a",km:0.2,d:{en:"Jewish-Roman classics, fried artichokes; closed Mon",it:"Classici romano-ebraici, carciofi alla giudia; chiuso lun",fr:"Classiques romano-juifs, artichauts frits ; fermé lun",es:"Clásicos romano-judíos, alcachofas fritas; cierra lun",de:"Römisch-jüdische Klassiker, frittierte Artischocken; Mo zu"}},
+ {n:"Renato e Luisa",a:"Via dei Barbieri 25",km:0.3,d:{en:"Modern Roman cuisine; dinner only, closed Mon",it:"Cucina romana moderna; solo cena, chiuso lun",fr:"Cuisine romaine moderne ; dîner seulement, fermé lun",es:"Cocina romana moderna; solo cena, cierra lun",de:"Moderne römische Küche; nur abends, Mo zu"}},
+ {n:"Dar Filettaro a Santa Barbara",a:"Largo dei Librari 88",km:0.4,d:{en:"Roman fried salt-cod (baccalà); evenings, closed Sun",it:"Filetti di baccalà fritti; sera, chiuso dom",fr:"Filets de morue frits à la romaine ; soir, fermé dim",es:"Filetes de bacalao fritos; noche, cierra dom",de:"Frittierte Stockfischfilets; abends, So zu"}},
+ {n:"Antica Birreria Peroni",a:"Via San Marcello 19",km:0.8,d:{en:"Historic beer hall, Roman dishes; closed Sun, no booking",it:"Birreria storica, piatti romani; chiuso dom, no prenotazioni",fr:"Brasserie historique, plats romains ; fermé dim, sans réservation",es:"Cervecería histórica, platos romanos; cierra dom, sin reserva",de:"Historisches Bierhaus, römische Gerichte; So zu, ohne Reservierung"}},
+ {n:"Hostaria da Corrado",a:"Via della Pelliccia 39 Trastevere",km:0.9,d:{en:"No-frills Roman trattoria (Trastevere); closed Mon",it:"Trattoria romana verace (Trastevere); chiuso lun",fr:"Trattoria romaine sans chichis (Trastevere) ; fermé lun",es:"Trattoria romana sencilla (Trastevere); cierra lun",de:"Urige römische Trattoria (Trastevere); Mo zu"}},
+ {n:"Da Augusto",a:"Piazza de' Renzi 15 Trastevere",km:0.9,d:{en:"Old-school Roman trattoria, often busy",it:"Trattoria romana d'altri tempi, spesso piena",fr:"Trattoria romaine à l'ancienne, souvent bondée",es:"Trattoria romana de toda la vida, suele llenarse",de:"Römische Trattoria alter Schule, oft voll"}},
+ {n:"Pasquale Pulcini (Birra Peroni)",a:"Via del Boschetto 37/A Monti",km:1.3,d:{en:"Roman trattoria / beer hall in Monti; book",it:"Trattoria/birreria a Monti; prenota",fr:"Trattoria/brasserie à Monti ; réserver",es:"Trattoria/cervecería en Monti; reserva",de:"Trattoria/Bierhaus in Monti; reservieren"}},
+ {n:"Trattoria Priscilla",a:"Via Appia Antica 68",km:8,d:{en:"Authentic trattoria on the Appian Way (bus/taxi); book",it:"Trattoria autentica sull'Appia Antica (bus/taxi); prenota",fr:"Trattoria authentique sur la Via Appia (bus/taxi) ; réserver",es:"Trattoria auténtica en la Via Appia (bus/taxi); reserva",de:"Authentische Trattoria an der Via Appia (Bus/Taxi); reservieren"}}
+];
+const PIZZA=[
+ {n:"La Montecarlo",a:"Vicolo Savelli 13",km:0.7,d:{en:"Lively classic pizzeria; closed Mon",it:"Pizzeria classica e vivace; chiuso lun",fr:"Pizzeria classique et animée ; fermé lun",es:"Pizzería clásica y animada; cierra lun",de:"Lebhafte klassische Pizzeria; Mo zu"}},
+ {n:"Pizzeria Ai Marmi",a:"Viale di Trastevere 53",km:0.9,d:{en:"Thin Roman pizza, institution; closed Wed",it:"Pizza romana sottile, un'istituzione; chiuso mer",fr:"Pizza romaine fine, une institution ; fermé mer",es:"Pizza romana fina, una institución; cierra mié",de:"Dünne römische Pizza, eine Institution; Mi zu"}},
+ {n:"Da Remo a Testaccio",a:"Piazza di Santa Maria Liberatrice 44",km:1.8,d:{en:"Iconic Testaccio pizzeria; evenings, closed Sun",it:"Pizzeria simbolo di Testaccio; sera, chiuso dom",fr:"Pizzeria emblématique de Testaccio ; soir, fermé dim",es:"Pizzería icónica de Testaccio; noche, cierra dom",de:"Kultpizzeria in Testaccio; abends, So zu"}}
+];
+const DOLCI=[
+ {n:"Antico Forno Urbani",a:"Piazza Costaguti 30",km:0.1,d:{en:"Bakery, pizza by the slice; closed Sat",it:"Forno, pizza al taglio; chiuso sab",fr:"Boulangerie, pizza à la coupe ; fermé sam",es:"Panadería, pizza al corte; cierra sáb",de:"Bäckerei, Pizza am Stück; Sa zu"}},
+ {n:"Pasticceria Boccione (Forno del Ghetto)",a:"Via del Portico d'Ottavia 1",km:0.2,d:{en:"Jewish bakery: ricotta & sour-cherry tart; closed Sat",it:"Forno ebraico: crostata ricotta e visciole; chiuso sab",fr:"Pâtisserie juive : tarte ricotta-griottes ; fermé sam",es:"Pastelería judía: tarta de ricotta y guindas; cierra sáb",de:"Jüdische Bäckerei: Ricotta-Sauerkirsch-Torte; Sa zu"}},
+ {n:"Günther Gelato Italiano",a:"Via dei Pettinari 43",km:0.4,d:{en:"Artisan gelato",it:"Gelato artigianale",fr:"Glaces artisanales",es:"Helado artesanal",de:"Handwerkliches Speiseeis"}},
+ {n:"La Casa del Caffè Tazza d'Oro",a:"Via degli Orfani 84",km:0.7,d:{en:"Historic coffee bar by the Pantheon; coffee granita",it:"Caffè storico al Pantheon; granita di caffè",fr:"Café historique près du Panthéon ; granité au café",es:"Cafetería histórica junto al Panteón; granizado de café",de:"Historische Kaffeebar am Pantheon; Kaffee-Granita"}},
+ {n:"Pasticceria Regoli",a:"Via dello Statuto 60",km:1.7,d:{en:"Historic pastry shop; maritozzi with cream; closed Tue",it:"Pasticceria storica; maritozzi con panna; chiuso mar",fr:"Pâtisserie historique ; maritozzi à la crème ; fermé mar",es:"Pastelería histórica; maritozzi con nata; cierra mar",de:"Historische Konditorei; Maritozzi mit Sahne; Di zu"}}
+];
+const BARS=[
+ {n:"Le Tartarughe",a:"Via dei Funari 26",km:0.1,d:{en:"Atmospheric wine bar facing the Turtle Fountain",it:"Wine bar d'atmosfera davanti alla Fontana delle Tartarughe",fr:"Bar à vin de charme face à la Fontaine des Tortues",es:"Bar de vinos con encanto frente a la Fuente de las Tortugas",de:"Stimmungsvolle Weinbar gegenüber dem Schildkrötenbrunnen"}},
+ {n:"Hey Güey (rooftop, The Chapter)",a:"Via di Santa Maria de' Calderari 47",km:0.2,d:{en:"Rooftop bar, Mexican food & cocktails; May–Oct, eves",it:"Rooftop, cucina messicana & cocktail; mag–ott, sera",fr:"Rooftop, cuisine mexicaine & cocktails ; mai–oct, soir",es:"Rooftop, comida mexicana y cócteles; may–oct, noche",de:"Rooftop, mexikanisches Essen & Cocktails; Mai–Okt, abends"}},
+ {n:"47 Circus Roof Garden (FortySeven Hotel)",a:"Via Luigi Petroselli 47",km:0.6,d:{en:"Rooftop restaurant/bar, view over Bocca della Verità & Circus Maximus",it:"Rooftop ristorante/bar, vista su Bocca della Verità e Circo Massimo",fr:"Rooftop restaurant/bar, vue sur Bocca della Verità et Circus Maximus",es:"Rooftop restaurante/bar, vista a Bocca della Verità y Circo Máximo",de:"Rooftop-Restaurant/Bar, Blick auf Bocca della Verità & Circus Maximus"}},
+ {n:"Oro Bistrot (NH Collection Fori Imperiali)",a:"Via di Santa Eufemia 19",km:0.7,d:{en:"Chic rooftop over the Imperial Forums & Piazza Venezia",it:"Rooftop chic sui Fori Imperiali e Piazza Venezia",fr:"Rooftop chic sur les Forums impériaux et la Piazza Venezia",es:"Rooftop chic sobre los Foros Imperiales y Piazza Venezia",de:"Schickes Rooftop über den Kaiserforen & Piazza Venezia"}},
+ {n:"Salotto 42",a:"Piazza di Pietra 42",km:0.7,d:{en:"Trendy book-bar near the Pantheon; great aperitivo",it:"Book-bar trendy vicino al Pantheon; ottimo aperitivo",fr:"Book-bar branché près du Panthéon ; bel apéritif",es:"Book-bar moderno cerca del Panteón; buen aperitivo",de:"Angesagte Buch-Bar nahe Pantheon; toller Aperitif"}},
+ {n:"Bar del Fico",a:"Via della Pace 34",km:0.8,d:{en:"Historic spot, breakfast to cocktails; 7am–2am",it:"Locale storico, dalla colazione ai cocktail; 7–02",fr:"Lieu historique, du petit-déj aux cocktails ; 7h–2h",es:"Local histórico, del desayuno a los cócteles; 7–02",de:"Historischer Treff, Frühstück bis Cocktails; 7–02 Uhr"}},
+ {n:"Rhinoceros Le Restau & RoofBar",a:"Via dei Cerchi 19",km:1.1,d:{en:"Stylish rooftop (Fendi), 360° view; cocktails & dining",it:"Rooftop di design (Fendi), vista a 360°; cocktail e cena",fr:"Rooftop design (Fendi), vue à 360° ; cocktails et dîner",es:"Rooftop de diseño (Fendi), vista 360°; cócteles y cena",de:"Stilvolles Rooftop (Fendi), 360°-Blick; Cocktails & Dinner"}},
+ {n:"Ai Tre Scalini",a:"Via Panisperna 251 Monti",km:1.3,d:{en:"Cosy bottiglieria (since 1895) in Monti; aperitivo",it:"Bottiglieria storica (dal 1895) a Monti; aperitivo",fr:"Bottiglieria conviviale (depuis 1895) à Monti ; apéritif",es:"Bottiglieria acogedora (desde 1895) en Monti; aperitivo",de:"Gemütliche Bottiglieria (seit 1895) in Monti; Aperitif"}}
+];
+const SIGHTS=[
+ {n:"Fontana delle Tartarughe",a:"Piazza Mattei Roma",km:0.0},
+ {n:"Portico d'Ottavia & Teatro di Marcello",a:"Teatro di Marcello Roma",km:0.2},
+ {n:"Largo di Torre Argentina (temples & cat sanctuary)",a:"Largo di Torre Argentina Roma",km:0.4},
+ {n:"Campo de' Fiori (morning market)",a:"Campo de Fiori Roma",km:0.4},
+ {n:"Tiber Island (Isola Tiberina)",a:"Isola Tiberina Roma",km:0.5},
+ {n:"Piazza Venezia & Capitoline Hill",a:"Piazza Venezia Roma",km:0.6},
+ {n:"Pantheon",a:"Pantheon Roma",km:0.7},
+ {n:"Piazza Navona",a:"Piazza Navona Roma",km:0.8},
+ {n:"Trastevere",a:"Trastevere Roma",km:0.9},
+ {n:"Bocca della Verità",a:"Bocca della Verita Roma",km:0.9},
+ {n:"Trevi Fountain",a:"Fontana di Trevi Roma",km:1.3},
+ {n:"Roman Forum & Colosseum",a:"Colosseo Roma",km:1.3}
+];
+
+const $=id=>document.getElementById(id);
+function maps(n,a){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent("Via della Reginella 2, Roma")+"&destination="+encodeURIComponent(n+" "+a)+"&travelmode=walking";}
+function kmTxt(v,l){return v<=0?"":(String(v).replace('.',l==='it'||l==='fr'||l==='es'||l==='de'?',':'.')+" "+T[l].km);}
+function card(it,l,withDesc){
+  const k = it.km>0?`<span class="km">${kmTxt(it.km,l)}</span>`:"";
+  const d = (withDesc&&it.d)?`<div class="desc">${it.d[l]}</div>`:"";
+  return `<div class="item"><div class="top"><b>${it.n}</b>${k}</div>${d}<div class="addr">${it.a}</div>
+    <a href="${maps(it.n,it.a)}" target="_blank" rel="noopener">📍 ${T[l].map}</a></div>`;
+}
+function render(l){
+  const d=T[l];
+  $('title').textContent=d.title; $('lead').textContent=d.lead;
+  $('nav').innerHTML=`<a href="#h_arrive">${d.nav.arrive}</a><a href="#h_around">${d.nav.around}</a><a href="#h_essentials">${d.nav.ess}</a><a href="#h_sights">${d.nav.sights}</a><a href="#h_eat">${d.nav.eat}</a>`;
+  $('h_arrive').textContent=d.hArrive; $('h_around').textContent=d.hAround; $('h_essentials').textContent=d.hEss; $('h_sights').textContent=d.hSights; $('h_eat').textContent=d.hEat;
+  $('p_fco').innerHTML=d.fco; $('p_cia').innerHTML=d.cia; $('p_termini').innerHTML=d.termini;
+  $('p_around').innerHTML=d.around; $('p_pharm').innerHTML=d.pharm; $('p_market').innerHTML=d.market;
+  $('t_tratt').textContent=d.tratt; $('t_pizza').textContent=d.pizza; $('t_dolci').textContent=d.dolci; $('t_bars').textContent=d.bars;
+  $('c_tratt').innerHTML=TRATT.map(i=>card(i,l,true)).join('');
+  $('c_pizza').innerHTML=PIZZA.map(i=>card(i,l,true)).join('');
+  $('c_dolci').innerHTML=DOLCI.map(i=>card(i,l,true)).join('');
+  $('c_bars').innerHTML=BARS.map(i=>card(i,l,true)).join('');
+  $('c_sights').innerHTML=SIGHTS.map(i=>card(i,l,false)).join('');
+  document.documentElement.lang=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+$('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
+const _sl=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);
+render(T[_sl]?_sl:'en');
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · Self check-in — Step 1: Arrival</title>
+<style>
+  :root{ --bg:#0f0f10; --card:#1b1b1d; --txt:#f4f3f0; --muted:#a9a7a2; --accent:#e0a400; --line:#2c2c2f; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:480px;margin:0 auto;padding:18px 16px 48px}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+  .brand b{font-size:18px;letter-spacing:.3px}
+  .brand span{color:var(--muted);font-size:13px}
+  h1{font-size:20px;margin:14px 0 2px}
+  .step{color:var(--accent);font-weight:700;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+  video{width:100%;border-radius:14px;background:#000;margin:12px 0;aspect-ratio:9/16}
+  .langs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px}
+  .langs button{flex:1;min-width:56px;padding:9px 6px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;font-weight:600;cursor:pointer}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  .body{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .body h2{font-size:16px;margin:0 0 8px}
+  .body ol{margin:0;padding-left:20px}
+  .body li{margin:6px 0}
+  .note{color:var(--muted);font-size:12px;margin-top:14px}
+  .qr{display:flex;align-items:center;gap:14px;margin-top:22px;padding-top:16px;border-top:1px solid var(--line)}
+  .qr #qrcode{background:#fff;padding:8px;border-radius:8px}
+  .qr small{color:var(--muted);font-size:12px}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">🐢 <b>Le Tartarughe</b> <span>Via della Reginella 2, int. 9A · Roma</span></div>
+  <div class="step">Step 1 of 5 · Arrival</div>
+  <h1 id="title">Find the building</h1>
+
+  <video id="player" controls playsinline preload="metadata"
+         poster=""
+         src="../output_videos/Le_Tartarughe_Step1_Arrival_EN_SAMPLE.mp4"></video>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button>
+    <button data-l="it">IT</button>
+    <button data-l="fr">FR</button>
+    <button data-l="es">ES</button>
+    <button data-l="de">DE</button>
+  </div>
+
+  <div class="body">
+    <h2 id="h">Step 1 — Arrival</h2>
+    <ol id="steps"></ol>
+    <p class="note" id="note"></p>
+  </div>
+
+  <div class="qr">
+    <div id="qrcode"></div>
+    <small>Scan to reopen this page<br>on your phone.</small>
+  </div>
+</div>
+
+<!-- QR rendered live; replace SHARE_URL with the final hosted page URL -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const SHARE_URL = "https://REPLACE-WITH-HOSTED-URL/le-tartarughe/checkin/step1";
+
+const T = {
+  en:{title:"Find the building",h:"Step 1 — Arrival",
+    steps:["Welcome to Le Tartarughe, Via della Reginella 2.","Walk down the street to the building entrance.","At the intercom panel, find the apartment buzzer.","Push the green door to enter the courtyard."],
+    note:"Lost? Message your host any time through the Airbnb app."},
+  it:{title:"Trova il palazzo",h:"Passo 1 — Arrivo",
+    steps:["Benvenuto a Le Tartarughe, Via della Reginella 2.","Percorri la strada fino all'ingresso del palazzo.","Sul citofono, individua il pulsante dell'appartamento.","Spingi il portone verde per entrare nel cortile."],
+    note:"Problemi? Scrivi all'host in qualsiasi momento tramite l'app Airbnb."},
+  fr:{title:"Trouver l'immeuble",h:"Étape 1 — Arrivée",
+    steps:["Bienvenue à Le Tartarughe, Via della Reginella 2.","Descendez la rue jusqu'à l'entrée de l'immeuble.","Sur l'interphone, repérez le bouton de l'appartement.","Poussez la porte verte pour entrer dans la cour."],
+    note:"Un souci ? Écrivez à votre hôte à tout moment via l'application Airbnb."},
+  es:{title:"Encontrar el edificio",h:"Paso 1 — Llegada",
+    steps:["Bienvenido a Le Tartarughe, Via della Reginella 2.","Camina por la calle hasta la entrada del edificio.","En el portero automático, busca el botón del apartamento.","Empuja la puerta verde para entrar al patio."],
+    note:"¿Dudas? Escribe a tu anfitrión en cualquier momento por la app de Airbnb."},
+  de:{title:"Das Gebäude finden",h:"Schritt 1 — Ankunft",
+    steps:["Willkommen bei Le Tartarughe, Via della Reginella 2.","Gehen Sie die Straße entlang bis zum Eingang des Gebäudes.","Suchen Sie an der Gegensprechanlage die Klingel der Wohnung.","Drücken Sie die grüne Tür auf, um in den Hof zu gelangen."],
+    note:"Probleme? Schreiben Sie Ihrem Gastgeber jederzeit über die Airbnb-App."}
+};
+
+function render(l){
+  const d=T[l];
+  document.getElementById('title').textContent=d.title;
+  document.getElementById('h').textContent=d.h;
+  document.getElementById('steps').innerHTML=d.steps.map(s=>`<li>${s}</li>`).join('');
+  document.getElementById('note').textContent=d.note;
+  document.documentElement.lang=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+document.getElementById('langs').addEventListener('click',e=>{ if(e.target.dataset.l) render(e.target.dataset.l); });
+render('en');
+
+try{ new QRCode(document.getElementById("qrcode"),{text:SHARE_URL,width:96,height:96,correctLevel:QRCode.CorrectLevel.H}); }catch(e){}
+</script>
+</body>
+</html>

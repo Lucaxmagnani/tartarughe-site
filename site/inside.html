@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · Inside the apartment</title>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:560px;margin:0 auto;padding:16px 16px 60px}
+  .home{display:inline-block;color:var(--accent);text-decoration:none;font-size:13px;margin-bottom:6px}
+  h1{font-size:22px;margin:4px 0 2px}
+  .lead{color:var(--muted);font-size:14px;margin:0 0 8px}
+  .langs{position:sticky;top:0;background:var(--bg);display:flex;gap:6px;flex-wrap:wrap;padding:10px 0;z-index:5}
+  .langs button{flex:1;min-width:48px;padding:8px 5px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:9px;font-weight:600;cursor:pointer;font-size:13px}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  .item{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:9px 0}
+  .item .ic{font-size:20px}
+  .item b{font-size:15px;margin-left:6px}
+  .item p{margin:6px 0 0;font-size:14px;color:#d8d5cf}
+  .item p b{margin-left:0;font-size:14px}
+  .soon{display:inline-block;margin-top:8px;font-size:12px;color:#ffd24a;background:#3a2a00;border:1px solid var(--accent);border-radius:7px;padding:2px 8px}
+  .vid{display:inline-block;margin-top:8px;font-size:13px;font-weight:600;color:#1a1a1a;background:var(--accent);border-radius:8px;padding:5px 12px;text-decoration:none}
+  .ytwrap{position:relative;width:100%;max-width:300px;margin:10px auto 4px;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:#000}
+  .ytwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .wifi{background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:14px 15px;margin:9px 0}
+  .wifi .row{font-size:15px;margin:4px 0}
+  .wifi code{background:#000;padding:2px 8px;border-radius:6px;color:#ffd24a;font-size:15px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="index.html">← Home</a>
+  <h1 id="title">Inside the apartment</h1>
+  <p class="lead" id="lead"></p>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button><button data-l="it">IT</button><button data-l="fr">FR</button><button data-l="es">ES</button><button data-l="de">DE</button>
+  </div>
+
+  <div class="wifi">
+    <div class="ic">📶 <b id="wifi_h"></b></div>
+    <div class="row" id="wifi_net"></div>
+    <div class="row" id="wifi_pw"></div>
+  </div>
+
+  <div id="items"></div>
+</div>
+
+<script>
+const WIFI_SSID = "HUAWEI-91GM5107";
+
+const T={
+ en:{title:"Inside the apartment",lead:"How everything works.",
+   wifi:"Wi-Fi",net:"Network",pw:"Password",pwVal:"on the welcome card in the apartment",
+   soon:"Video coming soon",vidBtn:"Watch video",
+   items:[
+    ["❄️","Air conditioning",
+     "Samsung WindFree. Use the remote on the wall unit: press <b>Power</b>, select <b>Mode</b> (❄ Cool in summer / ☀ Heat in winter / WindFree for gentle breeze-free cooling), set temperature with ▲▼ (23–24°C recommended). Please turn it off when you go out."],
+    ["🧺","Washing machine",
+     "Indesit top-loader (6 kg). Press <b>Push &amp; Open</b> on the front to release the lid. Load clothes and pour detergent directly into the drum (or use the top dispenser). Turn the dial to the programme: <b>Cotton 40°C</b> for normal loads · <b>Mix 30°C</b> for colours · <b>Delicate</b> for delicates. Press Start. When done, close the lid gently but <b>make sure it clicks shut</b> — if left ajar or forced, the machine can jam and break."],
+    ["🍳","Kitchen",
+     "<b>Gas hob (DeLonghi, 4 burners):</b> push &amp; turn the knob to ignite — hold 5 sec until lit, then adjust flame.<br><br><b>Oven (Indesit):</b> left knob = cooking function (fan ◎, top+bottom, grill); right knob = temperature 60–220°C. Preheat 10 min before use.<br><br><b>Dishwasher (Hotpoint Ariston):</b> load dishes, place 1 tab in the dispenser compartment inside the door. Turn dial to <b>Eco</b> for normal everyday loads, or <b>Express 30'</b> for a quick wash (lightly dirty only, up to 2 covers). Press Start/Pause. Use <b>½ Load</b> button if not full.<br><br><b>Microwave (Samsung):</b> open door, place food, set power level with the left dial and time with the right dial, press Start."],
+    ["☕","Coffee machine",
+     "Nespresso Pixie. Lift the lever on top, insert a Nespresso Original capsule (a few are left for you), close the lever firmly. Place your cup below the spout and press: <b>small button</b> = espresso (40 ml) · <b>large button</b> = lungo (110 ml). The used capsule drops automatically into the container at the back."],
+    ["📺","TV",
+     "Samsung QLED 50\" (QE50Q65BAU). Press <b>Power</b> on the Samsung remote. Press <b>Home (⌂)</b> to open Smart Hub and browse available apps. To connect your laptop, use one of the 3 HDMI ports on the left side of the TV."]
+   ]},
+ it:{title:"Dentro l'appartamento",lead:"Come funziona tutto.",
+   wifi:"Wi-Fi",net:"Rete",pw:"Password",pwVal:"sul cartoncino di benvenuto in casa",
+   soon:"Video in arrivo",vidBtn:"Guarda il video",
+   items:[
+    ["❄️","Aria condizionata",
+     "Samsung WindFree. Usa il telecomando sul climatizzatore: premi <b>Power</b>, scegli la <b>Modalità</b> (❄ Freddo d'estate / ☀ Caldo d'inverno / WindFree per un fresco senza corrente diretta), regola la temperatura con ▲▼ (consigliati 23–24°C). Spegnila quando esci, per favore."],
+    ["🧺","Lavatrice",
+     "Indesit carica dall'alto (6 kg). Premi <b>Push &amp; Open</b> sul frontale per aprire il coperchio. Carica i panni e versa il detersivo direttamente nel cestello (o nel cassetto in alto). Gira la manopola sul programma: <b>Cotone 40°C</b> per capi normali · <b>Mix 30°C</b> per colorati misti · <b>Delicato</b> per capi delicati. Premi Start. A fine ciclo, richiudi il coperchio con delicatezza ma <b>assicurandoti che scatti bene</b> — se rimane socchiuso o viene forzato, la macchina si blocca e si può rompere."],
+    ["🍳","Cucina",
+     "<b>Piano cottura a gas (DeLonghi, 4 fuochi):</b> spingi e gira la manopola per accendere — tienila premuta ~5 sec finché si accende, poi regola la fiamma.<br><br><b>Forno (Indesit):</b> manopola sinistra = funzione di cottura (ventilato ◎, statico sopra+sotto, grill); manopola destra = temperatura 60–220°C. Preriscalda 10 min prima di usarlo.<br><br><b>Lavastoviglie (Hotpoint Ariston):</b> carica le stoviglie, metti 1 pastiglia nell'apposito vano all'interno dello sportello. Gira la manopola su <b>Eco</b> per il lavaggio quotidiano normale, oppure su <b>Express 30'</b> per un ciclo rapido (sporco leggero, max 2 coperti). Premi Avvio/Pausa. Usa il tasto <b>½ Carico</b> se non è piena.<br><br><b>Microonde (Samsung):</b> apri lo sportello, metti il cibo, imposta la potenza con la manopola sinistra e il tempo con quella destra, premi Start."],
+    ["☕","Macchina del caffè",
+     "Nespresso Pixie. Alza la leva in cima, inserisci una capsula Nespresso Original (ne trovi alcune pronte per te), abbassa la leva fino in fondo. Posiziona la tazza sotto il beccuccio e premi: <b>tasto piccolo</b> = espresso (40 ml) · <b>tasto grande</b> = lungo (110 ml). La capsula usata cade automaticamente nel contenitore sul retro."],
+    ["📺","TV",
+     "Samsung QLED 50\" (QE50Q65BAU). Premi <b>Power</b> sul telecomando Samsung. Premi <b>Home (⌂)</b> per aprire lo Smart Hub e sfogliare le app disponibili. Per collegare il laptop, usa una delle 3 porte HDMI sul lato sinistro del TV."]
+   ]},
+ fr:{title:"Dans l'appartement",lead:"Comment tout fonctionne.",
+   wifi:"Wi-Fi",net:"Réseau",pw:"Mot de passe",pwVal:"sur la carte de bienvenue dans l'appartement",
+   soon:"Vidéo à venir",vidBtn:"Voir la vidéo",
+   items:[
+    ["❄️","Climatisation",
+     "Samsung WindFree. Utilisez la télécommande murale : appuyez sur <b>Power</b>, choisissez le <b>Mode</b> (❄ Froid en été / ☀ Chaud en hiver / WindFree pour un frais sans courant d'air direct), réglez la température avec ▲▼ (23–24°C recommandé). Éteignez-la en sortant, merci."],
+    ["🧺","Lave-linge",
+     "Indesit chargement par le dessus (6 kg). Appuyez sur <b>Push &amp; Open</b> en façade pour ouvrir le couvercle. Chargez le linge et versez la lessive directement dans le tambour (ou dans le tiroir en haut). Tournez le sélecteur sur le programme : <b>Coton 40°C</b> pour charges normales · <b>Mix 30°C</b> pour couleurs · <b>Délicat</b> pour textiles fragiles. Appuyez sur Départ. En fin de cycle, refermez le couvercle doucement mais <b>vérifiez qu'il clique bien</b> — s'il reste entrouvert ou est forcé, la machine peut se bloquer et se casser."],
+    ["🍳","Cuisine",
+     "<b>Plaques gaz (DeLonghi, 4 feux) :</b> poussez et tournez le bouton pour allumer — maintenez ~5 sec jusqu'à l'allumage, puis réglez la flamme.<br><br><b>Four (Indesit) :</b> bouton gauche = fonction de cuisson (air pulsé ◎, statique haut+bas, gril) ; bouton droit = température 60–220°C. Préchauffez 10 min avant utilisation.<br><br><b>Lave-vaisselle (Hotpoint Ariston) :</b> chargez la vaisselle, placez 1 pastille dans le compartiment à l'intérieur de la porte. Tournez sur <b>Eco</b> pour un lavage quotidien normal, ou sur <b>Express 30'</b> pour un cycle rapide (peu sale, max 2 couverts). Appuyez sur Départ/Pause. Utilisez le bouton <b>½ chargement</b> si le lave-vaisselle n'est pas plein.<br><br><b>Micro-ondes (Samsung) :</b> ouvrez la porte, placez les aliments, réglez la puissance avec le bouton gauche et le temps avec le bouton droit, puis appuyez sur Départ."],
+    ["☕","Machine à café",
+     "Nespresso Pixie. Levez le levier sur le dessus, insérez une capsule Nespresso Original (quelques-unes vous sont laissées), abaissez fermement le levier. Placez votre tasse et appuyez sur : <b>petit bouton</b> = espresso (40 ml) · <b>grand bouton</b> = lungo (110 ml). La capsule usagée tombe automatiquement dans le bac à l'arrière."],
+    ["📺","TV",
+     "Samsung QLED 50\" (QE50Q65BAU). Appuyez sur <b>Power</b> de la télécommande Samsung. Appuyez sur <b>Home (⌂)</b> pour ouvrir le Smart Hub et parcourir les applications disponibles. Pour connecter votre ordinateur, utilisez l'un des 3 ports HDMI sur le côté gauche du téléviseur."]
+   ]},
+ es:{title:"Dentro del apartamento",lead:"Cómo funciona todo.",
+   wifi:"Wi-Fi",net:"Red",pw:"Contraseña",pwVal:"en la tarjeta de bienvenida del apartamento",
+   soon:"Vídeo próximamente",vidBtn:"Ver el vídeo",
+   items:[
+    ["❄️","Aire acondicionado",
+     "Samsung WindFree. Usa el mando de pared: pulsa <b>Power</b>, elige el <b>Modo</b> (❄ Frío en verano / ☀ Calor en invierno / WindFree para fresco sin corriente directa), ajusta la temperatura con ▲▼ (se recomiendan 23–24°C). Apágalo al salir, por favor."],
+    ["🧺","Lavadora",
+     "Indesit carga superior (6 kg). Pulsa <b>Push &amp; Open</b> en el frontal para abrir la tapa. Carga la ropa y añade el detergente directamente en el tambor (o en el cajón superior). Gira el selector al programa: <b>Algodón 40°C</b> para cargas normales · <b>Mix 30°C</b> para colores · <b>Delicado</b> para prendas delicadas. Pulsa Inicio. Al terminar, cierra la tapa con suavidad pero <b>asegúrate de que encaja con un clic</b> — si queda entreabierta o se fuerza, la máquina puede bloquearse y averiarse."],
+    ["🍳","Cocina",
+     "<b>Placa de gas (DeLonghi, 4 quemadores):</b> empuja y gira el mando para encender — mantén ~5 seg hasta que prenda, luego regula la llama.<br><br><b>Horno (Indesit):</b> mando izquierdo = función de cocción (aire forzado ◎, estático arriba+abajo, grill); mando derecho = temperatura 60–220°C. Precalienta 10 min antes de usarlo.<br><br><b>Lavavajillas (Hotpoint Ariston):</b> carga la vajilla, coloca 1 pastilla en el compartimento interior de la puerta. Gira a <b>Eco</b> para lavado normal diario, o <b>Express 30'</b> para ciclo rápido (poco sucio, máx. 2 cubiertos). Pulsa Inicio/Pausa. Usa el botón <b>½ carga</b> si no está lleno.<br><br><b>Microondas (Samsung):</b> abre la puerta, coloca la comida, ajusta la potencia con el mando izquierdo y el tiempo con el derecho, pulsa Inicio."],
+    ["☕","Cafetera",
+     "Nespresso Pixie. Levanta la palanca superior, inserta una cápsula Nespresso Original (encontrarás algunas de bienvenida), cierra la palanca hasta el fondo. Coloca tu taza y pulsa: <b>botón pequeño</b> = espresso (40 ml) · <b>botón grande</b> = lungo (110 ml). La cápsula usada cae automáticamente en el contenedor trasero."],
+    ["📺","TV",
+     "Samsung QLED 50\" (QE50Q65BAU). Pulsa <b>Power</b> en el mando Samsung. Pulsa <b>Home (⌂)</b> para abrir Smart Hub y explorar las aplicaciones disponibles. Para conectar tu portátil, usa uno de los 3 puertos HDMI en el lado izquierdo del televisor."]
+   ]},
+ de:{title:"In der Wohnung",lead:"Wie alles funktioniert.",
+   wifi:"WLAN",net:"Netzwerk",pw:"Passwort",pwVal:"auf der Willkommenskarte in der Wohnung",
+   soon:"Video folgt",vidBtn:"Video ansehen",
+   items:[
+    ["❄️","Klimaanlage",
+     "Samsung WindFree. Fernbedienung am Gerät nutzen: <b>Power</b> drücken, <b>Modus</b> wählen (❄ Kühlen im Sommer / ☀ Heizen im Winter / WindFree für sanftes Kühlen ohne direkten Luftstrom), Temperatur mit ▲▼ einstellen (23–24°C empfohlen). Beim Verlassen der Wohnung bitte ausschalten."],
+    ["🧺","Waschmaschine",
+     "Indesit Toplader (6 kg). <b>Push &amp; Open</b> vorne drücken, um den Deckel zu öffnen. Wäsche einlegen und Waschmittel direkt in die Trommel geben (oder in das Schubfach oben). Programmwähler drehen: <b>Baumwolle 40°C</b> für normale Wäsche · <b>Mix 30°C</b> für Buntwäsche · <b>Fein</b> für Empfindliches. Start drücken. Nach dem Waschen den Deckel sanft schließen und <b>darauf achten, dass er einrastet</b> — bleibt er einen Spalt offen oder wird er gewaltsam geschlossen, kann die Maschine blockieren und kaputtgehen."],
+    ["🍳","Küche",
+     "<b>Gaskochfeld (DeLonghi, 4 Brenner):</b> Knopf drücken und drehen zum Zünden — ca. 5 Sek. gedrückt halten bis die Flamme brennt, dann regulieren.<br><br><b>Backofen (Indesit):</b> linker Knopf = Funktion (Heißluft ◎, Ober-/Unterhitze, Grill); rechter Knopf = Temperatur 60–220°C. 10 Min. vorheizen.<br><br><b>Geschirrspüler (Hotpoint Ariston):</b> Geschirr einräumen, 1 Tab in das Fach an der Innenseite der Tür legen. Wahlschalter auf <b>Eco</b> für normale Alltagswäsche oder <b>Express 30'</b> für schnelles Spülen (leicht verschmutzt, max. 2 Gedecke). Start/Pause drücken. <b>½ Beladung</b> nutzen wenn nicht voll.<br><br><b>Mikrowelle (Samsung):</b> Tür öffnen, Speise hineinstellen, Leistung mit dem linken Regler und Zeit mit dem rechten Regler einstellen, Start drücken."],
+    ["☕","Kaffeemaschine",
+     "Nespresso Pixie. Hebel oben anheben, eine Nespresso Original-Kapsel einlegen (einige liegen bereit), Hebel fest schließen. Tasse hinstellen und drücken: <b>kleiner Knopf</b> = Espresso (40 ml) · <b>großer Knopf</b> = Lungo (110 ml). Die benutzte Kapsel fällt automatisch in den Auffangbehälter hinten."],
+    ["📺","TV",
+     "Samsung QLED 50\" (QE50Q65BAU). <b>Power</b> auf der Samsung-Fernbedienung drücken. <b>Home (⌂)</b> drücken, um den Smart Hub zu öffnen und verfügbare Apps zu durchsuchen. Laptop anschließen: einen der 3 HDMI-Anschlüsse auf der linken Seite des TV verwenden."]
+   ]}
+};
+const $=id=>document.getElementById(id);
+function render(l){const d=T[l];
+  $('title').textContent=d.title; $('lead').textContent=d.lead;
+  $('wifi_h').textContent=d.wifi;
+  $('wifi_net').innerHTML=`<b>${d.net}:</b> <code>${WIFI_SSID}</code>`;
+  $('wifi_pw').innerHTML=`<b>${d.pw}:</b> ${d.pwVal}`;
+  $('items').innerHTML=d.items.map((it,i)=>`<div class="item"><span class="ic">${it[0]}</span><b>${it[1]}</b><p>${it[2]}</p>${i===1?`<div class="ytwrap"><iframe src="https://www.youtube.com/embed/5I7huXUv8sk" allowfullscreen loading="lazy"></iframe></div>`:''}</div>`).join('');
+  document.documentElement.lang=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+$('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
+const _sl=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);
+render(T[_sl]?_sl:'en');
+</script>
+<style>
+.hb{position:fixed;top:12px;right:12px;z-index:60;background:rgba(27,27,29,.92);border:1px solid #2c2c2f;color:#f4f3f0;width:42px;height:42px;border-radius:10px;font-size:20px;cursor:pointer}
+.hbmenu{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:59;display:none}
+.hbmenu.open{display:block}
+.hbmenu .panel{position:absolute;top:0;right:0;width:255px;max-width:82%;height:100%;background:#1b1b1d;border-left:1px solid #2c2c2f;padding:64px 16px 16px;box-shadow:-6px 0 24px rgba(0,0,0,.45)}
+.hbmenu a{display:block;color:#f4f3f0;text-decoration:none;padding:12px 10px;border-radius:9px;font-size:15px}
+.hbmenu a.cur{color:#e0a400}
+</style>
+<button class="hb" id="hbBtn" aria-label="Menu">☰</button>
+<div class="hbmenu" id="hbMenu"><div class="panel" id="hbPanel"></div></div>
+<script>
+(function(){var CUR="inside.html";
+var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel"]};
+var P=["index.html","checkin.html","inside.html","neighbourhood.html"];
+function build(l){if(!M[l])l='en';document.getElementById('hbPanel').innerHTML=M[l].map(function(t,i){return '<a href="'+P[i]+'"'+(P[i]===CUR?' class="cur"':'')+'>'+t+'</a>';}).join('');}
+build(localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2));
+var lg=document.getElementById('langs'); if(lg)lg.addEventListener('click',function(e){if(e.target.dataset.l)build(e.target.dataset.l);});
+var menu=document.getElementById('hbMenu');
+document.getElementById('hbBtn').onclick=function(){menu.classList.toggle('open');};
+menu.onclick=function(e){if(e.target===menu)menu.classList.remove('open');};
+})();
+</script>
+</body>
+</html>

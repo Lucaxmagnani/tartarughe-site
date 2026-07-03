@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · Self check-in</title>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f;--green:#2e9e5b}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.55}
+  .wrap{max-width:520px;margin:0 auto;padding:18px 16px 60px}
+  .hero{position:relative;border-radius:14px;overflow:hidden;margin-bottom:6px;min-height:150px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:#2a2620 center/cover no-repeat;
+    background-image:linear-gradient(rgba(15,15,16,.40),rgba(15,15,16,.72)),url('assets/header.jpg');}
+  .hero-title{margin:0;font-size:30px;letter-spacing:5px;font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-sub{margin:6px 0 0;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#e8e4dd}
+  .hero-inner{padding:26px 16px}
+  .langs{position:sticky;top:0;background:var(--bg);display:flex;gap:6px;flex-wrap:wrap;padding:12px 0;z-index:5}
+  .langs button{flex:1;min-width:52px;padding:9px 6px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;font-weight:600;cursor:pointer}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  h2{font-size:17px;margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .ytwrap{position:relative;width:100%;max-width:340px;margin:6px auto 14px;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000}
+  .ytwrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .keys{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin:6px 0}
+  .keys h3{margin:0 0 8px;font-size:14px;color:var(--accent);text-transform:uppercase;letter-spacing:.5px}
+  .keys ul{margin:0;padding-left:18px}
+  .keys li{margin:4px 0}
+  .keysimg{width:100%;border-radius:10px;margin-top:12px;display:block}
+  .ytlink{text-align:center;margin:-8px 0 16px;font-size:13px}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:10px 0}
+  .step .n{display:inline-block;background:var(--accent);color:#1a1a1a;font-weight:700;border-radius:8px;padding:1px 9px;font-size:13px;margin-bottom:6px}
+  .step p{margin:6px 0 0}
+  .warn{color:#ffd24a}
+  .note{color:var(--muted);font-size:13px;margin-top:18px;text-align:center}
+  .wa{display:block;text-align:center;margin:16px auto 0;max-width:320px;padding:12px;border-radius:12px;background:#25D366;color:#06310f;text-decoration:none;font-weight:600}
+  .wa b{font-size:16px}
+  .soon{font-size:12px;color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">LE TARTARUGHE</h1>
+      <p class="hero-sub">Self check-in guide · Via della Reginella, Rome</p>
+    </div>
+  </header>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button>
+    <button data-l="it">IT</button>
+    <button data-l="fr">FR</button>
+    <button data-l="es">ES</button>
+    <button data-l="de">DE</button>
+  </div>
+
+  <div class="keys">
+    <h3 id="keys_h">Your 4 keys</h3>
+    <ul id="keys_list"></ul>
+    <img class="keysimg" src="assets/keys_annotated.jpg" alt="The 4 keys: small=lift, standard=gate, long=wooden door, red=apartment">
+  </div>
+
+  <h2 id="checkin_h">Check-in</h2>
+  <div class="ytwrap"><iframe src="https://www.youtube.com/embed/7bnqhhi0T-k" title="Check-in" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <p class="ytlink"><a href="https://youtu.be/7bnqhhi0T-k" target="_blank" rel="noopener">▶ Watch on YouTube</a></p>
+  <div id="checkin_steps"></div>
+
+  <h2 id="checkout_h">Check-out</h2>
+  <div class="ytwrap"><iframe src="https://www.youtube.com/embed/z9WnkaaTnc4" title="Check-out" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <p class="ytlink"><a href="https://youtube.com/shorts/z9WnkaaTnc4" target="_blank" rel="noopener">▶ Watch on YouTube</a></p>
+  <div id="checkout_steps"></div>
+
+  <h2 id="during_h">During your stay</h2>
+  <div class="ytwrap"><iframe src="https://www.youtube.com/embed/Bp1uQZFV7hU" title="During your stay" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <p class="ytlink"><a href="https://youtube.com/shorts/Bp1uQZFV7hU" target="_blank" rel="noopener">▶ Watch on YouTube</a></p>
+  <div class="step"><p id="during_p"></p><p class="soon" id="during_soon"></p></div>
+
+  <p class="note" id="help"></p>
+  <a class="wa" href="https://wa.me/393296415323" target="_blank" rel="noopener">
+    <span>💬</span><span id="wa_txt">Message the host on WhatsApp</span><br><b>+39 329 641 5323</b>
+  </a>
+</div>
+
+<script>
+// ---- Replace with hosted URLs (YouTube unlisted embed or Google Drive) when published ----
+// Videos embedded from YouTube (unlisted): IDs 7bnqhhi0T-k / z9WnkaaTnc4 / Bp1uQZFV7hU
+
+const L = {
+ en:{keys_h:"Your 4 keys",
+   keys:["Small key — the lift","Standard key — the street gate","Long key — the wooden door (3rd floor)","Red key — the apartment door"],
+   ci:"Check-in — 5 steps", co:"Check-out — 2 steps", during:"During your stay",
+   cis:[
+    ["1 · Arrival","From Piazza Mattei (the turtle fountain), reach Via della Reginella: the entrance is the black gate at no. 2, next to the barber shop. On the intercom, ring “MAGNANI” — we'll buzz you in remotely. Once inside, open the wooden double door and close it behind you. It leads to the courtyard with the lift."],
+    ["2 · The key box","In the courtyard, walk past the lift. Behind it there is an iron cabinet: open it by the handle. Inside you'll find the key box."],
+    ["3 · Get the keys","Open the key box with your code (sent separately by Airbnb message). Take the keys, then close the box and scramble the digits so the combination isn't left visible. Finally close the iron cabinet."],
+    ["4 · Lift to the 3rd floor","Call the lift by pressing “0” on the outside: when it arrives the green button lights up and you hear a beep. To go up you need the smallest key: insert it in the hole on the left (next to “0”) and turn right. With the doors closed, press “3”. Don't block the inner doors — they fold open by themselves. At your floor, take your keys back. <span class='warn'>Always close the green lift door fully, or the lift jams and no one can use it.</span>"],
+    ["5 · To the apartment","From the landing head toward the stairs: on your left is the wooden door. Open it with the long key, turning right until it clicks. It's a space shared with neighbours, so always keep this door closed. For the apartment door use the red key: it's a security key, insert it vertically and turn right 1–2 times to the click. Apartment 9A — welcome!"]],
+   cos:[
+    ["A · Going down","Leave the apartment pulling the door shut behind you (no need to lock). Remember to close the wooden door. Then call the lift: insert the small key in the outside lock and turn right (no buttons). When you hear a bell-like sound, the button turns green and the lift arrives: open the door. Once closed, press “0” for the ground floor — going down needs no key. <span class='warn'>Make sure the green door stays fully closed.</span>"],
+    ["B · Return the keys","Open the iron cabinet behind the lift, open the key box with the same code and put the keys back. Close the box, scramble the digits and close the cabinet."]],
+   during_p:"To come back in, open the black gate from outside with the standard key. To go out, press the button on the wall to the left of the gate to release it. Stair lights: switches are on the wall, to the left of the entrance.",
+   soon:"(short video coming soon)",
+   help:"Lost or stuck? Message your host any time via the Airbnb app."},
+
+ it:{keys_h:"Le tue 4 chiavi",
+   keys:["Chiave piccola — l'ascensore","Chiave normale — il cancello d'ingresso","Chiave lunga — il portone in legno (3° piano)","Chiave rossa — la porta dell'appartamento"],
+   ci:"Check-in — 5 passi", co:"Check-out — 2 passi", during:"Durante il soggiorno",
+   cis:[
+    ["1 · Arrivo","Da Piazza Mattei (la fontana delle tartarughe), raggiungi Via della Reginella: l'ingresso è il cancello nero al civico 2, a fianco del barbiere. Al citofono suona “MAGNANI”: ti apriamo noi da remoto. Una volta entrato, apri la porta in legno a due ante e riaccostala dietro di te. Dà sul cortile dove si trova l'ascensore."],
+    ["2 · La cassetta delle chiavi","Nel cortile, passa davanti all'ascensore. Dietro l'ascensore c'è un armadio in ferro: aprilo con la maniglia. Al suo interno trovi la keybox con le chiavi."],
+    ["3 · Prendi le chiavi","Apri la keybox con il codice (te lo invio separatamente via messaggio Airbnb). Prendi il mazzo di chiavi, poi richiudi la keybox e mischia i numeri della combinazione così non resta esposta. Infine richiudi l'armadio in ferro."],
+    ["4 · Ascensore al 3° piano","Chiama l'ascensore premendo il tasto 0 all'esterno: quando arriva, il pulsante verde si accende e senti un suono. Per salire serve la chiave più piccola: inseriscila nel foro a sinistra (vicino al tasto 0) e gira a destra. A porte chiuse, premi il 3. Non ostruire le porte interne: si dispiegano da sole. Arrivato al piano, riprendi le chiavi. <span class='warn'>Chiudi sempre bene la porta verde dell'ascensore: se resta aperta, l'ascensore si blocca e nessuno può usarlo.</span>"],
+    ["5 · Verso l'appartamento","Dal pianerottolo vai verso le scale: sulla sinistra trovi il portone in legno. Aprilo con la chiave lunga, girando a destra fino al click. È uno spazio condiviso con i vicini, quindi tieni il portone sempre chiuso. Per la porta d'ingresso usa la chiave rossa: è una chiave di sicurezza, va inserita in verticale; gira a destra 1–2 mandate fino al click. Appartamento 9A — benvenuto!"]],
+   cos:[
+    ["A · Si scende","Esci dall'appartamento tirando la porta dietro di te (non serve chiudere a chiave). Ricorda di chiudere il portone in legno. Poi chiama l'ascensore: inserisci la chiave piccola nella serratura esterna e gira a destra (niente pulsanti). Quando emette un suono tipo campanello, il pulsante diventa verde e l'ascensore arriva: apri la porta. Chiusa la porta, premi 0 per il piano terra — per scendere non serve la chiave. <span class='warn'>Assicurati che la porta verde resti ben chiusa.</span>"],
+    ["B · Riponi le chiavi","Apri l'armadio in ferro dietro l'ascensore, apri la keybox con lo stesso codice e riponi le chiavi. Richiudi la keybox, mischia i numeri della combinazione e richiudi l'armadio."]],
+   during_p:"Per rientrare, apri il cancello nero dall'esterno con la chiave normale. Per uscire, premi il pulsante sul muro a sinistra del portone per sbloccare il cancello. Luci delle scale: gli interruttori sono sul muro, a sinistra dell'ingresso.",
+   soon:"(breve video in arrivo)",
+   help:"Problemi? Scrivi all'host in qualsiasi momento tramite l'app Airbnb."},
+
+ fr:{keys_h:"Vos 4 clés",
+   keys:["Petite clé — l'ascenseur","Clé standard — le portail d'entrée","Grande clé — la porte en bois (3e étage)","Clé rouge — la porte de l'appartement"],
+   ci:"Arrivée — 5 étapes", co:"Départ — 2 étapes", during:"Pendant votre séjour",
+   cis:[
+    ["1 · Arrivée","Depuis la Piazza Mattei (la fontaine des tortues), rejoignez la Via della Reginella : l'entrée est le portail noir au n° 2, à côté du barbier. À l'interphone, sonnez « MAGNANI » : nous vous ouvrons à distance. Une fois entré, ouvrez la porte en bois à deux battants et refermez-la derrière vous. Elle donne sur la cour où se trouve l'ascenseur."],
+    ["2 · La boîte à clés","Dans la cour, passez devant l'ascenseur. Derrière lui se trouve une armoire en fer : ouvrez-la par la poignée. À l'intérieur se trouve la boîte à clés."],
+    ["3 · Prenez les clés","Ouvrez la boîte à clés avec votre code (envoyé séparément par message Airbnb). Prenez le trousseau, puis refermez la boîte et brouillez les chiffres pour ne pas laisser la combinaison visible. Enfin, refermez l'armoire en fer."],
+    ["4 · Ascenseur au 3e étage","Appelez l'ascenseur en appuyant sur « 0 » à l'extérieur : à son arrivée, le bouton vert s'allume et vous entendez un signal. Pour monter, il faut la plus petite clé : insérez-la dans le trou à gauche (près du « 0 ») et tournez à droite. Portes fermées, appuyez sur « 3 ». N'obstruez pas les portes intérieures : elles se déploient toutes seules. À votre étage, reprenez vos clés. <span class='warn'>Fermez toujours bien la porte verte de l'ascenseur, sinon il se bloque et personne ne peut l'utiliser.</span>"],
+    ["5 · Vers l'appartement","Du palier, dirigez-vous vers l'escalier : à gauche se trouve la porte en bois. Ouvrez-la avec la grande clé en tournant à droite jusqu'au déclic. C'est un espace partagé avec les voisins, gardez donc cette porte toujours fermée. Pour la porte de l'appartement, utilisez la clé rouge : c'est une clé de sécurité, insérez-la verticalement et tournez à droite 1 à 2 tours jusqu'au déclic. Appartement 9A — bienvenue !"]],
+   cos:[
+    ["A · On descend","Quittez l'appartement en tirant la porte derrière vous (pas besoin de fermer à clé). Pensez à fermer la porte en bois. Appelez ensuite l'ascenseur : insérez la petite clé dans la serrure extérieure et tournez à droite (aucun bouton). Quand vous entendez une sonnerie, le bouton devient vert et l'ascenseur arrive : ouvrez la porte. Une fois fermée, appuyez sur « 0 » pour le rez-de-chaussée — descendre ne nécessite pas de clé. <span class='warn'>Assurez-vous que la porte verte reste bien fermée.</span>"],
+    ["B · Rendez les clés","Ouvrez l'armoire en fer derrière l'ascenseur, ouvrez la boîte à clés avec le même code et remettez les clés. Refermez la boîte, brouillez les chiffres et refermez l'armoire."]],
+   during_p:"Pour revenir, ouvrez le portail noir depuis l'extérieur avec la clé standard. Pour sortir, appuyez sur le bouton mural à gauche du portail pour le déverrouiller. Lumières de l'escalier : les interrupteurs sont sur le mur, à gauche de l'entrée.",
+   soon:"(courte vidéo à venir)",
+   help:"Un souci ? Écrivez à votre hôte à tout moment via l'application Airbnb."},
+
+ es:{keys_h:"Tus 4 llaves",
+   keys:["Llave pequeña — el ascensor","Llave normal — la verja de entrada","Llave larga — la puerta de madera (3.ª planta)","Llave roja — la puerta del apartamento"],
+   ci:"Entrada — 5 pasos", co:"Salida — 2 pasos", during:"Durante tu estancia",
+   cis:[
+    ["1 · Llegada","Desde la Piazza Mattei (la fuente de las tortugas), llega a Via della Reginella: la entrada es la verja negra en el n.º 2, junto a la barbería. En el portero automático, llama a «MAGNANI»: te abrimos en remoto. Una vez dentro, abre la puerta de madera de dos hojas y ciérrala tras de ti. Da al patio donde está el ascensor."],
+    ["2 · La caja de llaves","En el patio, pasa por delante del ascensor. Detrás hay un armario de hierro: ábrelo por la manija. Dentro encontrarás la caja de llaves."],
+    ["3 · Coge las llaves","Abre la caja de llaves con tu código (te lo envío aparte por mensaje de Airbnb). Coge el juego de llaves, luego cierra la caja y mezcla los números para no dejar la combinación a la vista. Por último, cierra el armario de hierro."],
+    ["4 · Ascensor a la 3.ª planta","Llama al ascensor pulsando «0» en el exterior: al llegar, el botón verde se enciende y oyes un sonido. Para subir necesitas la llave más pequeña: introdúcela en el orificio de la izquierda (junto al «0») y gira a la derecha. Con las puertas cerradas, pulsa «3». No obstruyas las puertas interiores: se despliegan solas. En tu planta, recoge las llaves. <span class='warn'>Cierra siempre bien la puerta verde del ascensor, o se bloquea y nadie puede usarlo.</span>"],
+    ["5 · Hacia el apartamento","Desde el rellano ve hacia la escalera: a la izquierda está la puerta de madera. Ábrela con la llave larga, girando a la derecha hasta el clic. Es un espacio compartido con los vecinos, así que mantén siempre esta puerta cerrada. Para la puerta del apartamento usa la llave roja: es una llave de seguridad, introdúcela en vertical y gira a la derecha 1–2 vueltas hasta el clic. Apartamento 9A — ¡bienvenido!"]],
+   cos:[
+    ["A · Se baja","Sal del apartamento tirando de la puerta tras de ti (no hace falta cerrar con llave). Recuerda cerrar la puerta de madera. Luego llama al ascensor: introduce la llave pequeña en la cerradura exterior y gira a la derecha (sin botones). Cuando suene como un timbre, el botón se pone verde y el ascensor llega: abre la puerta. Cerrada la puerta, pulsa «0» para la planta baja — para bajar no hace falta llave. <span class='warn'>Asegúrate de que la puerta verde quede bien cerrada.</span>"],
+    ["B · Devuelve las llaves","Abre el armario de hierro detrás del ascensor, abre la caja de llaves con el mismo código y vuelve a poner las llaves. Cierra la caja, mezcla los números y cierra el armario."]],
+   during_p:"Para volver a entrar, abre la verja negra desde fuera con la llave normal. Para salir, pulsa el botón en la pared a la izquierda de la verja para desbloquearla. Luces de la escalera: los interruptores están en la pared, a la izquierda de la entrada.",
+   soon:"(vídeo breve próximamente)",
+   help:"¿Dudas? Escribe a tu anfitrión en cualquier momento por la app de Airbnb."},
+
+ de:{keys_h:"Ihre 4 Schlüssel",
+   keys:["Kleiner Schlüssel — der Aufzug","Normaler Schlüssel — das Eingangstor","Langer Schlüssel — die Holztür (3. Stock)","Roter Schlüssel — die Wohnungstür"],
+   ci:"Check-in — 5 Schritte", co:"Check-out — 2 Schritte", during:"Während Ihres Aufenthalts",
+   cis:[
+    ["1 · Ankunft","Von der Piazza Mattei (der Schildkrötenbrunnen) erreichen Sie die Via della Reginella: der Eingang ist das schwarze Tor bei Nr. 2, neben dem Friseur. Klingeln Sie an der Gegensprechanlage bei „MAGNANI“ — wir öffnen aus der Ferne. Einmal drinnen, öffnen Sie die zweiflügelige Holztür und schließen Sie sie hinter sich. Sie führt zum Hof mit dem Aufzug."],
+    ["2 · Die Schlüsselbox","Gehen Sie im Hof am Aufzug vorbei. Dahinter steht ein Eisenschrank: öffnen Sie ihn am Griff. Darin finden Sie die Schlüsselbox."],
+    ["3 · Schlüssel entnehmen","Öffnen Sie die Schlüsselbox mit Ihrem Code (separat per Airbnb-Nachricht gesendet). Nehmen Sie das Schlüsselbund, schließen Sie dann die Box und verstellen Sie die Ziffern, damit die Kombination nicht sichtbar bleibt. Schließen Sie zuletzt den Eisenschrank."],
+    ["4 · Aufzug in den 3. Stock","Rufen Sie den Aufzug, indem Sie außen „0“ drücken: bei Ankunft leuchtet die grüne Taste und Sie hören einen Ton. Zum Hochfahren brauchen Sie den kleinsten Schlüssel: stecken Sie ihn in das Loch links (neben der „0“) und drehen Sie nach rechts. Bei geschlossenen Türen drücken Sie „3“. Blockieren Sie die inneren Türen nicht — sie falten sich von selbst auf. Nehmen Sie in Ihrem Stock die Schlüssel wieder mit. <span class='warn'>Schließen Sie immer die grüne Aufzugtür ganz, sonst blockiert der Aufzug und niemand kann ihn nutzen.</span>"],
+    ["5 · Zur Wohnung","Gehen Sie vom Treppenabsatz Richtung Treppe: links ist die Holztür. Öffnen Sie sie mit dem langen Schlüssel, nach rechts drehen bis es klickt. Es ist ein mit den Nachbarn geteilter Bereich, halten Sie diese Tür also immer geschlossen. Für die Wohnungstür nehmen Sie den roten Schlüssel: ein Sicherheitsschlüssel, senkrecht einstecken und 1–2 Mal nach rechts bis zum Klick drehen. Wohnung 9A — willkommen!"]],
+   cos:[
+    ["A · Nach unten","Verlassen Sie die Wohnung und ziehen Sie die Tür hinter sich zu (kein Abschließen nötig). Denken Sie daran, die Holztür zu schließen. Rufen Sie dann den Aufzug: kleinen Schlüssel in das äußere Schloss stecken und nach rechts drehen (keine Tasten). Wenn ein klingelartiger Ton erklingt, wird die Taste grün und der Aufzug kommt: öffnen Sie die Tür. Nach dem Schließen drücken Sie „0“ fürs Erdgeschoss — fürs Runterfahren braucht es keinen Schlüssel. <span class='warn'>Achten Sie darauf, dass die grüne Tür ganz geschlossen bleibt.</span>"],
+    ["B · Schlüssel zurücklegen","Öffnen Sie den Eisenschrank hinter dem Aufzug, öffnen Sie die Schlüsselbox mit demselben Code und legen Sie die Schlüssel zurück. Schließen Sie die Box, verstellen Sie die Ziffern und schließen Sie den Schrank."]],
+   during_p:"Zum Wiedereintreten öffnen Sie das schwarze Tor von außen mit dem normalen Schlüssel. Zum Hinausgehen drücken Sie den Knopf an der Wand links vom Tor, um es zu entriegeln. Treppenlicht: die Schalter sind an der Wand, links vom Eingang.",
+   soon:"(kurzes Video folgt)",
+   help:"Probleme? Schreiben Sie Ihrem Gastgeber jederzeit über die Airbnb-App."}
+};
+
+const $=id=>document.getElementById(id);
+function stepHTML(arr){return arr.map(([n,b])=>`<div class="step"><span class="n">${n}</span><p>${b}</p></div>`).join('');}
+function render(l){
+  const d=L[l];
+  $('keys_h').textContent=d.keys_h;
+  $('keys_list').innerHTML=d.keys.map(k=>`<li>${k}</li>`).join('');
+  $('checkin_h').textContent=d.ci; $('checkout_h').textContent=d.co; $('during_h').textContent=d.during;
+  $('checkin_steps').innerHTML=stepHTML(d.cis);
+  $('checkout_steps').innerHTML=stepHTML(d.cos);
+  $('during_p').textContent=d.during_p; $('during_soon').textContent='';
+  $('help').textContent=d.help;
+  document.documentElement.lang=l;
+  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+}
+$('langs').addEventListener('click',e=>{if(e.target.dataset.l)render(e.target.dataset.l);});
+// default language from browser if available
+const nav=(navigator.language||'en').slice(0,2);
+render(L[nav]?nav:'en');
+</script>
+</body>
+</html>

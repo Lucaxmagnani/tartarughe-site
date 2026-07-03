@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · QR card</title>
+<style>
+  body{margin:0;background:#eee;font-family:Georgia,'Times New Roman',serif;color:#1a1a1a}
+  .card{width:340px;margin:24px auto;background:#fff;border:1px solid #ddd;border-radius:14px;overflow:hidden;text-align:center;box-shadow:0 4px 18px rgba(0,0,0,.12)}
+  .hd{height:120px;background:#2a2620 center/cover no-repeat;background-image:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.45)),url('https://tartarughe.netlify.app/assets/header.jpg');display:flex;align-items:center;justify-content:center}
+  .hd h1{margin:0;color:#fff;font-size:24px;letter-spacing:4px;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+  .body{padding:18px 20px 22px}
+  .lead{font-size:15px;margin:0 0 4px;font-weight:bold}
+  .sub{font-size:12px;color:#666;margin:0 0 16px;font-style:italic}
+  #qrcode{display:flex;justify-content:center;margin:0 auto 14px}
+  #qrcode img,#qrcode canvas{border:8px solid #fff;border-radius:6px}
+  .url{font-family:Arial,sans-serif;font-size:13px;color:#333;word-break:break-all;margin:2px 0 14px}
+  .langs{font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;color:#999;margin:0 0 12px}
+  .wa{font-family:Arial,sans-serif;font-size:13px;color:#1a1a1a;margin:0}
+  .wa b{color:#0b8a3e}
+  .btn{display:inline-block;margin:18px auto 0;padding:10px 20px;background:#e0a400;color:#1a1a1a;border:none;border-radius:8px;font-size:15px;font-family:Arial,sans-serif;font-weight:bold;cursor:pointer}
+  @media print{ body{background:#fff} .card{box-shadow:none;border:none;margin:0} .btn,.hint{display:none!important} }
+  .hint{font-family:Arial,sans-serif;font-size:12px;color:#888;text-align:center;margin:10px}
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="hd"><h1>LE TARTARUGHE</h1></div>
+    <div class="body">
+      <p class="lead">Self check-in &amp; check-out</p>
+      <p class="sub">Scan for step-by-step video instructions · Scansiona per le video-istruzioni</p>
+      <div id="qrcode"></div>
+      <p class="url">tartarughe.netlify.app</p>
+      <p class="langs">EN · IT · FR · ES · DE</p>
+      <p class="wa">WhatsApp the host: <b>+39 329 641 5323</b></p>
+    </div>
+  </div>
+  <div style="text-align:center"><button class="btn" id="dl">⬇️ Download PNG</button> <button class="btn" onclick="window.print()">🖨️ Print / Save as PDF</button></div>
+  <p class="hint">Tip: in the print dialog choose "Save as PDF" or print directly, then place the card by the entrance / inside the apartment.</p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  new QRCode(document.getElementById("qrcode"), {
+    text: "https://tartarughe.netlify.app/",
+    width: 260, height: 260,
+    correctLevel: QRCode.CorrectLevel.H
+  });
+  // Download the generated QR as a PNG file
+  setTimeout(function(){
+    var btn=document.getElementById('dl');
+    btn.onclick=function(){
+      var c=document.querySelector('#qrcode canvas');
+      var url = c ? c.toDataURL('image/png') : (document.querySelector('#qrcode img')||{}).src;
+      if(!url) return;
+      var a=document.createElement('a'); a.href=url; a.download='LeTartarughe_QR.png'; a.click();
+    };
+  }, 400);
+</script>
+</body>
+</html>
