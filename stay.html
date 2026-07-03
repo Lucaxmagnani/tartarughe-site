@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le Tartarughe · During your stay</title>
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<style>
+  :root{--bg:#0f0f10;--card:#1b1b1d;--txt:#f4f3f0;--muted:#a9a7a2;--accent:#e0a400;--line:#2c2c2f;--alert:#e05545;--ok:#25D366}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:560px;margin:0 auto;padding:18px 16px 50px}
+  .hero{position:relative;border-radius:16px;overflow:hidden;min-height:140px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:#2a2620 center/cover no-repeat;
+    background-image:linear-gradient(rgba(15,15,16,.40),rgba(15,15,16,.72)),url('assets/header.jpg');}
+  .hero-title{margin:0;font-size:24px;letter-spacing:3px;font-weight:700;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .hero-sub{margin:6px 0 0;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#e8e4dd}
+  .langs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 4px}
+  .langs button{flex:1;min-width:52px;padding:9px 6px;border:1px solid var(--line);background:var(--card);color:var(--txt);border-radius:10px;font-weight:600;cursor:pointer}
+  .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
+  /* stay dates bar */
+  .staybar{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-top:12px}
+  .staybar b{font-size:14px}
+  .staybar .row{display:flex;gap:8px;margin-top:8px}
+  .staybar label{flex:1;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+  .staybar input[type=date]{width:100%;margin-top:3px;padding:8px;border:1px solid var(--line);background:#101012;color:var(--txt);border-radius:9px;font-size:14px;color-scheme:dark}
+  .staybar .hint{font-size:12px;color:var(--muted);margin:8px 0 0}
+  .staybar .clear{background:none;border:none;color:var(--accent);font-size:12px;cursor:pointer;padding:0;margin-top:6px;display:none}
+  /* accordion sections */
+  .sec{margin-top:16px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--card)}
+  .sec>button.hd{width:100%;display:flex;align-items:center;gap:8px;background:none;border:none;color:var(--accent);
+    font-size:14px;letter-spacing:1.2px;text-transform:uppercase;font-weight:700;padding:14px 16px;cursor:pointer;text-align:left}
+  .sec.alert>button.hd{color:var(--alert)}
+  .sec .count{margin-left:auto;background:#101012;border:1px solid var(--line);border-radius:20px;padding:1px 10px;font-size:12px;color:var(--txt)}
+  .sec .chev{transition:transform .2s;color:var(--muted)}
+  .sec.open .chev{transform:rotate(90deg)}
+  .sec .body{display:none;padding:0 12px 12px}
+  .sec.open .body{display:block}
+  .card{background:#151517;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}
+  .card.warn{border-left:4px solid var(--alert)}
+  .card.ev{border-left:4px solid var(--accent)}
+  .when{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+  .card.warn .when{color:var(--alert);font-weight:700}
+  .card b.t{display:block;font-size:15px;margin:0 0 4px}
+  .card p{margin:4px 0;font-size:14px;color:#d8d6d1}
+  .dist{display:inline-block;font-size:12px;color:var(--muted);margin-top:4px}
+  .card a.map{color:var(--accent);font-size:13px;text-decoration:none;font-weight:600}
+  .more{width:100%;padding:9px;border:1px dashed var(--line);background:none;color:var(--accent);border-radius:10px;cursor:pointer;font-weight:600;font-size:13px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 10px}
+  .chips button{padding:5px 11px;border:1px solid var(--line);background:#101012;color:var(--txt);border-radius:20px;font-size:12px;cursor:pointer}
+  .chips button.on{background:var(--accent);color:#1a1a1a;border-color:var(--accent);font-weight:700}
+  .empty{color:var(--muted);font-size:13px;padding:4px 2px}
+  /* subscribe box */
+  .sub{margin-top:20px;background:linear-gradient(180deg,#1e1c14,#1b1b1d);border:1px solid #4d431c;border-radius:14px;padding:16px}
+  .sub b.h{display:block;font-size:16px;margin-bottom:4px}
+  .sub p{font-size:13px;color:#d8d6d1;margin:6px 0}
+  .sub input[type=email]{width:100%;padding:10px;border:1px solid var(--line);background:#101012;color:var(--txt);border-radius:9px;font-size:14px;margin-top:6px}
+  .sub .btn{width:100%;margin-top:10px;padding:12px;border:none;border-radius:10px;background:var(--accent);color:#1a1a1a;font-weight:700;font-size:15px;cursor:pointer}
+  .sub .btn.push{background:none;border:1px solid var(--accent);color:var(--accent);font-weight:600;font-size:13px;padding:10px}
+  .sub .consent{font-size:11px;color:var(--muted);margin-top:8px}
+  .sub label.ck{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#d8d6d1;margin-top:10px;cursor:pointer}
+  .sub label.ck input{margin-top:2px;accent-color:var(--accent)}
+  .sub .msg{font-size:13px;margin-top:8px;display:none}
+  .note{color:var(--muted);font-size:12px;margin-top:22px;text-align:center}
+  .wa{display:block;text-align:center;margin:18px auto 0;max-width:320px;padding:12px;border-radius:12px;background:#25D366;color:#06310f;text-decoration:none;font-weight:600}
+  .backlink{display:inline-block;color:var(--muted);text-decoration:none;font-size:14px;margin-bottom:12px}
+  .backlink:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="backlink" href="index.html" id="back">‹ Home</a>
+  <header class="hero">
+    <div>
+      <h1 class="hero-title" id="pt">DURING YOUR STAY</h1>
+      <p class="hero-sub" id="ps">What's on in Rome right now</p>
+    </div>
+  </header>
+
+  <div class="langs" id="langs">
+    <button data-l="en" class="active">EN</button><button data-l="it">IT</button><button data-l="fr">FR</button><button data-l="es">ES</button><button data-l="de">DE</button>
+  </div>
+
+  <!-- stay dates -->
+  <div class="staybar">
+    <b id="sd_h">📅 Your stay dates</b>
+    <div class="row">
+      <label id="sd_from_l">Check-in<input type="date" id="sd_from"></label>
+      <label id="sd_to_l">Check-out<input type="date" id="sd_to"></label>
+    </div>
+    <p class="hint" id="sd_hint">Set your dates to see only what's relevant for your stay.</p>
+    <button class="clear" id="sd_clear">✕ <span id="sd_clear_t">Clear dates — show everything</span></button>
+  </div>
+
+  <!-- sections -->
+  <div class="sec alert open" id="sec_alerts">
+    <button class="hd"><span id="h_alerts"></span><span class="count" id="n_alerts"></span><span class="chev">›</span></button>
+    <div class="body" id="alerts"></div>
+  </div>
+  <div class="sec open" id="sec_free">
+    <button class="hd"><span id="h_free"></span><span class="count" id="n_free"></span><span class="chev">›</span></button>
+    <div class="body" id="free"></div>
+  </div>
+  <div class="sec open" id="sec_events">
+    <button class="hd"><span id="h_events"></span><span class="count" id="n_events"></span><span class="chev">›</span></button>
+    <div class="body"><div class="chips" id="ev_chips"></div><div id="events"></div></div>
+  </div>
+
+  <!-- subscribe -->
+  <div class="sub">
+    <b class="h" id="sub_h">🔔 Alerts for your stay</b>
+    <p id="sub_p">Get an email if a transport strike or a must-know event lands on your dates — from now until check-out.</p>
+    <input type="email" id="sub_email" placeholder="your@email.com" autocomplete="email">
+    <label class="ck"><input type="checkbox" id="sub_ck"> <span id="sub_ck_t">I have read and accept the notice below (required only to subscribe)</span></label>
+    <button class="btn" id="sub_btn">Subscribe</button>
+    <button class="btn push" id="push_btn">📲 Also enable phone notifications</button>
+    <p class="consent" id="sub_consent">You'll only receive alerts relevant to your stay dates in Rome (strikes, events, free museums). The subscription switches off automatically at check-out. Unsubscribe anytime via the link in each email.</p>
+    <p class="msg" id="sub_msg"></p>
+  </div>
+
+  <p class="note" id="note"></p>
+
+  <a class="wa" href="https://wa.me/393296415323" target="_blank" rel="noopener">
+    💬 <span id="wa_txt">Message the host on WhatsApp</span><br><b>+39 329 641 5323</b>
+  </a>
+</div>
+
+<script>
+const ONESIGNAL_APP_ID="43f7067c-cf52-4270-948b-3d5c8de52713";
+window.OneSignalDeferred=window.OneSignalDeferred||[];
+OneSignalDeferred.push(async function(OneSignal){
+  try{await OneSignal.init({appId:ONESIGNAL_APP_ID,serviceWorkerPath:"OneSignalSDKWorker.js"});}catch(e){}
+});
+
+// ---- fallback data (live data loaded from events.json) ----
+let DATA={alerts:[],free:[],events:[]};
+
+const L={
+ en:{pt:"DURING YOUR STAY",ps:"What's on in Rome right now",back:"‹ Home",
+     h_alerts:"⚠️ Transport alerts",h_free:"🎟️ Free entry",h_events:"🎭 Events near you",
+     map:"Walking route →",wa:"Message the host on WhatsApp",
+     sd_h:"📅 Your stay dates",sd_from:"Check-in",sd_to:"Check-out",
+     sd_hint:"Without dates, this page shows what's on today. Set your stay dates to see only strikes, events and free entries that fall within your stay. Subscribing to alerts below is optional: if you do, we use your dates only to send you what's relevant, and the subscription is cancelled automatically at check-out. Your data is never shared with anyone and is handled in compliance with privacy laws and the GDPR.",
+     sd_hint_on:"Showing only what overlaps your stay. Subscribing below is optional; alerts follow these dates and stop automatically at check-out. Your data is never shared with anyone (GDPR-compliant).",sd_clear:"Clear dates — show today",
+     more:"Show all upcoming",more5:"Show 5 more",all:"All",empty:"Nothing in this period 🎉",
+     sub_h:"🔔 Alerts for your stay",
+     sub_p:"Get an email if a transport strike or a must-know event lands on your dates — from now until check-out.",
+     sub_btn:"Subscribe",push_btn:"📲 Also enable phone notifications",
+     sub_ck:"I have read and accept the notice below (required only to subscribe)",
+     sub_consent:"You'll only receive alerts relevant to your stay dates in Rome (strikes, events, free museums). The subscription switches off automatically at check-out. Your data is never shared with anyone and is processed in compliance with privacy laws and the GDPR, solely to send you these alerts. Unsubscribe anytime via the link in each email.",
+     sub_needdates:"Please set your check-in and check-out dates above first.",
+     sub_needck:"Please tick the privacy checkbox to subscribe.",
+     sub_bademail:"Please enter a valid email address.",
+     sub_ok:"✓ Subscribed! You'll get alerts for your stay dates.",
+     push_ok:"✓ Phone notifications enabled.",push_no:"Notifications not enabled (you can allow them from browser settings).",
+     note:"Curated for Le Tartarughe · data updated {D} · sources: MIT strike observatory, Roma Capitale, Ministry of Culture"},
+ it:{pt:"DURANTE IL SOGGIORNO",ps:"Cosa succede a Roma adesso",back:"‹ Home",
+     h_alerts:"⚠️ Allerte trasporti",h_free:"🎟️ Ingressi gratuiti",h_events:"🎭 Eventi vicino a te",
+     map:"Percorso a piedi →",wa:"Scrivi all'host su WhatsApp",
+     sd_h:"📅 Le date del tuo soggiorno",sd_from:"Check-in",sd_to:"Check-out",
+     sd_hint:"Senza date, questa pagina mostra ciò che è in corso oggi. Imposta le date del soggiorno per vedere solo scioperi, eventi e ingressi gratuiti che cadono nelle tue date. L'iscrizione agli avvisi qui sotto è facoltativa: se ti iscrivi, usiamo le date solo per mandarti ciò che ti riguarda, e l'iscrizione si cancella automaticamente al check-out. I tuoi dati non saranno condivisi con nessuno e sono trattati nel rispetto delle leggi privacy e del GDPR.",
+     sd_hint_on:"Stai vedendo solo ciò che tocca le tue date. Iscriversi qui sotto è facoltativo; gli avvisi seguono queste date e si fermano automaticamente al check-out. I tuoi dati non saranno condivisi con nessuno (conforme GDPR).",sd_clear:"Togli le date — mostra oggi",
+     more:"Mostra tutte le prossime",more5:"Mostra altri 5",all:"Tutti",empty:"Niente in questo periodo 🎉",
+     sub_h:"🔔 Avvisi per il tuo soggiorno",
+     sub_p:"Ricevi un'email se uno sciopero o un evento importante cade nelle tue date — da ora fino al check-out.",
+     sub_btn:"Iscrivimi",push_btn:"📲 Attiva anche le notifiche sul telefono",
+     sub_ck:"Ho letto e accetto l'informativa qui sotto (richiesta solo per iscriversi)",
+     sub_consent:"Riceverai solo avvisi rilevanti per le date del tuo soggiorno a Roma (scioperi, eventi, musei gratuiti). L'iscrizione si disattiva automaticamente al check-out. I tuoi dati non saranno condivisi con nessuno e sono trattati nel rispetto delle leggi privacy e del GDPR, al solo scopo di inviarti questi avvisi. Disiscrizione in ogni email.",
+     sub_needdates:"Prima imposta le date di check-in e check-out qui sopra.",
+     sub_needck:"Spunta la casella privacy per iscriverti.",
+     sub_bademail:"Inserisci un indirizzo email valido.",
+     sub_ok:"✓ Iscritto! Riceverai gli avvisi per le date del tuo soggiorno.",
+     push_ok:"✓ Notifiche sul telefono attivate.",push_no:"Notifiche non attivate (puoi consentirle dalle impostazioni del browser).",
+     note:"Curato per Le Tartarughe · dati aggiornati {D} · fonti: osservatorio scioperi MIT, Roma Capitale, Ministero della Cultura"}
+};
+L.fr=L.en;L.es=L.en;L.de=L.en; // PoC fallback (SaaS: auto-translate)
+
+const $=id=>document.getElementById(id);
+const PAGE=5; // incremental loading: items added per "show more" tap
+let expanded={alerts:false,free:false,events:false};
+let shown={alerts:PAGE,free:PAGE,events:PAGE};
+let evCat='all'; // active category chip in the Events section
+const CATS={ // category key → emoji + bilingual label (source feed: turismoroma types)
+ music:{ic:'🎵',en:'Music',it:'Musica'},
+ exhibition:{ic:'🖼️',en:'Exhibitions',it:'Mostre'},
+ theatre:{ic:'🎭',en:'Theatre',it:'Teatro'},
+ cinema:{ic:'🎬',en:'Cinema',it:'Cinema'},
+ dance:{ic:'💃',en:'Dance',it:'Danza'},
+ sport:{ic:'⚽',en:'Sport',it:'Sport'},
+ festival:{ic:'🎪',en:'Festivals',it:'Festival'},
+ other:{ic:'✨',en:'Other',it:'Altro'}
+};
+
+function stay(){return {from:localStorage.getItem('lt_stay_from')||'',to:localStorage.getItem('lt_stay_to')||''};}
+// active window: stay dates if set, otherwise today (the browsing date)
+function windowSel(){
+  const s=stay();
+  if(s.from&&s.to) return {from:s.from,to:s.to,has:true};
+  const t=new Date().toISOString().slice(0,10);
+  return {from:t,to:t,has:false};
+}
+function overlaps(x,w){
+  const xf=x.from||'0000',xt=x.to||'9999';
+  return xf<=w.to && xt>=w.from;
+}
+function pick(o,l){return o[l]||o.en;}
+function card(x,l,cls,d){
+ return '<div class="card '+cls+'"><p class="when">'+pick(x.when,l)+'</p><b class="t">'+pick(x.t,l)+'</b><p>'+pick(x.p,l)+'</p>'+
+  (x.dist?'<span class="dist">📍 '+x.dist+'</span><br><a class="map" target="_blank" rel="noopener" href="'+x.map+'">'+d.map+'</a>':'')+'</div>';
+}
+function section(id,items,l,cls,d){
+ const w=windowSel();
+ const inWin=items.filter(x=>overlaps(x,w));
+ let candidate, more='';
+ if(w.has){                       // stay dates set → only the stay window
+   candidate=inWin;
+ } else if(expanded[id]){         // no dates, expanded → all upcoming
+   candidate=items;
+ } else {                         // no dates → today only (+ scope expander)
+   candidate=inWin;
+   if(items.length>inWin.length)
+     more='<button class="more" onclick="expanded[\''+id+'\']=true;paint()">'+d.more+' ('+items.length+')</button>';
+ }
+ candidate=[...candidate].sort((a,b)=>(a.from||'')<(b.from||'')?-1:1); // soonest first
+ $('n_'+id).textContent=candidate.length;
+ let list=candidate;
+ if(candidate.length>shown[id]+1){ // incremental loading for long lists
+   list=candidate.slice(0,shown[id]);
+   more='<button class="more" onclick="shown[\''+id+'\']+=PAGE;paint()">'+d.more5+' ('+(candidate.length-shown[id])+')</button>'+more;
+ }
+ $(id).innerHTML=(list.length?list.map(x=>card(x,l,cls,d)).join(''):'<p class="empty">'+d.empty+'</p>')+more;
+}
+function chips(items,lang,d){
+ const present=[...new Set(items.map(x=>x.cat||'other'))];
+ if(present.length<2){$('ev_chips').innerHTML='';return items;}
+ let html='<button class="'+(evCat==='all'?'on':'')+'" onclick="evCat=\'all\';shown.events=PAGE;paint()">'+d.all+'</button>';
+ for(const c of present){const m=CATS[c]||CATS.other;
+   html+='<button class="'+(evCat===c?'on':'')+'" onclick="evCat=\''+c+'\';shown.events=PAGE;paint()">'+m.ic+' '+(lang==='it'?m.it:m.en)+'</button>';}
+ $('ev_chips').innerHTML=html;
+ return evCat==='all'?items:items.filter(x=>(x.cat||'other')===evCat);
+}
+function paint(){
+ const l=cur(), d=L[l]||L.en, lang=(l==='it')?'it':'en';
+ section('alerts',DATA.alerts||[],lang,'warn',d);
+ section('free',DATA.free||[],lang,'ev',d);
+ section('events',chips(DATA.events||[],lang,d),lang,'ev',d);
+ const s=stay(), hasDates=!!(s.from&&s.to);
+ $('sd_hint').textContent=hasDates?d.sd_hint_on:d.sd_hint;
+ $('sd_clear').style.display=hasDates?'block':'none';
+}
+function cur(){const _sl=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);return L[_sl]?_sl:'en';}
+function render(l){
+ const d=L[l]||L.en;
+ ['pt','ps','h_alerts','h_free','h_events','sd_h','sub_h','sub_p','sub_consent'].forEach(k=>$(k).textContent=d[k]);
+ $('sub_ck_t').textContent=d.sub_ck;
+ $('back').textContent=d.back;
+ $('sd_from_l').firstChild.textContent=d.sd_from;
+ $('sd_to_l').firstChild.textContent=d.sd_to;
+ $('sd_clear_t').textContent=d.sd_clear;
+ $('sub_btn').textContent=d.sub_btn;
+ $('push_btn').textContent=d.push_btn;
+ $('wa_txt').textContent=d.wa;
+ $('note').textContent=d.note.replace('{D}',DATA.updated||'—');
+ document.documentElement.lang=l;
+ document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
+ paint();
+}
+$('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
+
+// accordion
+document.querySelectorAll('.sec>button.hd').forEach(b=>b.addEventListener('click',()=>b.parentElement.classList.toggle('open')));
+
+// stay dates
+$('sd_from').value=stay().from; $('sd_to').value=stay().to;
+function onDates(){
+ const f=$('sd_from').value,t=$('sd_to').value;
+ if(f)localStorage.setItem('lt_stay_from',f); else localStorage.removeItem('lt_stay_from');
+ if(t)localStorage.setItem('lt_stay_to',t); else localStorage.removeItem('lt_stay_to');
+ paint();
+}
+$('sd_from').addEventListener('change',onDates);
+$('sd_to').addEventListener('change',onDates);
+$('sd_clear').addEventListener('click',()=>{$('sd_from').value='';$('sd_to').value='';onDates();});
+
+// subscribe
+function msg(txt,ok){const m=$('sub_msg');m.textContent=txt;m.style.display='block';m.style.color=ok?'#7ed98f':'#e0a4a4';}
+$('sub_btn').addEventListener('click',()=>{
+ const d=L[cur()]||L.en, s=stay(), em=$('sub_email').value.trim();
+ if(!s.from||!s.to){msg(d.sub_needdates,false);return;}
+ if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){msg(d.sub_bademail,false);return;}
+ if(!$('sub_ck').checked){msg(d.sub_needck,false);return;}
+ const tags={stay_start:s.from.replace(/-/g,''),stay_end:s.to.replace(/-/g,''),lang:(cur()==='it')?'it':'en'};
+ window.OneSignalDeferred.push(async function(OneSignal){
+   try{
+     await OneSignal.User.addEmail(em);
+     await OneSignal.User.addTags(tags);
+     localStorage.setItem('lt_subscribed',em);
+     msg(d.sub_ok,true);
+   }catch(e){msg('Error: '+(e&&e.message||e),false);}
+ });
+});
+$('push_btn').addEventListener('click',()=>{
+ const d=L[cur()]||L.en, s=stay();
+ if(!s.from||!s.to){msg(d.sub_needdates,false);return;}
+ if(!$('sub_ck').checked){msg(d.sub_needck,false);return;}
+ const tags={stay_start:s.from.replace(/-/g,''),stay_end:s.to.replace(/-/g,''),lang:(cur()==='it')?'it':'en'};
+ window.OneSignalDeferred.push(async function(OneSignal){
+   try{
+     const ok=await OneSignal.Notifications.requestPermission();
+     await OneSignal.User.addTags(tags);
+     msg(OneSignal.Notifications.permission?d.push_ok:d.push_no,OneSignal.Notifications.permission);
+   }catch(e){msg(d.push_no,false);}
+ });
+});
+
+// boot
+render(cur());
+function prune(d){const today=new Date().toISOString().slice(0,10);
+ const ok=x=>!x.to||x.to>=today;
+ return Object.assign({},d,{alerts:(d.alerts||[]).filter(ok),free:(d.free||[]).filter(ok),events:(d.events||[]).filter(ok)});}
+fetch('events.json',{cache:'no-store'}).then(r=>r.json())
+ .then(j=>{DATA=prune(j);render(cur());})
+ .catch(()=>{});
+</script>
+<style>
+.hb{position:fixed;top:12px;right:12px;z-index:60;background:rgba(27,27,29,.92);border:1px solid #2c2c2f;color:#f4f3f0;width:42px;height:42px;border-radius:10px;font-size:20px;cursor:pointer}
+.hbmenu{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:59;display:none}
+.hbmenu.open{display:block}
+.hbmenu .panel{position:absolute;top:0;right:0;width:255px;max-width:82%;height:100%;background:#1b1b1d;border-left:1px solid #2c2c2f;padding:64px 16px 16px;box-shadow:-6px 0 24px rgba(0,0,0,.45)}
+.hbmenu a{display:block;color:#f4f3f0;text-decoration:none;padding:12px 10px;border-radius:9px;font-size:15px}
+.hbmenu a.cur{color:#e0a400}
+</style>
+<button class="hb" id="hbBtn" aria-label="Menu">☰</button>
+<div class="hbmenu" id="hbMenu"><div class="panel" id="hbPanel"></div></div>
+<script>
+(function(){var CUR="stay.html";
+var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood","🎭 During your stay"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere","🎭 Durante il soggiorno"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier","🎭 Pendant le séjour"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio","🎭 Durante la estancia"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel","🎭 Während des Aufenthalts"]};
+var P=["index.html","checkin.html","inside.html","neighbourhood.html","stay.html"];
+function build(l){if(!M[l])l='en';document.getElementById('hbPanel').innerHTML=M[l].map(function(t,i){return '<a href="'+P[i]+'"'+(P[i]===CUR?' class="cur"':'')+'>'+t+'</a>';}).join('');}
+build(localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2));
+var lg=document.getElementById('langs'); if(lg)lg.addEventListener('click',function(e){if(e.target.dataset.l)build(e.target.dataset.l);});
+var menu=document.getElementById('hbMenu');
+document.getElementById('hbBtn').onclick=function(){menu.classList.toggle('open');};
+menu.onclick=function(e){if(e.target===menu)menu.classList.remove('open');};
+})();
+</script>
+</body>
+</html>
