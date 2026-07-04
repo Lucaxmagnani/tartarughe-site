@@ -1,73 +1,255 @@
 {
-  "updated": "2026-07-02",
+  "updated": "2026-07-04",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
     {
-      "from": "2026-07-05", "to": "2026-07-05",
-      "when": {"en": "Sunday 5 July · 10:00–18:00", "it": "Domenica 5 luglio · 10:00–18:00"},
-      "t": {"en": "Airport security staff strike (Fiumicino & Ciampino)", "it": "Sciopero addetti sicurezza aeroporti (Fiumicino e Ciampino)"},
-      "p": {"en": "If you fly that day, expect longer queues at security. Arrive at the airport earlier than usual.", "it": "Se voli quel giorno, previste code più lunghe ai controlli. Arriva in aeroporto con più anticipo del solito."},
+      "from": "2026-07-05",
+      "to": "2026-07-05",
+      "when": {
+        "en": "Sunday 5 July · 00:01–24:00",
+        "it": "Domenica 5 luglio · 00:01–24:00"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 24 ORE: DALLE 00.01 ALLE 24.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.01 ALLE 24.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
       "source": "MIT osservatorio scioperi"
     },
     {
-      "from": "2026-07-23", "to": "2026-07-24",
-      "when": {"en": "Thu 23 July 21:00 → Fri 24 July 20:59", "it": "Gio 23 luglio 21:00 → Ven 24 luglio 20:59"},
-      "t": {"en": "National rail strike (Trenitalia, Italo, regional trains)", "it": "Sciopero nazionale ferroviario (Trenitalia, Italo, regionali)"},
-      "p": {"en": "Trains to/from airports and other cities may be cancelled. Check your train before travelling.", "it": "Possibili cancellazioni di treni per aeroporti e altre città. Verifica il tuo treno prima di partire."},
+      "from": "2026-07-06",
+      "to": "2026-07-07",
+      "when": {
+        "en": "Monday 6 July → Tuesday 7 July",
+        "it": "Lunedì 6 luglio → Martedì 7 luglio"
+      },
+      "t": {
+        "en": "Rail strike",
+        "it": "Sciopero ferroviario"
+      },
+      "p": {
+        "en": "Scope: national. Details: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
       "source": "MIT osservatorio scioperi"
     },
     {
-      "from": "2026-07-24", "to": "2026-07-24",
-      "when": {"en": "Friday 24 July · all day", "it": "Venerdì 24 luglio · tutto il giorno"},
-      "t": {"en": "Rome public transport strike (metro, bus, tram)", "it": "Sciopero trasporto pubblico Roma (metro, bus, tram)"},
-      "p": {"en": "Service usually guaranteed only ~5:30–8:30 and 17:00–20:00. Plan taxis or walk — the centre is walkable from the apartment.", "it": "Servizio di norma garantito solo ~5:30–8:30 e 17:00–20:00. Prevedi taxi o spostamenti a piedi — dall'appartamento il centro si gira a piedi."},
+      "from": "2026-07-09",
+      "to": "2026-07-10",
+      "when": {
+        "en": "Thursday 9 July → Friday 10 July",
+        "it": "Giovedì 9 luglio → Venerdì 10 luglio"
+      },
+      "t": {
+        "en": "Rail strike",
+        "it": "Sciopero ferroviario"
+      },
+      "p": {
+        "en": "Scope: national. Details: 23 ORE: DALLE 03.00 DEL 9/7 ALLE 02.00 DEL 10/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 23 ORE: DALLE 03.00 DEL 9/7 ALLE 02.00 DEL 10/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-10",
+      "to": "2026-07-10",
+      "when": {
+        "en": "Friday 10 July · all day",
+        "it": "Venerdì 10 luglio · tutto il giorno"
+      },
+      "t": {
+        "en": "General strike",
+        "it": "Sciopero generale"
+      },
+      "p": {
+        "en": "Scope: national. Details: INTERA GIORNATA - TPL: INTERO TURNO DI SERVIZIO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA - TPL: INTERO TURNO DI SERVIZIO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-15",
+      "to": "2026-07-15",
+      "when": {
+        "en": "Wednesday 15 July · all day",
+        "it": "Mercoledì 15 luglio · tutto il giorno"
+      },
+      "t": {
+        "en": "Rail services strike",
+        "it": "Sciopero appalti ferroviari"
+      },
+      "p": {
+        "en": "Scope: national. Details: INTERO TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-20",
+      "to": "2026-07-20",
+      "when": {
+        "en": "Monday 20 July · all day",
+        "it": "Lunedì 20 luglio · tutto il giorno"
+      },
+      "t": {
+        "en": "Local public transport strike",
+        "it": "Sciopero trasporto pubblico locale"
+      },
+      "p": {
+        "en": "Scope: Rome/Lazio. Details: 24 ORE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 24 ORE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-21",
+      "to": "2026-07-21",
+      "when": {
+        "en": "Tuesday 21 July · 00:00–23:59",
+        "it": "Martedì 21 luglio · 00:00–23:59"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 24 ORE: DALLE 00.00 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.00 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-22",
+      "to": "2026-07-23",
+      "when": {
+        "en": "Wednesday 22 July → Thursday 23 July",
+        "it": "Mercoledì 22 luglio → Giovedì 23 luglio"
+      },
+      "t": {
+        "en": "Ferry/maritime strike",
+        "it": "Sciopero marittimo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 24 ORE: DALLE 12.00 DEL 22/7 ALLE 11.59 DEL 23/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 12.00 DEL 22/7 ALLE 11.59 DEL 23/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-23",
+      "to": "2026-07-24",
+      "when": {
+        "en": "Thursday 23 July → Friday 24 July",
+        "it": "Giovedì 23 luglio → Venerdì 24 luglio"
+      },
+      "t": {
+        "en": "Rail strike",
+        "it": "Sciopero ferroviario"
+      },
+      "p": {
+        "en": "Scope: national. Details: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.00 DEL 23/7 ALLE 20.59 DEL 24/7; *TPL: INTERA PRESTAZIONE DEL 24/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.00 DEL 23/7 ALLE 20.59 DEL 24/7; *TPL: INTERA PRESTAZIONE DEL 24/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
       "source": "MIT osservatorio scioperi"
     }
   ],
   "free": [
     {
-      "from": "2026-07-05", "to": "2026-07-05",
-      "when": {"en": "Sunday 5 July (first Sunday of the month)", "it": "Domenica 5 luglio (prima domenica del mese)"},
-      "t": {"en": "Free state & civic museums — #domenicalmuseo", "it": "Musei statali e civici gratis — #domenicalmuseo"},
-      "p": {"en": "Colosseum, Roman Forum & Palatine (tickets only in person, go early!), Galleria Borghese, Castel Sant'Angelo, Baths of Caracalla + all civic museums (Capitoline Museums, 900 m from you).", "it": "Colosseo, Foro Romano e Palatino (biglietti solo in loco, vai presto!), Galleria Borghese, Castel Sant'Angelo, Terme di Caracalla + tutti i Musei Civici (Musei Capitolini, a 900 m da te)."},
+      "from": "2026-07-05",
+      "to": "2026-07-05",
+      "when": {
+        "en": "Sunday 5 July (first Sunday of the month)",
+        "it": "Domenica 5 luglio (prima domenica del mese)"
+      },
+      "t": {
+        "en": "Free state & civic museums — #domenicalmuseo",
+        "it": "Musei statali e civici gratis — #domenicalmuseo"
+      },
+      "p": {
+        "en": "Colosseum, Roman Forum & Palatine (tickets only in person, go early!), Galleria Borghese, Castel Sant'Angelo, Baths of Caracalla + all civic museums (Capitoline Museums, 900 m from you).",
+        "it": "Colosseo, Foro Romano e Palatino (biglietti solo in loco, vai presto!), Galleria Borghese, Castel Sant'Angelo, Terme di Caracalla + tutti i Musei Civici (Musei Capitolini, a 900 m da te)."
+      },
       "source": "cultura.gov.it/domenicalmuseo"
     }
   ],
   "events": [
     {
-      "from": "2026-06-29", "to": "2026-09-06",
-      "when": {"en": "Every evening, all summer", "it": "Ogni sera, tutta l'estate"},
+      "from": "2026-06-29",
+      "to": "2026-09-06",
+      "when": {
+        "en": "Every evening, all summer",
+        "it": "Ogni sera, tutta l'estate"
+      },
       "cat": "festival",
-      "t": {"en": "Lungo il Tevere… Roma — riverside festival", "it": "Lungo il Tevere… Roma — festival sulle banchine"},
-      "p": {"en": "Stalls, live music, food and cinema on the Tiber banks by Isola Tiberina.", "it": "Mercatini, musica live, food e cinema sulle banchine del Tevere all'Isola Tiberina."},
+      "t": {
+        "en": "Lungo il Tevere… Roma — riverside festival",
+        "it": "Lungo il Tevere… Roma — festival sulle banchine"
+      },
+      "p": {
+        "en": "Stalls, live music, food and cinema on the Tiber banks by Isola Tiberina.",
+        "it": "Mercatini, musica live, food e cinema sulle banchine del Tevere all'Isola Tiberina."
+      },
       "dist": "≈ 300 m · 4 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Isola+Tiberina+Roma&travelmode=walking"
     },
     {
-      "from": "2026-07-03", "to": "2026-07-28",
-      "when": {"en": "3–4 July (film) · 12–28 July (Aida)", "it": "3–4 luglio (film) · 12–28 luglio (Aida)"},
+      "from": "2026-07-03",
+      "to": "2026-07-28",
+      "when": {
+        "en": "3–4 July (film) · 12–28 July (Aida)",
+        "it": "3–4 luglio (film) · 12–28 luglio (Aida)"
+      },
       "cat": "music",
-      "t": {"en": "Opera under the stars at Circo Massimo", "it": "Opera sotto le stelle al Circo Massimo"},
-      "p": {"en": "Teatro dell'Opera summer season: “The Gladiator” screened with live orchestra (3–4 July), then Verdi's Aida (6 dates).", "it": "Stagione estiva del Teatro dell'Opera: “Il Gladiatore” con orchestra dal vivo (3–4 luglio), poi l'Aida di Verdi (6 recite)."},
+      "t": {
+        "en": "Opera under the stars at Circo Massimo",
+        "it": "Opera sotto le stelle al Circo Massimo"
+      },
+      "p": {
+        "en": "Teatro dell'Opera summer season: “The Gladiator” screened with live orchestra (3–4 July), then Verdi's Aida (6 dates).",
+        "it": "Stagione estiva del Teatro dell'Opera: “Il Gladiatore” con orchestra dal vivo (3–4 luglio), poi l'Aida di Verdi (6 recite)."
+      },
       "dist": "≈ 1.3 km · 17 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Circo+Massimo+Roma&travelmode=walking"
     },
     {
-      "from": "2026-07-01", "to": "2026-07-26",
-      "when": {"en": "Until 26 July", "it": "Fino al 26 luglio"},
+      "from": "2026-07-01",
+      "to": "2026-07-26",
+      "when": {
+        "en": "Until 26 July",
+        "it": "Fino al 26 luglio"
+      },
       "cat": "exhibition",
-      "t": {"en": "Umberto Eco exhibition — Palazzo Firenze", "it": "Mostra Umberto Eco — Palazzo Firenze"},
-      "p": {"en": "Tribute for the 10th anniversary of his death, with original artwork by Milo Manara and sets by Dante Ferretti.", "it": "Omaggio nel decennale della scomparsa, con tavole originali di Milo Manara e scenografie di Dante Ferretti."},
+      "t": {
+        "en": "Umberto Eco exhibition — Palazzo Firenze",
+        "it": "Mostra Umberto Eco — Palazzo Firenze"
+      },
+      "p": {
+        "en": "Tribute for the 10th anniversary of his death, with original artwork by Milo Manara and sets by Dante Ferretti.",
+        "it": "Omaggio nel decennale della scomparsa, con tavole originali di Milo Manara e scenografie di Dante Ferretti."
+      },
       "dist": "≈ 1.1 km · 14 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Palazzo+Firenze+Roma&travelmode=walking"
     },
     {
-      "from": "2026-07-03", "to": "2026-11-15",
-      "when": {"en": "From 3 July", "it": "Dal 3 luglio"},
+      "from": "2026-07-03",
+      "to": "2026-11-15",
+      "when": {
+        "en": "From 3 July",
+        "it": "Dal 3 luglio"
+      },
       "cat": "exhibition",
-      "t": {"en": "AEGYPTUS — Baths of Diocletian", "it": "AEGYPTUS — Terme di Diocleziano"},
-      "p": {"en": "Major new exhibition on ancient Egypt in the Octagonal Hall (Museo Nazionale Romano).", "it": "Grande mostra sull'antico Egitto nell'Aula Ottagona (Museo Nazionale Romano)."},
+      "t": {
+        "en": "AEGYPTUS — Baths of Diocletian",
+        "it": "AEGYPTUS — Terme di Diocleziano"
+      },
+      "p": {
+        "en": "Major new exhibition on ancient Egypt in the Octagonal Hall (Museo Nazionale Romano).",
+        "it": "Grande mostra sull'antico Egitto nell'Aula Ottagona (Museo Nazionale Romano)."
+      },
       "dist": "≈ 2.6 km · metro/bus or 33 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Terme+di+Diocleziano+Roma&travelmode=walking"
     }
