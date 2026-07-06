@@ -1,25 +1,8 @@
 {
-  "updated": "2026-07-04",
+  "updated": "2026-07-06",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-05",
-      "to": "2026-07-05",
-      "when": {
-        "en": "Sunday 5 July · 00:01–24:00",
-        "it": "Domenica 5 luglio · 00:01–24:00"
-      },
-      "t": {
-        "en": "Air transport strike",
-        "it": "Sciopero trasporto aereo"
-      },
-      "p": {
-        "en": "Scope: national. Details: 24 ORE: DALLE 00.01 ALLE 24.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.01 ALLE 24.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-06",
       "to": "2026-07-07",
@@ -34,6 +17,23 @@
       "p": {
         "en": "Scope: national. Details: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-07-07",
+      "to": "2026-07-07",
+      "when": {
+        "en": "Tuesday 7 July · all day",
+        "it": "Martedì 7 luglio · tutto il giorno"
+      },
+      "t": {
+        "en": "General strike",
+        "it": "Sciopero generale"
+      },
+      "p": {
+        "en": "Scope: national. Details: ULTIME 2 ORE DI CIASCUN TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: ULTIME 2 ORE DI CIASCUN TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
@@ -157,25 +157,7 @@
       "source": "MIT osservatorio scioperi"
     }
   ],
-  "free": [
-    {
-      "from": "2026-07-05",
-      "to": "2026-07-05",
-      "when": {
-        "en": "Sunday 5 July (first Sunday of the month)",
-        "it": "Domenica 5 luglio (prima domenica del mese)"
-      },
-      "t": {
-        "en": "Free state & civic museums — #domenicalmuseo",
-        "it": "Musei statali e civici gratis — #domenicalmuseo"
-      },
-      "p": {
-        "en": "Colosseum, Roman Forum & Palatine (tickets only in person, go early!), Galleria Borghese, Castel Sant'Angelo, Baths of Caracalla + all civic museums (Capitoline Museums, 900 m from you).",
-        "it": "Colosseo, Foro Romano e Palatino (biglietti solo in loco, vai presto!), Galleria Borghese, Castel Sant'Angelo, Terme di Caracalla + tutti i Musei Civici (Musei Capitolini, a 900 m da te)."
-      },
-      "source": "cultura.gov.it/domenicalmuseo"
-    }
-  ],
+  "free": [],
   "events": [
     {
       "from": "2026-06-29",
