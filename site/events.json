@@ -1,42 +1,8 @@
 {
-  "updated": "2026-07-06",
+  "updated": "2026-07-08",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-06",
-      "to": "2026-07-07",
-      "when": {
-        "en": "Monday 6 July → Tuesday 7 July",
-        "it": "Lunedì 6 luglio → Martedì 7 luglio"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: national. Details: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 21.00 DEL 6/7 ALLE 21.00 DEL 7/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-07-07",
-      "to": "2026-07-07",
-      "when": {
-        "en": "Tuesday 7 July · all day",
-        "it": "Martedì 7 luglio · tutto il giorno"
-      },
-      "t": {
-        "en": "General strike",
-        "it": "Sciopero generale"
-      },
-      "p": {
-        "en": "Scope: national. Details: ULTIME 2 ORE DI CIASCUN TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: ULTIME 2 ORE DI CIASCUN TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-09",
       "to": "2026-07-10",
@@ -83,8 +49,8 @@
         "it": "Sciopero appalti ferroviari"
       },
       "p": {
-        "en": "Scope: national. Details: INTERO TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+        "en": "Scope: national. Details: INTERO TURNO PER OGNI TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO PER OGNI TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
