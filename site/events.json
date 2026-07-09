@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-08",
+  "updated": "2026-07-09",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -83,8 +83,8 @@
         "it": "Sciopero trasporto aereo"
       },
       "p": {
-        "en": "Scope: national. Details: 24 ORE: DALLE 00.00 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.00 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+        "en": "Scope: national. Details: 24 ORE DALLE 00.00 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE DALLE 00.00 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
