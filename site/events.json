@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-09",
+  "updated": "2026-07-10",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -49,8 +49,8 @@
         "it": "Sciopero appalti ferroviari"
       },
       "p": {
-        "en": "Scope: national. Details: INTERO TURNO PER OGNI TURNO DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO PER OGNI TURNO DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+        "en": "Scope: national. Details: INTERO TURNO PER OGNI TURNO LAVORATIVO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO PER OGNI TURNO LAVORATIVO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
