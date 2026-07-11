@@ -1,42 +1,8 @@
 {
-  "updated": "2026-07-10",
+  "updated": "2026-07-11",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-09",
-      "to": "2026-07-10",
-      "when": {
-        "en": "Thursday 9 July → Friday 10 July",
-        "it": "Giovedì 9 luglio → Venerdì 10 luglio"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: national. Details: 23 ORE: DALLE 03.00 DEL 9/7 ALLE 02.00 DEL 10/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 23 ORE: DALLE 03.00 DEL 9/7 ALLE 02.00 DEL 10/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-07-10",
-      "to": "2026-07-10",
-      "when": {
-        "en": "Friday 10 July · all day",
-        "it": "Venerdì 10 luglio · tutto il giorno"
-      },
-      "t": {
-        "en": "General strike",
-        "it": "Sciopero generale"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERA GIORNATA - TPL: INTERO TURNO DI SERVIZIO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA - TPL: INTERO TURNO DI SERVIZIO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-15",
       "to": "2026-07-15",
