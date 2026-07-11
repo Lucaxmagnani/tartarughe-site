@@ -199,8 +199,8 @@ render(L[_sl]?_sl:'en');
 <div class="hbmenu" id="hbMenu"><div class="panel" id="hbPanel"></div></div>
 <script>
 (function(){var CUR="checkin.html";
-var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel"]};
-var P=["index.html","checkin.html","inside.html","neighbourhood.html"];
+var M={en:["🏠 Home","🔑 Self check-in","🛋️ Inside the apartment","🗺️ Neighbourhood","🎭 During your stay"],it:["🏠 Home","🔑 Self check-in","🛋️ Dentro l'appartamento","🗺️ Quartiere","🎭 Durante il soggiorno"],fr:["🏠 Accueil","🔑 Arrivée autonome","🛋️ Dans l'appartement","🗺️ Quartier","🎭 Pendant le séjour"],es:["🏠 Inicio","🔑 Check-in autónomo","🛋️ Dentro del apartamento","🗺️ Barrio","🎭 Durante la estancia"],de:["🏠 Start","🔑 Self check-in","🛋️ In der Wohnung","🗺️ Viertel","🎭 Während des Aufenthalts"]};
+var P=["index.html","checkin.html","inside.html","neighbourhood.html","stay.html"];
 function build(l){if(!M[l])l='en';document.getElementById('hbPanel').innerHTML=M[l].map(function(t,i){return '<a href="'+P[i]+'"'+(P[i]===CUR?' class="cur"':'')+'>'+t+'</a>';}).join('');}
 build(localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2));
 var lg=document.getElementById('langs'); if(lg)lg.addEventListener('click',function(e){if(e.target.dataset.l)build(e.target.dataset.l);});
@@ -209,5 +209,6 @@ document.getElementById('hbBtn').onclick=function(){menu.classList.toggle('open'
 menu.onclick=function(e){if(e.target===menu)menu.classList.remove('open');};
 })();
 </script>
+<script src="analytics.js" defer></script>
 </body>
 </html>
