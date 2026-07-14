@@ -22,15 +22,19 @@
   .langs button.active{background:var(--accent);color:#1a1a1a;border-color:var(--accent)}
   .intro{color:var(--muted);font-size:14px;margin:12px 2px 0}
   .q{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
-  .q label.lbl{display:block;font-size:15px;font-weight:600;margin-bottom:8px}
+  .q .lbl{display:block;font-size:15px;font-weight:600;margin-bottom:8px}
   .q .opt{font-size:12px;color:var(--muted);font-weight:400}
   /* star rating */
   .stars{display:inline-flex;flex-direction:row-reverse;justify-content:flex-end}
   .stars input{position:absolute;opacity:0;width:0;height:0}
   .stars label{font-size:36px;line-height:1;color:var(--star);cursor:pointer;padding:0 4px;transition:color .1s}
   .stars label:hover,.stars label:hover ~ label,.stars input:checked ~ label{color:var(--accent)}
-  .stars input:focus-visible ~ label{outline:none}
   .scalehint{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:2px;max-width:220px}
+  /* pill choices (radio / checkbox) */
+  .picks{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+  .picks label{display:inline-flex;align-items:center;gap:7px;padding:9px 13px;border:1px solid var(--line);background:#101012;border-radius:20px;font-size:13px;cursor:pointer;transition:border-color .12s,background .12s}
+  .picks input{accent-color:var(--accent);margin:0}
+  .picks label:has(input:checked){border-color:var(--accent);background:rgba(224,164,0,.14);color:#fff}
   textarea{width:100%;padding:11px;border:1px solid var(--line);background:#101012;color:var(--txt);border-radius:10px;font-size:14px;font-family:inherit;resize:vertical;min-height:84px}
   input[type=text],input[type=email]{width:100%;padding:10px;border:1px solid var(--line);background:#101012;color:var(--txt);border-radius:9px;font-size:14px;margin-top:6px}
   .btn{width:100%;margin-top:16px;padding:14px;border:none;border-radius:12px;background:var(--accent);color:#1a1a1a;font-weight:700;font-size:16px;cursor:pointer}
@@ -38,7 +42,6 @@
   .privacy{font-size:11px;color:var(--muted);margin:12px 2px 0}
   .msg{font-size:14px;margin:12px 2px 0;display:none}
   .hp{position:absolute;left:-9999px;top:-9999px}
-  /* result panels */
   .panel{display:none;text-align:center;margin-top:8px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 20px}
   .panel.show{display:block;animation:fade .25s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -68,45 +71,80 @@
 
   <p class="intro" id="intro"></p>
 
-  <!-- Netlify form (static so it is detected at build time) -->
   <form name="post-stay-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="survey" action="/">
     <input type="hidden" name="form-name" value="post-stay-survey">
     <input type="hidden" name="lang" id="f_lang" value="en">
     <p class="hp"><label>Don’t fill this out: <input name="bot-field"></label></p>
 
+    <!-- 1. overall -->
     <div class="q">
-      <label class="lbl" id="q_overall">Overall, how was your stay?</label>
-      <div class="stars" id="stars_rating">
-        <input type="radio" id="ro5" name="rating" value="5"><label for="ro5" title="5">★</label>
-        <input type="radio" id="ro4" name="rating" value="4"><label for="ro4" title="4">★</label>
-        <input type="radio" id="ro3" name="rating" value="3"><label for="ro3" title="3">★</label>
-        <input type="radio" id="ro2" name="rating" value="2"><label for="ro2" title="2">★</label>
-        <input type="radio" id="ro1" name="rating" value="1"><label for="ro1" title="1">★</label>
+      <span class="lbl" id="q_overall_t">Overall, how was your stay?</span>
+      <div class="stars">
+        <input type="radio" id="ro5" name="rating" value="5"><label for="ro5">★</label>
+        <input type="radio" id="ro4" name="rating" value="4"><label for="ro4">★</label>
+        <input type="radio" id="ro3" name="rating" value="3"><label for="ro3">★</label>
+        <input type="radio" id="ro2" name="rating" value="2"><label for="ro2">★</label>
+        <input type="radio" id="ro1" name="rating" value="1"><label for="ro1">★</label>
       </div>
       <div class="scalehint"><span id="sc_lo">Poor</span><span id="sc_hi">Excellent</span></div>
     </div>
 
+    <!-- 2. check-in overall -->
     <div class="q">
-      <label class="lbl" id="q_checkin">How easy was the self check-in? <span class="opt" id="opt1">(optional)</span></label>
-      <div class="stars" id="stars_checkin">
-        <input type="radio" id="rc5" name="checkin" value="5"><label for="rc5" title="5">★</label>
-        <input type="radio" id="rc4" name="checkin" value="4"><label for="rc4" title="4">★</label>
-        <input type="radio" id="rc3" name="checkin" value="3"><label for="rc3" title="3">★</label>
-        <input type="radio" id="rc2" name="checkin" value="2"><label for="rc2" title="2">★</label>
-        <input type="radio" id="rc1" name="checkin" value="1"><label for="rc1" title="1">★</label>
+      <span class="lbl" id="q_checkin_t">How did check-in go?</span>
+      <div class="stars">
+        <input type="radio" id="rc5" name="checkin" value="5"><label for="rc5">★</label>
+        <input type="radio" id="rc4" name="checkin" value="4"><label for="rc4">★</label>
+        <input type="radio" id="rc3" name="checkin" value="3"><label for="rc3">★</label>
+        <input type="radio" id="rc2" name="checkin" value="2"><label for="rc2">★</label>
+        <input type="radio" id="rc1" name="checkin" value="1"><label for="rc1">★</label>
       </div>
-      <div class="scalehint"><span id="sc_lo2">Hard</span><span id="sc_hi2">Very easy</span></div>
+      <div class="scalehint"><span id="sc_lo_c">Poor</span><span id="sc_hi_c">Excellent</span></div>
     </div>
 
+    <!-- 3. self check-in ease -->
     <div class="q">
-      <label class="lbl" for="comment" id="q_comment">Anything you'd like to tell us? <span class="opt" id="opt2">(optional)</span></label>
+      <span class="lbl" id="q_self_t">Did you do the self check-in yourself?</span>
+      <div class="picks">
+        <label><input type="radio" name="selfcheckin" value="very-easy"><span id="sf1t">Very easy</span></label>
+        <label><input type="radio" name="selfcheckin" value="fairly-easy"><span id="sf2t">Fairly easy</span></label>
+        <label><input type="radio" name="selfcheckin" value="hard"><span id="sf3t">It was tricky</span></label>
+        <label><input type="radio" name="selfcheckin" value="not-done"><span id="sf4t">I didn't self check-in</span></label>
+      </div>
+    </div>
+
+    <!-- 4. online guide -->
+    <div class="q">
+      <span class="lbl" id="q_site_t">How useful was the online guide?</span>
+      <div class="stars">
+        <input type="radio" id="rs5" name="site_useful" value="5"><label for="rs5">★</label>
+        <input type="radio" id="rs4" name="site_useful" value="4"><label for="rs4">★</label>
+        <input type="radio" id="rs3" name="site_useful" value="3"><label for="rs3">★</label>
+        <input type="radio" id="rs2" name="site_useful" value="2"><label for="rs2">★</label>
+        <input type="radio" id="rs1" name="site_useful" value="1"><label for="rs1">★</label>
+      </div>
+      <div class="scalehint"><span id="sc_lo_s">Not at all</span><span id="sc_hi_s">Very</span></div>
+      <span class="lbl" id="q_sections_t" style="margin-top:14px">Which sections did you use?</span>
+      <div class="picks">
+        <label><input type="checkbox" name="sections" value="check-in"><span id="sc1t">Self check-in</span></label>
+        <label><input type="checkbox" name="sections" value="apartment"><span id="sc2t">Inside the apartment</span></label>
+        <label><input type="checkbox" name="sections" value="neighbourhood"><span id="sc3t">Neighbourhood</span></label>
+        <label><input type="checkbox" name="sections" value="during-stay"><span id="sc4t">During your stay</span></label>
+        <label><input type="checkbox" name="sections" value="not-used"><span id="sc5t">I didn't use it</span></label>
+      </div>
+    </div>
+
+    <!-- 5. improve (last question) -->
+    <div class="q">
+      <label class="lbl" for="comment"><span id="q_improve_t">Anything we could improve?</span> <span class="opt" id="opt_c">(optional)</span></label>
       <textarea id="comment" name="comment" maxlength="1500"></textarea>
     </div>
 
+    <!-- contact -->
     <div class="q">
-      <label class="lbl" for="name" id="q_name">Your name <span class="opt" id="opt3">(optional)</span></label>
+      <label class="lbl" for="name"><span id="q_name_t">Your name</span> <span class="opt" id="opt_n">(optional)</span></label>
       <input type="text" id="name" name="name" autocomplete="name" maxlength="80">
-      <label class="lbl" for="email" id="q_email" style="margin-top:12px">Email <span class="opt" id="opt4">(optional — only if you'd like a reply)</span></label>
+      <label class="lbl" for="email" style="margin-top:12px"><span id="q_email_t">Email</span> <span class="opt" id="opt_e">(optional — only if you'd like a reply)</span></label>
       <input type="email" id="email" name="email" autocomplete="email" maxlength="120">
     </div>
 
@@ -115,7 +153,6 @@
     <p class="msg" id="msg"></p>
   </form>
 
-  <!-- positive result -->
   <div class="panel" id="panel_pos">
     <p class="big">🐢</p>
     <h2 id="pos_h">Thank you so much!</h2>
@@ -124,7 +161,6 @@
     <p class="cta-hint" id="pos_hint"></p>
   </div>
 
-  <!-- recovery result -->
   <div class="panel" id="panel_neg">
     <p class="big">🙏</p>
     <h2 id="neg_h">Thank you for your honesty</h2>
@@ -140,22 +176,25 @@
 
 <script>
 /* ============ CONFIG ============ */
-// Airbnb listing (confirm/replace with your exact review link if you have one).
-// Guests write reviews from "Trips" in the Airbnb app after check-out.
 var AIRBNB_REVIEW_URL = "https://www.airbnb.com/rooms/1251290115864398837";
 var WA_NUMBER = "393296415323";
 /* ================================ */
 
 const T={
  en:{pt:"HOW WAS YOUR STAY?",ps:"A quick word before you go",back:"‹ Home",
-   intro:"Thanks for staying at Le Tartarughe 🐢 Your feedback is private and takes under a minute — it helps us make the next stay even better.",
+   intro:"Thanks for staying at Le Tartarughe 🐢 Your feedback is private and takes about a minute — it helps us make the next stay even better.",
    q_overall:"Overall, how was your stay?",sc_lo:"Poor",sc_hi:"Excellent",
-   q_checkin:"How easy was the self check-in?",opt:"(optional)",sc_lo2:"Hard",sc_hi2:"Very easy",
-   q_comment:"Anything you'd like to tell us?",
-   q_name:"Your name",q_email:"Email",opt_email:"(optional — only if you'd like a reply)",
+   q_checkin:"How did check-in go?",sc_lo_c:"Poor",sc_hi_c:"Excellent",
+   q_self:"If you did the self check-in yourself, how did it go?",
+   self_veryeasy:"Very easy",self_easy:"Fairly easy",self_hard:"It was tricky",self_notdone:"I didn't self check-in",
+   q_site:"How useful was the online guide?",sc_lo_s:"Not at all",sc_hi_s:"Very",
+   q_sections:"Which sections did you use?",
+   sec_checkin:"Self check-in",sec_apartment:"Inside the apartment",sec_neigh:"Neighbourhood",sec_during:"During your stay",sec_none:"I didn't use it",
+   q_improve:"Anything we could improve?",
+   q_name:"Your name",q_email:"Email",opt:"(optional)",opt_email:"(optional — only if you'd like a reply)",
    s_btn:"Send feedback",sending:"Sending…",
    privacy:"Your feedback goes only to your host. Email and name are optional and used solely to reply to you — never shared, handled per GDPR.",
-   need_rating:"Please tap a star rating first.",
+   need_rating:"Please tap a star rating for your overall stay first.",
    send_err:"Couldn't send just now — please try again, or message us on WhatsApp.",
    pos_h:"Thank you so much! 🐢",
    pos_p:"We're so glad you enjoyed Le Tartarughe. A public review on Airbnb helps other travellers find us — it takes a minute and means the world to a small host.",
@@ -168,14 +207,19 @@ const T={
    wa:"Message the host on WhatsApp",
    wa_recover:"Hi! I just left feedback about my stay at Le Tartarughe and I'd like to share something."},
  it:{pt:"COM'È ANDATO IL SOGGIORNO?",ps:"Due parole prima di partire",back:"‹ Home",
-   intro:"Grazie per aver soggiornato a Le Tartarughe 🐢 Il tuo parere è privato e richiede meno di un minuto — ci aiuta a rendere ancora migliore il prossimo soggiorno.",
+   intro:"Grazie per aver soggiornato a Le Tartarughe 🐢 Il tuo parere è privato e richiede circa un minuto — ci aiuta a rendere ancora migliore il prossimo soggiorno.",
    q_overall:"In generale, com'è andato il soggiorno?",sc_lo:"Scarso",sc_hi:"Ottimo",
-   q_checkin:"Quanto è stato facile il self check-in?",opt:"(facoltativo)",sc_lo2:"Difficile",sc_hi2:"Facilissimo",
-   q_comment:"Vuoi dirci qualcosa?",
-   q_name:"Il tuo nome",q_email:"Email",opt_email:"(facoltativa — solo se vuoi una risposta)",
+   q_checkin:"Com'è andato il check-in?",sc_lo_c:"Scarso",sc_hi_c:"Ottimo",
+   q_self:"Se hai fatto il self check-in da solo, com'è andato?",
+   self_veryeasy:"Facilissimo",self_easy:"Abbastanza facile",self_hard:"È stato difficile",self_notdone:"Non ho fatto il self check-in",
+   q_site:"Quanto ti è stata utile la guida online?",sc_lo_s:"Per niente",sc_hi_s:"Moltissimo",
+   q_sections:"Quali sezioni hai usato?",
+   sec_checkin:"Self check-in",sec_apartment:"Dentro l'appartamento",sec_neigh:"Quartiere",sec_during:"Durante il soggiorno",sec_none:"Non l'ho usata",
+   q_improve:"C'è qualcosa che possiamo migliorare?",
+   q_name:"Il tuo nome",q_email:"Email",opt:"(facoltativo)",opt_email:"(facoltativa — solo se vuoi una risposta)",
    s_btn:"Invia il tuo parere",sending:"Invio…",
    privacy:"Il tuo parere arriva solo al tuo host. Email e nome sono facoltativi e servono solo a risponderti — mai condivisi, trattati nel rispetto del GDPR.",
-   need_rating:"Tocca prima una valutazione a stelle.",
+   need_rating:"Prima tocca una valutazione a stelle per il soggiorno.",
    send_err:"Non è stato possibile inviare ora — riprova, oppure scrivici su WhatsApp.",
    pos_h:"Grazie di cuore! 🐢",
    pos_p:"Siamo felicissimi che ti sia trovato bene a Le Tartarughe. Una recensione pubblica su Airbnb aiuta altri viaggiatori a trovarci — richiede un minuto e per un piccolo host vale tantissimo.",
@@ -188,26 +232,26 @@ const T={
    wa:"Scrivi all'host su WhatsApp",
    wa_recover:"Ciao! Ho appena lasciato un parere sul mio soggiorno a Le Tartarughe e vorrei segnalarti una cosa."}
 };
-T.fr=T.en;T.es=T.en;T.de=T.en; // fallback (same as the rest of the site)
+T.fr=T.en;T.es=T.en;T.de=T.en;
 
 const $=id=>document.getElementById(id);
 function cur(){const s=localStorage.getItem('lt_lang')||(navigator.language||'en').slice(0,2);return T[s]?s:'en';}
 
+const MAP={pt:'pt',ps:'ps',back:'back',intro:'intro',
+ q_overall_t:'q_overall',sc_lo:'sc_lo',sc_hi:'sc_hi',
+ q_checkin_t:'q_checkin',sc_lo_c:'sc_lo_c',sc_hi_c:'sc_hi_c',
+ q_self_t:'q_self',sf1t:'self_veryeasy',sf2t:'self_easy',sf3t:'self_hard',sf4t:'self_notdone',
+ q_site_t:'q_site',sc_lo_s:'sc_lo_s',sc_hi_s:'sc_hi_s',
+ q_sections_t:'q_sections',sc1t:'sec_checkin',sc2t:'sec_apartment',sc3t:'sec_neigh',sc4t:'sec_during',sc5t:'sec_none',
+ q_improve_t:'q_improve',opt_c:'opt',
+ q_name_t:'q_name',opt_n:'opt',q_email_t:'q_email',opt_e:'opt_email',
+ s_btn:'s_btn',privacy:'privacy',
+ pos_h:'pos_h',pos_p:'pos_p',pos_btn:'pos_btn',pos_hint:'pos_hint',
+ neg_h:'neg_h',neg_p:'neg_p',neg_btn:'neg_btn',neg_hint:'neg_hint',wa_txt:'wa'};
+
 function render(l){
  const d=T[l];
- $('pt').textContent=d.pt; $('ps').textContent=d.ps; $('back').textContent=d.back;
- $('intro').textContent=d.intro;
- $('q_overall').textContent=d.q_overall; $('sc_lo').textContent=d.sc_lo; $('sc_hi').textContent=d.sc_hi;
- $('q_checkin').firstChild.textContent=d.q_checkin+' '; $('opt1').textContent=d.opt;
- $('sc_lo2').textContent=d.sc_lo2; $('sc_hi2').textContent=d.sc_hi2;
- $('q_comment').firstChild.textContent=d.q_comment+' '; $('opt2').textContent=d.opt;
- $('q_name').firstChild.textContent=d.q_name+' '; $('opt3').textContent=d.opt;
- $('q_email').firstChild.textContent=d.q_email+' '; $('opt4').textContent=d.opt_email;
- $('s_btn').textContent=d.s_btn;
- $('privacy').textContent=d.privacy;
- $('pos_h').textContent=d.pos_h; $('pos_p').textContent=d.pos_p; $('pos_btn').textContent=d.pos_btn; $('pos_hint').textContent=d.pos_hint;
- $('neg_h').textContent=d.neg_h; $('neg_p').textContent=d.neg_p; $('neg_btn').textContent=d.neg_btn; $('neg_hint').textContent=d.neg_hint;
- $('wa_txt').textContent=d.wa;
+ for(const id in MAP){const el=$(id);if(el)el.textContent=d[MAP[id]];}
  $('f_lang').value=l;
  document.documentElement.lang=l;
  document.querySelectorAll('#langs button').forEach(b=>b.classList.toggle('active',b.dataset.l===l));
@@ -215,8 +259,8 @@ function render(l){
 $('langs').addEventListener('click',e=>{if(e.target.dataset.l){localStorage.setItem('lt_lang',e.target.dataset.l);render(e.target.dataset.l);}});
 
 function gc(name){try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:name,event:true});}catch(e){}}
-
-function encode(data){return Object.keys(data).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(data[k])).join('&');}
+function encode(o){return Object.keys(o).map(k=>encodeURIComponent(k)+'='+encodeURIComponent(o[k])).join('&');}
+function val(name){const el=document.querySelector('input[name="'+name+'"]:checked');return el?el.value:'';}
 
 $('survey').addEventListener('submit',function(e){
  e.preventDefault();
@@ -224,30 +268,33 @@ $('survey').addEventListener('submit',function(e){
  const rEl=document.querySelector('input[name=rating]:checked');
  if(!rEl){msg(d.need_rating,false);return;}
  const rating=parseInt(rEl.value,10);
- const cEl=document.querySelector('input[name=checkin]:checked');
- const btn=$('s_btn'); btn.disabled=true; const orig=btn.textContent; btn.textContent=d.sending; hideMsg();
+ const secs=[].slice.call(document.querySelectorAll('input[name=sections]:checked')).map(x=>x.value).join(', ');
+ const btn=$('s_btn');btn.disabled=true;const orig=btn.textContent;btn.textContent=d.sending;hideMsg();
 
  const body={
    'form-name':'post-stay-survey',
    'lang':cur(),
    'rating':String(rating),
-   'checkin':cEl?cEl.value:'',
+   'checkin':val('checkin'),
+   'selfcheckin':val('selfcheckin'),
+   'site_useful':val('site_useful'),
+   'sections':secs,
    'comment':$('comment').value.trim(),
    'name':$('name').value.trim(),
    'email':$('email').value.trim()
  };
- gc('survey-submit'); gc('survey-rating-'+rating);
+ gc('survey-submit');gc('survey-rating-'+rating);
 
  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:encode(body)})
-  .then(function(r){ if(!r.ok) throw new Error('http'); finish(rating); })
-  .catch(function(){ btn.disabled=false; btn.textContent=orig; msg(d.send_err,false); });
+  .then(function(r){if(!r.ok)throw new Error('http');finish(rating);})
+  .catch(function(){btn.disabled=false;btn.textContent=orig;msg(d.send_err,false);});
 });
 
 function finish(rating){
  const d=T[cur()];
  $('survey').style.display='none';
  if(rating>=5){
-   const a=$('pos_btn'); a.href=AIRBNB_REVIEW_URL;
+   const a=$('pos_btn');a.href=AIRBNB_REVIEW_URL;
    a.addEventListener('click',function(){gc('survey-review-click');});
    $('panel_pos').classList.add('show');
    $('panel_pos').scrollIntoView({behavior:'smooth',block:'center'});
