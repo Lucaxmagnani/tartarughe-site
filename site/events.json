@@ -1,25 +1,8 @@
 {
-  "updated": "2026-07-11",
+  "updated": "2026-07-16",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-15",
-      "to": "2026-07-15",
-      "when": {
-        "en": "Wednesday 15 July · all day",
-        "it": "Mercoledì 15 luglio · tutto il giorno"
-      },
-      "t": {
-        "en": "Rail services strike",
-        "it": "Sciopero appalti ferroviari"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERO TURNO PER OGNI TURNO LAVORATIVO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERO TURNO PER OGNI TURNO LAVORATIVO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-20",
       "to": "2026-07-20",
