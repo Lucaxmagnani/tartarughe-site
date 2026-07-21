@@ -1,25 +1,8 @@
 {
-  "updated": "2026-07-16",
+  "updated": "2026-07-21",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-20",
-      "to": "2026-07-20",
-      "when": {
-        "en": "Monday 20 July · all day",
-        "it": "Lunedì 20 luglio · tutto il giorno"
-      },
-      "t": {
-        "en": "Local public transport strike",
-        "it": "Sciopero trasporto pubblico locale"
-      },
-      "p": {
-        "en": "Scope: Rome/Lazio. Details: 24 ORE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: Roma/Lazio. Modalità: 24 ORE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-21",
       "to": "2026-07-21",
