@@ -1,25 +1,8 @@
 {
-  "updated": "2026-07-22",
+  "updated": "2026-07-24",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-07-22",
-      "to": "2026-07-23",
-      "when": {
-        "en": "Wednesday 22 July → Thursday 23 July",
-        "it": "Mercoledì 22 luglio → Giovedì 23 luglio"
-      },
-      "t": {
-        "en": "Ferry/maritime strike",
-        "it": "Sciopero marittimo"
-      },
-      "p": {
-        "en": "Scope: national. Details: 24 ORE: DALLE 12.00 DEL 22/7 ALLE 11.59 DEL 23/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 12.00 DEL 22/7 ALLE 11.59 DEL 23/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-07-23",
       "to": "2026-07-24",
