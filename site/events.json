@@ -1,26 +1,8 @@
 {
-  "updated": "2026-07-24",
+  "updated": "2026-07-25",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
-  "alerts": [
-    {
-      "from": "2026-07-23",
-      "to": "2026-07-24",
-      "when": {
-        "en": "Thursday 23 July → Friday 24 July",
-        "it": "Giovedì 23 luglio → Venerdì 24 luglio"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: national. Details: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.00 DEL 23/7 ALLE 20.59 DEL 24/7; *TPL: INTERA PRESTAZIONE DEL 24/7. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.00 DEL 23/7 ALLE 20.59 DEL 24/7; *TPL: INTERA PRESTAZIONE DEL 24/7. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    }
-  ],
+  "alerts": [],
   "free": [],
   "events": [
     {
