@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-25",
+  "updated": "2026-07-27",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [],
@@ -42,25 +42,6 @@
       },
       "dist": "≈ 1.3 km · 17 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Circo+Massimo+Roma&travelmode=walking"
-    },
-    {
-      "from": "2026-07-01",
-      "to": "2026-07-26",
-      "when": {
-        "en": "Until 26 July",
-        "it": "Fino al 26 luglio"
-      },
-      "cat": "exhibition",
-      "t": {
-        "en": "Umberto Eco exhibition — Palazzo Firenze",
-        "it": "Mostra Umberto Eco — Palazzo Firenze"
-      },
-      "p": {
-        "en": "Tribute for the 10th anniversary of his death, with original artwork by Milo Manara and sets by Dante Ferretti.",
-        "it": "Omaggio nel decennale della scomparsa, con tavole originali di Milo Manara e scenografie di Dante Ferretti."
-      },
-      "dist": "≈ 1.1 km · 14 min walk",
-      "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Palazzo+Firenze+Roma&travelmode=walking"
     },
     {
       "from": "2026-07-03",
