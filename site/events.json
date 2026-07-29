@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-27",
+  "updated": "2026-07-29",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [],
@@ -23,25 +23,6 @@
       },
       "dist": "≈ 300 m · 4 min walk",
       "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Isola+Tiberina+Roma&travelmode=walking"
-    },
-    {
-      "from": "2026-07-03",
-      "to": "2026-07-28",
-      "when": {
-        "en": "3–4 July (film) · 12–28 July (Aida)",
-        "it": "3–4 luglio (film) · 12–28 luglio (Aida)"
-      },
-      "cat": "music",
-      "t": {
-        "en": "Opera under the stars at Circo Massimo",
-        "it": "Opera sotto le stelle al Circo Massimo"
-      },
-      "p": {
-        "en": "Teatro dell'Opera summer season: “The Gladiator” screened with live orchestra (3–4 July), then Verdi's Aida (6 dates).",
-        "it": "Stagione estiva del Teatro dell'Opera: “Il Gladiatore” con orchestra dal vivo (3–4 luglio), poi l'Aida di Verdi (6 recite)."
-      },
-      "dist": "≈ 1.3 km · 17 min walk",
-      "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Circo+Massimo+Roma&travelmode=walking"
     },
     {
       "from": "2026-07-03",
