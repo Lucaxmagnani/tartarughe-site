@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-13",
+  "updated": "2026-08-14",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -34,6 +34,40 @@
       "p": {
         "en": "Scope: national. Details: 24 ORE: DALLE 21.18 DEL 7/9 ALLE 21.17 DELL' 8/9. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 21.18 DEL 7/9 ALLE 21.17 DELL' 8/9. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-11",
+      "to": "2026-09-11",
+      "when": {
+        "en": "Friday 11 September · 00:00–04:00",
+        "it": "Venerdì 11 settembre · 00:00–04:00"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 4 ORE: DALLE 00.00 ALLE 04.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 4 ORE: DALLE 00.00 ALLE 04.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-13",
+      "to": "2026-09-13",
+      "when": {
+        "en": "Sunday 13 September · 00:00–24:00",
+        "it": "Domenica 13 settembre · 00:00–24:00"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 24 ORE: DALLE 00.00 ALLE 24.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.00 ALLE 24.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
