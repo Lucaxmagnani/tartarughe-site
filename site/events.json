@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-14",
+  "updated": "2026-08-16",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -68,6 +68,23 @@
       "p": {
         "en": "Scope: national. Details: 24 ORE: DALLE 00.00 ALLE 24.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: 24 ORE: DALLE 00.00 ALLE 24.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-15",
+      "to": "2026-09-15",
+      "when": {
+        "en": "Tuesday 15 September · 08:30–12:00",
+        "it": "Martedì 15 settembre · 08:30–12:00"
+      },
+      "t": {
+        "en": "Local public transport strike",
+        "it": "Sciopero trasporto pubblico locale"
+      },
+      "p": {
+        "en": "Scope: Rome/Lazio. Details: 3 ORE 30': DALLE 08.30 ALLE 12.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 3 ORE 30': DALLE 08.30 ALLE 12.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
