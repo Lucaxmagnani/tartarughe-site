@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-22",
+  "updated": "2026-08-27",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -102,6 +102,23 @@
       "p": {
         "en": "Scope: Rome/Lazio. Details: 8 ORE: DALLE 09.01 ALLE 17.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: Roma/Lazio. Modalità: 8 ORE: DALLE 09.01 ALLE 17.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-26",
+      "to": "2026-09-26",
+      "when": {
+        "en": "Saturday 26 September · all day",
+        "it": "Sabato 26 settembre · tutto il giorno"
+      },
+      "t": {
+        "en": "Ferry/maritime strike",
+        "it": "Sciopero marittimo"
+      },
+      "p": {
+        "en": "Scope: national. Details: FINO A 24 ORE - SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: FINO A 24 ORE - SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
