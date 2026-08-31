@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-28",
+  "updated": "2026-08-31",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -136,6 +136,23 @@
       "p": {
         "en": "Scope: national. Details: FINO A 24 ORE - SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: FINO A 24 ORE - SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-30",
+      "to": "2026-09-30",
+      "when": {
+        "en": "Wednesday 30 September · 13:00–17:00",
+        "it": "Mercoledì 30 settembre · 13:00–17:00"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 4 ORE: DALLE 13.00 ALLE 17.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 4 ORE: DALLE 13.00 ALLE 17.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
