@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04",
+  "updated": "2026-09-07",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -142,25 +142,6 @@
   ],
   "free": [],
   "events": [
-    {
-      "from": "2026-06-29",
-      "to": "2026-09-06",
-      "when": {
-        "en": "Every evening, all summer",
-        "it": "Ogni sera, tutta l'estate"
-      },
-      "cat": "festival",
-      "t": {
-        "en": "Lungo il Tevere… Roma — riverside festival",
-        "it": "Lungo il Tevere… Roma — festival sulle banchine"
-      },
-      "p": {
-        "en": "Stalls, live music, food and cinema on the Tiber banks by Isola Tiberina.",
-        "it": "Mercatini, musica live, food e cinema sulle banchine del Tevere all'Isola Tiberina."
-      },
-      "dist": "≈ 300 m · 4 min walk",
-      "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Isola+Tiberina+Roma&travelmode=walking"
-    },
     {
       "from": "2026-07-03",
       "to": "2026-11-15",
