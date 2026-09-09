@@ -1,42 +1,8 @@
 {
-  "updated": "2026-09-07",
+  "updated": "2026-09-09",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-09-07",
-      "to": "2026-09-08",
-      "when": {
-        "en": "Monday 7 September → Tuesday 8 September",
-        "it": "Lunedì 7 settembre → Martedì 8 settembre"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: national. Details: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.18 DEL 7/9 ALLE 21.00 DELL'8/9; *TPL( SOLO PERSONALE FERROVIARIO ): INTERA GIORNATA SOLARE DELL'8/9. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 24 ORE: DALLE 21.18 DEL 7/9 ALLE 21.00 DELL'8/9; *TPL( SOLO PERSONALE FERROVIARIO ): INTERA GIORNATA SOLARE DELL'8/9. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-09-08",
-      "to": "2026-09-08",
-      "when": {
-        "en": "Tuesday 8 September · 09:00–16:59",
-        "it": "Martedì 8 settembre · 09:00–16:59"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: national. Details: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA: 8 ORE: DALLE 09.00 ALLE 16.59 - *TPL( SOLO PERSONALE FERROVIARIO ): FINO A 4 ORE NELLA FASCIA 09.00-13.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA: 8 ORE: DALLE 09.00 ALLE 16.59 - *TPL( SOLO PERSONALE FERROVIARIO ): FINO A 4 ORE NELLA FASCIA 09.00-13.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-09-11",
       "to": "2026-09-11",
@@ -85,6 +51,23 @@
       "p": {
         "en": "Scope: Rome/Lazio. Details: 3 ORE 30': DALLE 08.30 ALLE 12.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: Roma/Lazio. Modalità: 3 ORE 30': DALLE 08.30 ALLE 12.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-09-18",
+      "to": "2026-09-18",
+      "when": {
+        "en": "Friday 18 September · 8:30–12:30",
+        "it": "Venerdì 18 settembre · 8:30–12:30"
+      },
+      "t": {
+        "en": "Local public transport strike",
+        "it": "Sciopero trasporto pubblico locale"
+      },
+      "p": {
+        "en": "Scope: Rome/Lazio. Details: 4 ORE: DALLE 8.30 ALLE 12.30. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 4 ORE: DALLE 8.30 ALLE 12.30. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
