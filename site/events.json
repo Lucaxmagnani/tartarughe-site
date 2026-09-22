@@ -1,42 +1,8 @@
 {
-  "updated": "2026-09-16",
+  "updated": "2026-09-22",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-09-21",
-      "to": "2026-09-21",
-      "when": {
-        "en": "Monday 21 September · 09:01–17:00",
-        "it": "Lunedì 21 settembre · 09:01–17:00"
-      },
-      "t": {
-        "en": "Rail strike",
-        "it": "Sciopero ferroviario"
-      },
-      "p": {
-        "en": "Scope: Rome/Lazio. Details: 8 ORE: DALLE 09.01 ALLE 17.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: Roma/Lazio. Modalità: 8 ORE: DALLE 09.01 ALLE 17.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-09-21",
-      "to": "2026-09-21",
-      "when": {
-        "en": "Monday 21 September · 8:30–12:30",
-        "it": "Lunedì 21 settembre · 8:30–12:30"
-      },
-      "t": {
-        "en": "Local public transport strike",
-        "it": "Sciopero trasporto pubblico locale"
-      },
-      "p": {
-        "en": "Scope: Rome/Lazio. Details: 4 ORE: DALLE 8.30 ALLE 12.30. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: Roma/Lazio. Modalità: 4 ORE: DALLE 8.30 ALLE 12.30. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-09-28",
       "to": "2026-09-28",
