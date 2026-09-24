@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-23",
+  "updated": "2026-09-24",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -51,23 +51,6 @@
       "p": {
         "en": "Scope: national. Details: FINO A 24 ORE: SETTORE FERROVIARIO 3 ORE: DALLE 11.00 ALLE 14.00; SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: FINO A 24 ORE: SETTORE FERROVIARIO 3 ORE: DALLE 11.00 ALLE 14.00; SETTORE MARITTIMO: MODALITA' NON SPECIFICATE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-10-14",
-      "to": "2026-10-14",
-      "when": {
-        "en": "Wednesday 14 October · all day",
-        "it": "Mercoledì 14 ottobre · tutto il giorno"
-      },
-      "t": {
-        "en": "General strike",
-        "it": "Sciopero generale"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERA GIORNATA DI LAVORO - TPL: 4 ORE VARIE MODALITA'. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA DI LAVORO - TPL: 4 ORE VARIE MODALITA'. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
