@@ -1,8 +1,25 @@
 {
-  "updated": "2026-10-03",
+  "updated": "2026-10-07",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
+    {
+      "from": "2026-10-09",
+      "to": "2026-10-09",
+      "when": {
+        "en": "Friday 9 October · all day",
+        "it": "Venerdì 9 ottobre · tutto il giorno"
+      },
+      "t": {
+        "en": "Local public transport strike",
+        "it": "Sciopero trasporto pubblico locale"
+      },
+      "p": {
+        "en": "Scope: Rome/Lazio. Details: 24 ORE: VARIE MODALITA'. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 24 ORE: VARIE MODALITA'. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
     {
       "from": "2026-10-16",
       "to": "2026-10-16",
@@ -51,6 +68,23 @@
       "p": {
         "en": "Scope: national. Details: INTERA GIORNATA. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-10-30",
+      "to": "2026-10-30",
+      "when": {
+        "en": "Friday 30 October · all day",
+        "it": "Venerdì 30 ottobre · tutto il giorno"
+      },
+      "t": {
+        "en": "Rail strike",
+        "it": "Sciopero ferroviario"
+      },
+      "p": {
+        "en": "Scope: national. Details: INTERA GIORNATA - FERROVIARIO: DALLE 21.00 DEL 29/10 ALLE 20.59 DEL 30/10; AUTOSTRADE:  DALLE 22.00 DEL 29/10. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA - FERROVIARIO: DALLE 21.00 DEL 29/10 ALLE 20.59 DEL 30/10; AUTOSTRADE:  DALLE 22.00 DEL 29/10. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
