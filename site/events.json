@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-07",
+  "updated": "2026-10-09",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -38,19 +38,36 @@
       "source": "MIT osservatorio scioperi"
     },
     {
-      "from": "2026-10-29",
+      "from": "2026-10-19",
+      "to": "2026-10-19",
+      "when": {
+        "en": "Monday 19 October · 08:30–12:30",
+        "it": "Lunedì 19 ottobre · 08:30–12:30"
+      },
+      "t": {
+        "en": "Local public transport strike",
+        "it": "Sciopero trasporto pubblico locale"
+      },
+      "p": {
+        "en": "Scope: Rome/Lazio. Details: 4 ORE: DALLE 08.30 ALLE 12.30. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 4 ORE: DALLE 08.30 ALLE 12.30. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-10-28",
       "to": "2026-10-29",
       "when": {
-        "en": "Thursday 29 October · 00:00–23:59",
-        "it": "Giovedì 29 ottobre · 00:00–23:59"
+        "en": "Wednesday 28 October → Thursday 29 October",
+        "it": "Mercoledì 28 ottobre → Giovedì 29 ottobre"
       },
       "t": {
         "en": "Rail strike",
         "it": "Sciopero ferroviario"
       },
       "p": {
-        "en": "Scope: Rome/Lazio. Details: 24 ORE: DALLE 00.00 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: Roma/Lazio. Modalità: 24 ORE: DALLE 00.00 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+        "en": "Scope: Rome/Lazio. Details: 24 ORE: DALLE 21.00 DEL 28/10 ALLE 21.00 DEL 29/10. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: Roma/Lazio. Modalità: 24 ORE: DALLE 21.00 DEL 28/10 ALLE 21.00 DEL 29/10. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     },
