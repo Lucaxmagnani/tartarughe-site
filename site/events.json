@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -68,6 +68,57 @@
       "p": {
         "en": "Scope: national. Details: 24 ORE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: 24 ORE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-10-30",
+      "to": "2026-10-30",
+      "when": {
+        "en": "Friday 30 October · 00:01–23:59",
+        "it": "Venerdì 30 ottobre · 00:01–23:59"
+      },
+      "t": {
+        "en": "General strike",
+        "it": "Sciopero generale"
+      },
+      "p": {
+        "en": "Scope: national. Details: INTERA GIORNATA DALLE 00.01 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA DALLE 00.01 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-11-20",
+      "to": "2026-11-21",
+      "when": {
+        "en": "Friday 20 November → Saturday 21 November",
+        "it": "Venerdì 20 novembre → Sabato 21 novembre"
+      },
+      "t": {
+        "en": "Rail strike",
+        "it": "Sciopero ferroviario"
+      },
+      "p": {
+        "en": "Scope: national. Details: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 23 ORE: DALLE 21.00 DEL 20/11 ALLE 20.00 DEL 21/11; *TPL: INTERA PRESTAZIONE DEL 21/11. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: SETTORE FERROVIARIO, TRASPORTO MERCI SU ROTAIA 23 ORE: DALLE 21.00 DEL 20/11 ALLE 20.00 DEL 21/11; *TPL: INTERA PRESTAZIONE DEL 21/11. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-11-20",
+      "to": "2026-11-20",
+      "when": {
+        "en": "Friday 20 November · all day",
+        "it": "Venerdì 20 novembre · tutto il giorno"
+      },
+      "t": {
+        "en": "General strike",
+        "it": "Sciopero generale"
+      },
+      "p": {
+        "en": "Scope: national. Details: INTERA GIORNATA DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
