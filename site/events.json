@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-21",
+  "updated": "2026-10-22",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -119,6 +119,23 @@
       "p": {
         "en": "Scope: national. Details: INTERA GIORNATA DI LAVORO. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
         "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA DI LAVORO. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
+      },
+      "source": "MIT osservatorio scioperi"
+    },
+    {
+      "from": "2026-11-21",
+      "to": "2026-11-21",
+      "when": {
+        "en": "Saturday 21 November · 13:00–17:00",
+        "it": "Sabato 21 novembre · 13:00–17:00"
+      },
+      "t": {
+        "en": "Air transport strike",
+        "it": "Sciopero trasporto aereo"
+      },
+      "p": {
+        "en": "Scope: national. Details: 4 ORE: DALLE 13.00 ALLE 17.00. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
+        "it": "Rilevanza: nazionale. Modalità: 4 ORE: DALLE 13.00 ALLE 17.00. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
       },
       "source": "MIT osservatorio scioperi"
     }
