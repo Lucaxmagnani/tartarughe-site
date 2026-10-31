@@ -1,76 +1,8 @@
 {
-  "updated": "2026-10-30",
+  "updated": "2026-10-31",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
-    {
-      "from": "2026-10-30",
-      "to": "2026-10-30",
-      "when": {
-        "en": "Friday 30 October · all day",
-        "it": "Venerdì 30 ottobre · tutto il giorno"
-      },
-      "t": {
-        "en": "Multi-sector transport strike",
-        "it": "Sciopero plurisettoriale trasporti"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERA GIORNATA. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-10-30",
-      "to": "2026-10-30",
-      "when": {
-        "en": "Friday 30 October · 00:00–23:59",
-        "it": "Venerdì 30 ottobre · 00:00–23:59"
-      },
-      "t": {
-        "en": "Air transport strike",
-        "it": "Sciopero trasporto aereo"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERA GIORNATA - AEREO: DALLE 00.00 ALLE 23.59; FERROVIARIO: DALLE 21.00 DEL 29/10 ALLE 20.59 DEL 30/10; TPL: DURATA E MODALITA' STABILITE A LIVELLO TERRITORIALE; AUTOSTRADE: DALLE 22.00 DEL 29/10: TAXI: DALLE 00.01 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA - AEREO: DALLE 00.00 ALLE 23.59; FERROVIARIO: DALLE 21.00 DEL 29/10 ALLE 20.59 DEL 30/10; TPL: DURATA E MODALITA' STABILITE A LIVELLO TERRITORIALE; AUTOSTRADE: DALLE 22.00 DEL 29/10: TAXI: DALLE 00.01 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-10-30",
-      "to": "2026-10-30",
-      "when": {
-        "en": "Friday 30 October · all day",
-        "it": "Venerdì 30 ottobre · tutto il giorno"
-      },
-      "t": {
-        "en": "Ferry/maritime strike",
-        "it": "Sciopero marittimo"
-      },
-      "p": {
-        "en": "Scope: national. Details: 24 ORE. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: 24 ORE. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
-    {
-      "from": "2026-10-30",
-      "to": "2026-10-30",
-      "when": {
-        "en": "Friday 30 October · 00:01–23:59",
-        "it": "Venerdì 30 ottobre · 00:01–23:59"
-      },
-      "t": {
-        "en": "General strike",
-        "it": "Sciopero generale"
-      },
-      "p": {
-        "en": "Scope: national. Details: INTERA GIORNATA DALLE 00.01 ALLE 23.59. Guaranteed-service windows usually apply (~5:30–8:30 and 17:00–20:00 for local transport). Check before travelling.",
-        "it": "Rilevanza: nazionale. Modalità: INTERA GIORNATA DALLE 00.01 ALLE 23.59. Di norma valgono le fasce di garanzia (~5:30–8:30 e 17:00–20:00 per il TPL). Verifica prima di partire."
-      },
-      "source": "MIT osservatorio scioperi"
-    },
     {
       "from": "2026-11-20",
       "to": "2026-11-21",
