@@ -158,6 +158,13 @@ nav.tabs a[aria-current="page"]{color:var(--accent)}
 .ck{display:flex;gap:9px;align-items:flex-start;font-size:14.5px}
 .ck input{margin-top:4px;width:17px;height:17px;flex:none}
 .card.out{border-color:var(--mark);border-left-width:5px;display:flex;flex-direction:column;gap:6px}
+.tabico{position:relative;display:block;line-height:0}
+.badge{position:absolute;top:-5px;right:-11px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:var(--warn);color:#fff;font:700 11px/17px var(--display);font-style:normal;text-align:center}
+a.alertrow{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:var(--warn);background:var(--warn-soft);border:1px solid var(--warn);border-radius:var(--r);padding:13px 15px}
+a.alertrow b{display:block;font-weight:600}
+a.alertrow small{display:block;font-size:13.5px}
+a.alertrow::after{content:"›";font-size:22px;line-height:1}
+.chips.seg button{flex:1}
 .host{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
 @media (max-width:380px){.keys{grid-template-columns:1fr}.dates{grid-template-columns:1fr}}
 </style>
@@ -192,9 +199,10 @@ var UI = {
   n_home:"You are in",n_home_p:"Wi-Fi, air conditioning and every appliance, explained on its own photo.",
   n_leaving:"Departure day",n_leaving_p:"Two steps to return the keys, and how to book the taxi.",
   n_after:"Thank you for staying",n_after_p:"We hope Rome treated you well.",
-  open:"Open",stops_h:"The stay in four stops",
+  open:"Open",stops_h:"The stay in three stops",alerts:"Alerts",al_page_h:"Alerts and events",al_page_d:"Strikes, events and free entries on your dates",al_zero:"No transport strikes announced right now.",
+  sum_n:function(n){return n===1?"1 transport alert":n+" transport alerts"},getting_h:"Getting here",entering_h:"Getting in",
   s_before:"Before you arrive",s_before_d:"From the airports and Termini to the door",
-  s_arrival:"Arrival",s_arrival_d:"The four keys and the five steps in",
+  s_arrival:"Arrival",s_arrival_d:"From the airport to the apartment door",
   s_home:"In the apartment",s_home_d:"Wi-Fi, appliances, what to do if the power trips",
   s_leaving:"Leaving",s_leaving_d:"Check-out and the taxi to the airport",
   around_link:"Around the apartment",around_link_d:"Pharmacies, groceries, sights, where to eat",
@@ -213,7 +221,7 @@ var UI = {
   sub_h:"Alerts for your stay",sub_p:"Get an email if a transport strike or a must-know event lands on your dates, from now until check-out.",
   sub_ck:"I have read and accept the notice below (required only to subscribe)",sub_btn:"Subscribe",push_btn:"Also enable phone notifications",
   sub_consent:"You'll only receive alerts relevant to your stay dates in Rome (strikes, events, free museums). The subscription switches off automatically at check-out. Your data is never shared with anyone and is processed in compliance with privacy laws and the GDPR, solely to send you these alerts. Unsubscribe anytime via the link in each email.",
-  sub_needdates:"Please set your check-in and check-out dates above first.",sub_needck:"Please tick the privacy checkbox to subscribe.",sub_bademail:"Please enter a valid email address.",
+  sub_needdates:"Please set your check-in and check-out dates at the top of this page first.",sub_needck:"Please tick the privacy checkbox to subscribe.",sub_bademail:"Please enter a valid email address.",
   sub_ok:"Subscribed. You'll get alerts for your stay dates.",push_ok:"Phone notifications enabled.",push_no:"Notifications not enabled (you can allow them from browser settings).",
   sub_off:"Alerts can't be switched on from this preview. They work on the live guide."},
  it:{before:"Prima",arrival:"Arrivo",home:"In casa",around:"Zona",leaving:"Partenza",
@@ -225,9 +233,10 @@ var UI = {
   n_home:"Sei in casa",n_home_p:"Wi-Fi, aria condizionata e ogni elettrodomestico spiegato sulla sua foto.",
   n_leaving:"Giorno di partenza",n_leaving_p:"Due passi per riporre le chiavi e come prenotare il taxi.",
   n_after:"Grazie per essere stato qui",n_after_p:"Speriamo che Roma ti abbia trattato bene.",
-  open:"Apri",stops_h:"Il soggiorno in quattro tappe",
+  open:"Apri",stops_h:"Il soggiorno in tre tappe",alerts:"Avvisi",al_page_h:"Avvisi ed eventi",al_page_d:"Scioperi, eventi e ingressi gratuiti nelle tue date",al_zero:"Al momento non ci sono scioperi dei trasporti annunciati.",
+  sum_n:function(n){return n===1?"1 avviso sui trasporti":n+" avvisi sui trasporti"},getting_h:"Come arrivare",entering_h:"Entrare in casa",
   s_before:"Prima di arrivare",s_before_d:"Dagli aeroporti e da Termini fino alla porta",
-  s_arrival:"Arrivo",s_arrival_d:"Le quattro chiavi e i cinque passi per entrare",
+  s_arrival:"Arrivo",s_arrival_d:"Dall'aeroporto alla porta di casa",
   s_home:"In appartamento",s_home_d:"Wi-Fi, elettrodomestici, cosa fare se salta la corrente",
   s_leaving:"Partenza",s_leaving_d:"Check-out e taxi per l'aeroporto",
   around_link:"Intorno all'appartamento",around_link_d:"Farmacie, spesa, cosa vedere, dove mangiare",
@@ -246,18 +255,19 @@ var UI = {
   sub_h:"Avvisi per il tuo soggiorno",sub_p:"Ricevi un'email se uno sciopero dei trasporti o un evento importante cade nelle tue date, da adesso fino al check-out.",
   sub_ck:"Ho letto e accetto l'informativa qui sotto (serve solo per iscriversi)",sub_btn:"Iscriviti",push_btn:"Attiva anche le notifiche sul telefono",
   sub_consent:"Riceverai solo avvisi rilevanti per le date del tuo soggiorno a Roma (scioperi, eventi, musei gratuiti). L'iscrizione si disattiva automaticamente al check-out. I tuoi dati non saranno condivisi con nessuno e sono trattati nel rispetto delle leggi privacy e del GDPR, al solo scopo di inviarti questi avvisi. Disiscrizione in ogni email.",
-  sub_needdates:"Prima imposta le date di check-in e check-out qui sopra.",sub_needck:"Spunta la casella privacy per iscriverti.",sub_bademail:"Inserisci un indirizzo email valido.",
+  sub_needdates:"Prima imposta le date di check-in e check-out in cima a questa pagina.",sub_needck:"Spunta la casella privacy per iscriverti.",sub_bademail:"Inserisci un indirizzo email valido.",
   sub_ok:"Iscritto. Riceverai gli avvisi per le date del tuo soggiorno.",push_ok:"Notifiche sul telefono attivate.",push_no:"Notifiche non attivate (puoi consentirle dalle impostazioni del browser).",
   sub_off:"Da questa anteprima gli avvisi non si possono attivare. Funzionano sulla guida online."}
 };
 var ICON = {
+ alerts:'<svg viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20a2 2 0 0 0 4 0"/></svg>',
  before:'<svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>',
  arrival:'<svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2.5 2.5M19 4l1.5 1.5"/></svg>',
  apartment:'<svg viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>',
  around:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>',
  leaving:'<svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="2"/><path d="M9 8V5h6v3M9 19v2M15 19v2"/></svg>'
 };
-var TABS = [["before","before"],["arrival","arrival"],["apartment","home"],["around","around"],["leaving","leaving"]];
+var TABS = [["arrival","arrival"],["apartment","home"],["alerts","alerts"],["around","around"],["leaving","leaving"]];
 var store = {get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{v?localStorage.setItem(k,v):localStorage.removeItem(k)}catch(e){}}};
 var lang = store.get("lt_lang") || (navigator.language||"en").slice(0,2);
 if(P.languages.indexOf(lang)<0) lang="en";
@@ -297,33 +307,45 @@ function subBlock(){return '<section class="card stack"><h2>'+u.sub_h+'</h2><p>'
 
 /* ---- views ---- */
 var V = {};
+function datesCard(){return '<section class="card stack"><h2>'+u.dates_h+'</h2><div class="dates"><label for="stay-from">'+u.from+'<input type="date" id="stay-from" value="'+(store.get("lt_stay_from")||"")+'"></label><label for="stay-to">'+u.to+'<input type="date" id="stay-to" value="'+(store.get("lt_stay_to")||"")+'"></label></div><p class="meta">'+u.dates_hint+'</p></section>'}
+function alertCount(){return inWindow(EV.alerts).length}
 V.today = function(){
-  var ph=phase(), now="";
+  var ph=phase(), now="", n=alertCount(), s=stay(), has=s.from&&s.to;
   if(ph){
-    var m={before:[u.n_before(ph.d),u.n_before_p,"before"],arrival:[u.n_arrival,u.n_arrival_p,"arrival"],apartment:[u.n_home,u.n_home_p,"apartment"],leaving:[u.n_leaving,u.n_leaving_p,"leaving"],after:[u.n_after,u.n_after_p,null]}[ph.k];
+    var m={before:[u.n_before(ph.d),u.n_before_p,"arrival"],arrival:[u.n_arrival,u.n_arrival_p,"arrival"],apartment:[u.n_home,u.n_home_p,"apartment"],leaving:[u.n_leaving,u.n_leaving_p,"leaving"],after:[u.n_after,u.n_after_p,null]}[ph.k];
     now='<section class="now"><span class="eyebrow">'+u.now+'</span><h2>'+m[0]+'</h2><p>'+m[1]+'</p>'+(m[2]?'<a class="go" href="#'+m[2]+'">'+u.open+' ›</a>':'')+'</section>';
   }
-  var stops=[["before",u.s_before,u.s_before_d],["arrival",u.s_arrival,u.s_arrival_d],["apartment",u.s_home,u.s_home_d],["leaving",u.s_leaving,u.s_leaving_d]];
+  var stops=[["arrival",u.s_arrival,u.s_arrival_d],["apartment",u.s_home,u.s_home_d],["leaving",u.s_leaving,u.s_leaving_d]], cur=ph?(ph.k==="before"?"arrival":ph.k):"";
   return '<section class="hero"><img src="'+P.cover+'" alt=""><div class="in"><h1>'+esc(P.name)+'</h1><p class="addr">'+esc(P.address.short||P.address.line)+', '+esc(P.address.city)+'</p><p class="lead" style="margin-top:10px">'+u.today_lead+'</p></div></section>'
-   + now + alertsBlock()
-   + '<section class="card stack"><h2>'+u.dates_h+'</h2><div class="dates"><label for="stay-from">'+u.from+'<input type="date" id="stay-from" value="'+(store.get("lt_stay_from")||"")+'"></label><label for="stay-to">'+u.to+'<input type="date" id="stay-to" value="'+(store.get("lt_stay_to")||"")+'"></label></div><p class="meta">'+u.dates_hint+'</p></section>'
-   + subBlock()
-   + '<section class="sec"><h2>'+u.stops_h+'</h2><ol class="stops">'+stops.map(function(s,i){return '<li'+(ph&&ph.k===s[0]?' class="cur"':'')+'><span class="num">'+(i+1)+'</span><a href="#'+s[0]+'"><h3>'+s[1]+'</h3><span>'+s[2]+'</span></a></li>'}).join("")+'</ol>'
-   + '<div class="rows"><a class="row" href="#around"><span><b>'+u.around_link+'</b><small>'+u.around_link_d+'</small></span></a></div></section>';
+   + now
+   + (n?'<a class="alertrow" href="#alerts"><span><b>'+u.sum_n(n)+'</b><small>'+(has?u.al_stay:u.al_all)+'</small></span></a>':'')
+   + datesCard()
+   + '<section class="sec"><h2>'+u.stops_h+'</h2><ol class="stops">'+stops.map(function(st,i){return '<li'+(cur===st[0]?' class="cur"':'')+'><span class="num">'+(i+1)+'</span><a href="#'+st[0]+'"><h3>'+st[1]+'</h3><span>'+st[2]+'</span></a></li>'}).join("")+'</ol>'
+   + '<div class="rows"><a class="row" href="#alerts"><span><b>'+u.al_page_h+'</b><small>'+u.al_page_d+'</small></span></a><a class="row" href="#around"><span><b>'+u.around_link+'</b><small>'+u.around_link_d+'</small></span></a></div></section>';
 };
-V.before = function(){
-  return '<header class="stack"><h1>'+u.s_before+'</h1><p class="lead">'+u.s_before_d+'</p></header>'
-   + P.gettingHere.map(function(g){return '<section class="card prose">'+tr(g.html)+'</section>'}).join("")
-   + '<section class="card stack"><p>'+u.code_note+'</p><div>'+video(P.arrival.video,u.video_in)+'</div></section>';
-};
+var arrTab=null;
 V.arrival = function(){
-  var k=P.arrival.keys;
-  return '<header class="stack"><h1>'+u.s_arrival+'</h1><p class="lead">'+esc(P.address.short||P.address.line)+'</p></header>'
-   + '<section class="card stack"><h2>'+u.keys_h+'</h2><div class="keys"><img src="'+k.image+'" alt="'+esc(tr(k.title))+'" width="'+k.ratio[0]+'" height="'+k.ratio[1]+'"><ul>'+tr(k.items).map(function(i){return '<li>'+esc(i)+'</li>'}).join("")+'</ul></div></section>'
+  var k=P.arrival.keys, ph=phase(), tab=arrTab||((ph&&(ph.k==="arrival"||ph.k==="apartment"||ph.k==="leaving"))?"in":"here");
+  var here=P.gettingHere.map(function(g){return '<section class="card prose">'+tr(g.html)+'</section>'}).join("")
+   + '<section class="card stack"><p>'+u.code_note+'</p><div><button class="btn pri" type="button" data-arr="in">'+u.entering_h+' ›</button></div></section>';
+  var into='<section class="card stack"><h2>'+u.keys_h+'</h2><div class="keys"><img src="'+k.image+'" alt="'+esc(tr(k.title))+'" width="'+k.ratio[0]+'" height="'+k.ratio[1]+'"><ul>'+tr(k.items).map(function(i){return '<li>'+esc(i)+'</li>'}).join("")+'</ul></div></section>'
    + '<section class="sec"><h2>'+u.steps_in+'</h2><div>'+video(P.arrival.video,u.video_in)+'</div><div class="card">'+stepList(P.arrival.steps)+'</div><p class="note">'+u.code_note+'</p></section>'
    + '<section class="card stack"><h2>'+u.between_h+'</h2><p class="prose">'+tr(P.arrival.inAndOut.text)+'</p><div>'+video(P.arrival.inAndOut.video,u.video_between)+'</div></section>'
-   + outCard()
+   + outCard();
+  return '<header class="stack"><h1>'+u.s_arrival+'</h1><p class="lead">'+u.s_arrival_d+'</p></header>'
+   + '<div class="chips seg" role="tablist"><button type="button" role="tab" data-arr="here" aria-selected="'+(tab==="here")+'">1 · '+u.getting_h+'</button><button type="button" role="tab" data-arr="in" aria-selected="'+(tab==="in")+'">2 · '+u.entering_h+'</button></div>'
+   + (tab==="here"?here:into)
    + hostCard();
+};
+V.before = function(){arrTab="here";return V.arrival()};
+V.alerts = function(){
+  var fr=inWindow(EV.free), ev=inWindow(EV.events), al=alertsBlock();
+  return '<header class="stack"><h1>'+u.al_page_h+'</h1><p class="lead">'+u.al_page_d+'</p></header>'
+   + datesCard()
+   + (al||'<p class="note">'+u.al_zero+'</p>')
+   + (ev.length?'<section class="sec"><h2>'+u.on_h+'</h2>'+ev.map(function(x){return evCard(x,"")}).join("")+'</section>':'')
+   + (fr.length?'<section class="sec"><h2>'+u.free_h+'</h2>'+fr.map(function(x){return evCard(x,"")}).join("")+'</section>':'')
+   + subBlock();
 };
 function apRow(a){return '<a class="row" href="#a-'+a.id+'"><span><b>'+esc(tr(a.name))+'</b><small>'+esc(tr(a.where))+(a.model?' · '+esc(a.model):'')+'</small></span></a>'}
 V.apartment = function(){
@@ -373,11 +395,8 @@ function appliance(a){
 }
 function placeRow(p){return '<div class="place"><span><b>'+esc(p.name)+'</b>'+(p.note?'<small>'+esc(tr(p.note))+'</small>':'')+'</span><span class="links"><a href="'+p.map+'" target="_blank" rel="noopener">'+(p.km?p.km.toFixed(1)+' '+u.km+' ':'')+u.walk+' ↗</a>'+(p.reviews?'<a href="'+p.reviews+'" target="_blank" rel="noopener">'+u.reviews+' ↗</a>':'')+'</span></div>'}
 V.around = function(){
-  var A=P.around, fr=inWindow(EV.free), ev=inWindow(EV.events);
+  var A=P.around;
   return '<header class="stack"><h1>'+u.around_link+'</h1><p class="lead">'+u.around_link_d+'</p></header>'
-   + alertsBlock()
-   + (ev.length?'<section class="sec"><h2>'+u.on_h+'</h2>'+ev.map(function(x){return evCard(x,"")}).join("")+'</section>':'')
-   + (fr.length?'<section class="sec"><h2>'+u.free_h+'</h2>'+fr.map(function(x){return evCard(x,"")}).join("")+'</section>':'')
    + '<section class="sec"><h2>'+u.moving+'</h2><div class="card prose">'+tr(A.moving)+'</div></section>'
    + '<section class="sec"><h2>'+u.ess+'</h2><div class="card prose">'+tr(A.pharmacies)+'</div><div class="card prose">'+tr(A.groceries)+'</div></section>'
    + '<section class="sec"><h2>'+u.sights+'</h2><div class="rows">'+A.sights.map(placeRow).join("")+'</div></section>'
@@ -408,17 +427,19 @@ function focusMark(n){
 function render(){
   u=UI[lang]; document.documentElement.lang=lang;
   var h=(location.hash||"#today").slice(1), html, tab=h;
+  if(h==="before") tab="arrival";
   if(h.indexOf("a-")===0){var a=P.appliances.concat(P.fixes).filter(function(x){return x.id===h.slice(2)})[0]; html=a?appliance(a):V.apartment(); tab="apartment"}
   else {if(!V[h]) h=tab="today"; html=V[h]()}
   view.innerHTML=html;
   document.getElementById("brand").innerHTML=esc(P.name)+'<small>'+esc(P.address.short||P.address.line)+'</small>';
   document.getElementById("lang").innerHTML=P.languages.map(function(l){return '<button type="button" data-l="'+l+'" aria-pressed="'+(l===lang)+'">'+l.toUpperCase()+'</button>'}).join("");
-  document.getElementById("tabs").innerHTML=TABS.map(function(t){return '<a href="#'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICON[t[0]]+u[t[1]]+'</a>'}).join("");
+  document.getElementById("tabs").innerHTML=TABS.map(function(t){var n=t[0]==="alerts"?alertCount():0;return '<a href="#'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'><span class="tabico">'+ICON[t[0]]+(n?'<i class="badge">'+n+'</i>':'')+'</span>'+u[t[1]]+'</a>'}).join("");
 }
 document.getElementById("lang").addEventListener("click",function(e){var l=e.target.dataset.l; if(l){lang=l;store.set("lt_lang",l);render()}});
 view.addEventListener("click",function(e){
   var t=e.target.closest("[data-n]"); if(t&&t.tagName==="BUTTON"){focusMark(t.dataset.n);return}
   var c=e.target.closest("[data-task]"); if(c){view.querySelectorAll("[data-task]").forEach(function(b){b.setAttribute("aria-selected",b===c)});view.querySelectorAll("[data-panel]").forEach(function(p){p.hidden=p.dataset.panel!==c.dataset.task});var first=view.querySelector('[data-panel="'+c.dataset.task+'"] .mk');if(first){var ph=photoOf(first.dataset.n);if(ph!==null)showPhoto(ph)}return}
+  var ar=e.target.closest("[data-arr]"); if(ar){arrTab=ar.dataset.arr;render();scrollTo(0,0);return}
   var th=e.target.closest("[data-photo]"); if(th){showPhoto(th.dataset.photo);return}
   if(e.target.id==="copy-ssid"){var b=e.target;(navigator.clipboard?navigator.clipboard.writeText(P.wifi.ssid):Promise.reject()).then(function(){b.textContent=u.copied},function(){var r=document.createRange();r.selectNodeContents(document.getElementById("ssid"));var s=getSelection();s.removeAllRanges();s.addRange(r)})}
 });
@@ -441,9 +462,9 @@ function subscribe(push){
   });
 }
 view.addEventListener("click",function(e){if(e.target.id==="sub-btn")subscribe(false);if(e.target.id==="push-btn")subscribe(true)});
-addEventListener("hashchange",function(){render();scrollTo(0,0)});
+addEventListener("hashchange",function(){if(location.hash==="#before")arrTab="here";else if(location.hash!=="#arrival")arrTab=null;render();scrollTo(0,0)});
 render();
-fetch(/^https?:$/.test(location.protocol)&&!/claude|anthropic|localhost/.test(location.hostname)?"/events.json":"events.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){EV={alerts:j.alerts||[],free:j.free||[],events:j.events||[],updated:j.updated||""};var h=(location.hash||"#today").slice(1);if(h==="today"||h==="around")render()}).catch(function(){});
+fetch(/^https?:$/.test(location.protocol)&&!/claude|anthropic|localhost/.test(location.hostname)?"/events.json":"events.json",{cache:"no-store"}).then(function(r){return r.json()}).then(function(j){EV={alerts:j.alerts||[],free:j.free||[],events:j.events||[],updated:j.updated||""};var a=document.activeElement;if(!a||!/INPUT|TEXTAREA/.test(a.tagName))render()}).catch(function(){});
 })();
 </script>
 <script src="analytics.js" defer></script>
