@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-31",
+  "updated": "2026-11-16",
   "city": "Roma",
   "origin": "Via della Reginella 2, Roma",
   "alerts": [
@@ -73,25 +73,5 @@
     }
   ],
   "free": [],
-  "events": [
-    {
-      "from": "2026-07-03",
-      "to": "2026-11-15",
-      "when": {
-        "en": "From 3 July",
-        "it": "Dal 3 luglio"
-      },
-      "cat": "exhibition",
-      "t": {
-        "en": "AEGYPTUS — Baths of Diocletian",
-        "it": "AEGYPTUS — Terme di Diocleziano"
-      },
-      "p": {
-        "en": "Major new exhibition on ancient Egypt in the Octagonal Hall (Museo Nazionale Romano).",
-        "it": "Grande mostra sull'antico Egitto nell'Aula Ottagona (Museo Nazionale Romano)."
-      },
-      "dist": "≈ 2.6 km · metro/bus or 33 min walk",
-      "map": "https://www.google.com/maps/dir/?api=1&origin=Via+della+Reginella+2+Roma&destination=Terme+di+Diocleziano+Roma&travelmode=walking"
-    }
-  ]
+  "events": []
 }
